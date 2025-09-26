@@ -13,7 +13,7 @@ namespace library_support_system.Repositories
 
         public BookRepository()
         {
-            // app.config에서 커넥션 문자열 읽기
+            // app.config에서 커넥션 문자열 읽기 111
             string connStr = ConfigurationManager.ConnectionStrings["OracleDb"].ConnectionString;
             _conn = new OracleConnection(connStr);
             _conn.Open();
