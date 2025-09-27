@@ -14,7 +14,7 @@ namespace library_support_system.Presenters
         private readonly IHomeView view;
         #endregion
 
-        //오류방지로 미리 선언
+        // pullrequst test
         public HomePresenter(IHomeView view)
         {
             this.view = view;
