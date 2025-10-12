@@ -55,11 +55,12 @@
             this.URL,
             this.picture,
             this.explain});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 178);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 145);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1292, 310);
+            this.dataGridView1.Size = new System.Drawing.Size(1120, 242);
             this.dataGridView1.TabIndex = 0;
             // 
             // select
@@ -122,10 +123,9 @@
             // 
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
-            this.search_button.Location = new System.Drawing.Point(730, 66);
-            this.search_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.search_button.Location = new System.Drawing.Point(639, 53);
             this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(50, 51);
+            this.search_button.Size = new System.Drawing.Size(44, 41);
             this.search_button.TabIndex = 11;
             this.search_button.UseVisualStyleBackColor = true;
             // 
@@ -135,24 +135,22 @@
             this.search_textbox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(40, 66);
-            this.search_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.search_textbox.Location = new System.Drawing.Point(35, 53);
             this.search_textbox.Multiline = true;
             this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(684, 51);
+            this.search_textbox.Size = new System.Drawing.Size(599, 41);
             this.search_textbox.TabIndex = 10;
             // 
             // book_check
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1120, 576);
             this.Controls.Add(this.search_button);
             this.Controls.Add(this.search_textbox);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "book_check";
             this.Load += new System.EventHandler(this.book_check_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

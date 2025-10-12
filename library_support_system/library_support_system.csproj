@@ -120,16 +120,18 @@
     <Compile Include="Presenters\HomePresenter.cs" />
     <Compile Include="Presenters\HomeSearchPresenter.cs" />
     <Compile Include="Presenters\UserResPresenter.cs" />
+    <Compile Include="Presenters\UserViewPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\RentalRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="user_check.cs">
+    <Compile Include="Views\IUser_View.cs" />
+    <Compile Include="Views\User_View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="user_check.Designer.cs">
-      <DependentUpon>user_check.cs</DependentUpon>
+    <Compile Include="Views\User_View.Designer.cs">
+      <DependentUpon>User_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IHomeSearchView.cs" />
     <Compile Include="Views\IUser_Res.cs" />
@@ -171,8 +173,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="user_check.resx">
-      <DependentUpon>user_check.cs</DependentUpon>
+    <EmbeddedResource Include="Views\User_View.resx">
+      <DependentUpon>User_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User_Res.resx">
       <DependentUpon>User_Res.cs</DependentUpon>

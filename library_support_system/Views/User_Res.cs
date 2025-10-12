@@ -11,7 +11,7 @@ using library_support_system.Views;
 
 namespace library_support_system
 {
-    public partial class User_Res : Form ,IUser_Res
+    public partial class User_Res : Form , IUser_Res
     {
         #region Properties
         public string UserPhone => txtNum.Text.Trim();

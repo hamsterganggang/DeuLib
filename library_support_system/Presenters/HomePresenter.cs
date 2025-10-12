@@ -50,7 +50,7 @@ namespace library_support_system.Presenters
         {
             view.CurrentMenu1Text = "회원조회";
             view.CurrentMenu2Text = "회원조회";
-            view.ShowChildForm(new user_check());
+            view.ShowChildForm(new User_View());
         }
         private void OpenUserRes(object sender, EventArgs e)
         {

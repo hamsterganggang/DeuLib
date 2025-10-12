@@ -10,7 +10,6 @@ namespace library_support_system.Repositories
     internal class UserRepository : IDisposable
     {
         private readonly OracleConnection _conn;
-
         // 생성자에서 커넥션 미리 오픈
         public UserRepository()
         {
@@ -18,7 +17,6 @@ namespace library_support_system.Repositories
             _conn = new OracleConnection(connStr);
             _conn.Open();
         }
-
         // CREATE
         public bool Create(UserModel user)
         {
@@ -39,7 +37,6 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-
         // READ (특정 회원)
         public UserModel Read(string userPhone)
         {
@@ -65,7 +62,6 @@ namespace library_support_system.Repositories
                 }
             }
         }
-
         // READ ALL
         public List<UserModel> ReadAll()
         {
@@ -81,17 +77,21 @@ namespace library_support_system.Repositories
                         {
                             User_Phone = reader["User_Phone"].ToString(),
                             User_Name = reader["User_Name"].ToString(),
+
+                            // 💡 수정: DB의 날짜/시간(Date/Timestamp) 데이터를 
+                            // 모델의 string 속성에 할당하기 위해 명시적으로 ToString() 처리.
+                            User_Birthdate = reader["User_Birthdate"].ToString(),
+
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
                             User_Image = reader["User_Image"].ToString(),
-                            User_WithDR = Convert.ToInt32(reader["User_WithDR"])
+                            User_WithDR = Convert.ToInt32(reader["User_WTHDR"])
                         });
                     }
                 }
             }
             return list;
         }
-
         // UPDATE
         public bool Update(UserModel user)
         {
@@ -116,7 +116,6 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-
         // DELETE
         public bool Delete(string userPhone)
         {
@@ -127,7 +126,6 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-
         // 자원 해제 (프로그램 종료 시 호출)
         public void Dispose()
         {
