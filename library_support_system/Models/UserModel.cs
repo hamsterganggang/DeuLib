@@ -16,6 +16,13 @@ namespace library_support_system.Model
         public string User_Mail { get; set; }
         public string User_Image { get; set; }
         public int User_WithDR { get; set; } = 1;
+        public string GenderDisplay
+        {
+            get
+            {
+                return User_Gender == 1 ? "남자" : User_Gender == 2 ? "여자" : "-";
+            }
+        }
         #endregion
     }
 }

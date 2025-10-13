@@ -1,4 +1,5 @@
-﻿using System;
+﻿using library_support_system.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace library_support_system.Views
         event EventHandler btnSave_Click;
         event EventHandler btnCancel_Click;
         event EventHandler pictureBoxUpload_Click;
+        void SetUserData(UserModel user); // ← 반드시 추가!
         void CloseView();
         #endregion
     }
