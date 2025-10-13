@@ -20,16 +20,13 @@ namespace library_support_system.Presenters
         {
             this.view = view;
             this.userRepository = new UserRepository();
+            Retrieve(); // 로딩 시 전체 회원 조회
 
-            // 💡 View가 생성될 때(Presenter가 연결될 때) 전체 회원 조회 로직 수행
-            LoadAllUsers();
-
-            // 검색 이벤트 구독은 필요하다면 여기에 유지 (검색 기능 사용 시)
-            // this.view.SearchEvent += OnSearchUser;
+            // this.view.SearchEvent += OnSearchUser; < 검색이벤트는 현재 사용하지 않음
+            this.view.ChangeUserEvent += OnChangeUser;
         }
 
-        // 💡 전체 회원 조회 및 View 업데이트 메서드
-        private void LoadAllUsers()
+        private void Retrieve()
         {
             try
             {
@@ -45,7 +42,20 @@ namespace library_support_system.Presenters
                 view.ShowMessage("회원 목록 로드 중 오류가 발생했습니다: " + ex.Message);
             }
         }
-
-        // ... (기존 OnSearchUser 메서드는 검색 기능이 필요하면 유지)
+        private void OnChangeUser(object sender, EventArgs e)
+        {
+            var selectedUser = view.SelectedUser;
+            if (selectedUser != null)
+            {
+                var userResForm = new User_Res();
+                var userResPresenter = new UserResPresenter(userResForm, selectedUser); // [수정모드]
+                userResForm.ShowDialog();
+                Retrieve(); // 팝업 후 갱신
+            }
+            else
+            {
+                view.ShowMessage("수정할 회원을 먼저 선택하세요.");
+            }
+        }
     }
 }

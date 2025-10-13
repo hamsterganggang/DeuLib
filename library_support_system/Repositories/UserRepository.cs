@@ -98,20 +98,18 @@ namespace library_support_system.Repositories
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = @"
-                    UPDATE Users SET
-                        User_Name = :User_Name,
-                        User_Birthdate = :User_Birthdate,
-                        User_Gender = :User_Gender,
-                        User_Mail = :User_Mail,
-                        User_Image = :User_Image,
-                        User_WithDR = :User_WithDR
-                    WHERE User_Phone = :User_Phone";
+            UPDATE Users SET
+                User_Name = :User_Name,
+                User_Birthdate = :User_Birthdate,
+                User_Gender = :User_Gender,
+                User_Mail = :User_Mail,
+                User_Image = :User_Image
+            WHERE User_Phone = :User_Phone";
                 cmd.Parameters.Add(new OracleParameter("User_Name", user.User_Name));
-                cmd.Parameters.Add(new OracleParameter("User_Birthdate", user.User_Birthdate));
+                cmd.Parameters.Add(new OracleParameter("User_Birthdate", DateTime.Parse(user.User_Birthdate)));
                 cmd.Parameters.Add(new OracleParameter("User_Gender", user.User_Gender));
                 cmd.Parameters.Add(new OracleParameter("User_Mail", user.User_Mail));
                 cmd.Parameters.Add(new OracleParameter("User_Image", user.User_Image));
-                cmd.Parameters.Add(new OracleParameter("User_WithDR", user.User_WithDR));
                 cmd.Parameters.Add(new OracleParameter("User_Phone", user.User_Phone));
                 return cmd.ExecuteNonQuery() > 0;
             }
