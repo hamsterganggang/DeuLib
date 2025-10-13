@@ -64,31 +64,31 @@ namespace library_support_system.Presenters
         {
             view.CurrentMenu1Text = "도서조회";
             view.CurrentMenu2Text = "도서조회";
-            view.ShowChildForm(new book_check());
+            view.ShowChildForm(new Book_View());
         }
         private void OpenBookRes(object sender, EventArgs e)
         {
             view.CurrentMenu1Text = "도서등록";
             view.CurrentMenu2Text = "도서등록";
-            view.ShowChildForm(new book_enroll());
+            view.ShowChildForm(new Book_Res());
         }
         private void OpenBookRental(object sender, EventArgs e)
         {
             view.CurrentMenu1Text = "도서대여";
             view.CurrentMenu2Text = "도서대여";
-            view.ShowChildForm(new book_rental());
+            view.ShowChildForm(new Book_Rental());
         }
         private void OpenBookReturn(object sender, EventArgs e)
         {
             view.CurrentMenu1Text = "도서반납";
             view.CurrentMenu2Text = "도서반납";
-            view.ShowChildForm(new book_return());
+            view.ShowChildForm(new Book_Return());
         }
         private void OpenHomeSearch(object sender, EventArgs e)
         {
             view.CurrentMenu1Text = "도서검색";
             view.CurrentMenu2Text = "홈 검색";
-            view.ShowChildForm(new home_search());
+            view.ShowChildForm(new Home_Search());
         }
         private void ExitProgram(object sender, EventArgs e)
         {

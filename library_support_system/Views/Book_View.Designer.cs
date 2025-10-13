@@ -1,6 +1,6 @@
-﻿namespace library_support_system
+﻿namespace library_support_system.Views
 {
-    partial class book_check
+    partial class Book_View
     {
         /// <summary>
         /// Required designer variable.

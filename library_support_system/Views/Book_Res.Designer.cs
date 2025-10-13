@@ -1,6 +1,6 @@
-﻿namespace library_support_system
+﻿namespace library_support_system.Views
 {
-    partial class book_rental
+    partial class Book_Res
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // book_rental
+            // book_enroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 737);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "book_rental";
-            this.Text = "book_rental";
-            this.Load += new System.EventHandler(this.book_rental_Load);
+            this.Name = "book_enroll";
+            this.Text = "book_enroll";
             this.ResumeLayout(false);
 
         }
