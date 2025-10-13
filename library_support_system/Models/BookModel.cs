@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library_support_system.Models
 {
-    internal class BookModel
+    public class BookModel
     {
         #region Properties
         public string Book_ISBN { get; set; }
