@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library_support_system.Models
 {
-    internal class RentalModel
+    public class RentalModel
     {
         #region Properties
         public int Rental_Seq { get; set; }
