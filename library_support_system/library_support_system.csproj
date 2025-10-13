@@ -84,35 +84,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="book_check.cs">
+    <Compile Include="Views\Book_View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="book_check.Designer.cs">
-      <DependentUpon>book_check.cs</DependentUpon>
+    <Compile Include="Views\Book_View.Designer.cs">
+      <DependentUpon>Book_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="book_enroll.cs">
+    <Compile Include="Views\Book_Res.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="book_enroll.Designer.cs">
-      <DependentUpon>book_enroll.cs</DependentUpon>
+    <Compile Include="Views\Book_Res.Designer.cs">
+      <DependentUpon>Book_Res.cs</DependentUpon>
     </Compile>
-    <Compile Include="home_search.cs">
+    <Compile Include="Views\Home_Search.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="home_search.Designer.cs">
-      <DependentUpon>home_search.cs</DependentUpon>
+    <Compile Include="Views\Home_Search.Designer.cs">
+      <DependentUpon>Home_Search.cs</DependentUpon>
     </Compile>
-    <Compile Include="book_rental.cs">
+    <Compile Include="Views\Book_Rental.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="book_rental.Designer.cs">
-      <DependentUpon>book_rental.cs</DependentUpon>
+    <Compile Include="Views\Book_Rental.Designer.cs">
+      <DependentUpon>Book_Rental.cs</DependentUpon>
     </Compile>
-    <Compile Include="book_return.cs">
+    <Compile Include="Views\Book_Return.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="book_return.Designer.cs">
-      <DependentUpon>book_return.cs</DependentUpon>
+    <Compile Include="Views\Book_Return.Designer.cs">
+      <DependentUpon>Book_Return.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\RentalModel.cs" />
@@ -133,7 +133,7 @@
     <Compile Include="Views\User_View.Designer.cs">
       <DependentUpon>User_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\IHomeSearchView.cs" />
+    <Compile Include="Views\IHome_Search.cs" />
     <Compile Include="Views\IUser_Res.cs" />
     <Compile Include="Views\User_Res.cs">
       <SubType>Form</SubType>
@@ -148,20 +148,20 @@
       <DependentUpon>HomeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IHomeView.cs" />
-    <EmbeddedResource Include="book_check.resx">
-      <DependentUpon>book_check.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Book_View.resx">
+      <DependentUpon>Book_View.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="book_enroll.resx">
-      <DependentUpon>book_enroll.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Book_Res.resx">
+      <DependentUpon>Book_Res.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="home_search.resx">
-      <DependentUpon>home_search.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Home_Search.resx">
+      <DependentUpon>Home_Search.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="book_rental.resx">
-      <DependentUpon>book_rental.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Book_Rental.resx">
+      <DependentUpon>Book_Rental.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="book_return.resx">
-      <DependentUpon>book_return.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Book_Return.resx">
+      <DependentUpon>Book_Return.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

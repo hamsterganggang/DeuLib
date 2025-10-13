@@ -4,15 +4,15 @@ using System.Windows.Forms;
 using library_support_system.Views;
 using library_support_system.Presenters;
 
-namespace library_support_system
+namespace library_support_system.Views
 {
-    public partial class home_search : Form, IHomeSearchView
+    public partial class Home_Search : Form, IHome_Search
     {
         #region Fields
         private HomeSearchPresenter presenter;
         #endregion
 
-        public home_search()
+        public Home_Search()
         {
             InitializeComponent();
             presenter = new HomeSearchPresenter(this);
@@ -52,7 +52,7 @@ namespace library_support_system
                     homeView.CurrentMenu1Text = "도서검색 결과";
                     homeView.CurrentMenu2Text = "도서검색 결과";
 
-                    var checkForm = new book_check();
+                    var checkForm = new Book_View();
                     homeView.ShowChildForm(checkForm);
                 }
                 else

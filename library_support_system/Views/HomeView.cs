@@ -102,7 +102,7 @@ namespace library_support_system.Views
         {
             CurrentMenu1Text = "도서검색";
             CurrentMenu2Text = "홈 검색";
-            ShowChildForm(new home_search());
+            ShowChildForm(new Home_Search());
         }
         #endregion
 

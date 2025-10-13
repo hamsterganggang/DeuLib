@@ -1,6 +1,6 @@
-﻿namespace library_support_system
+﻿namespace library_support_system.Views
 {
-    partial class home_search
+    partial class Home_Search
     {
         /// <summary>
         /// Required designer variable.

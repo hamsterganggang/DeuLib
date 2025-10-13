@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace library_support_system
+namespace library_support_system.Views
 {
-    public partial class book_enroll : Form
+    public partial class Book_Rental : Form
     {
-        public book_enroll()
+        public Book_Rental()
         {
             InitializeComponent();
+        }
+
+        private void book_rental_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

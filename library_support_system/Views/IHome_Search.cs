@@ -8,7 +8,7 @@ using library_support_system.Models;
 
 namespace library_support_system.Views
 {
-    public interface IHomeSearchView
+    public interface IHome_Search
     {
         #region Properties
         string SearchText { get; }

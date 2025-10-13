@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace library_support_system
+namespace library_support_system.Views
 {
-    public partial class book_check : Form
+    public partial class Book_View : Form
     {
-        public book_check()
+        public Book_View()
         {
             InitializeComponent();
         }

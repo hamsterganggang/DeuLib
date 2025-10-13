@@ -13,11 +13,11 @@ namespace library_support_system.Presenters
     public class HomeSearchPresenter
     {
         #region Fields
-        private readonly IHomeSearchView view;
+        private readonly IHome_Search view;
         private readonly BookRepository bookRepository;
         #endregion
 
-        public HomeSearchPresenter(IHomeSearchView view)
+        public HomeSearchPresenter(IHome_Search view)
         {
             this.view = view;
             this.bookRepository = new BookRepository();
