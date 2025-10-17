@@ -22,145 +22,209 @@ namespace library_support_system.Repositories
         // CREATE: 도서 추가
         public bool Create(BookModel book)
         {
-            using (var cmd = _conn.CreateCommand())
+            try
             {
-                cmd.CommandText = @"
-                    INSERT INTO Books
-                    (Book_ISBN, Book_Title, Book_Author, Book_Pbl, Book_Price, Book_Link, Book_Img, Book_Explain)
-                    VALUES
-                    (:Book_ISBN, :Book_Title, :Book_Author, :Book_Pbl, :Book_Price, :Book_Link, :Book_Img, :Book_Explain)";
-                cmd.Parameters.Add(new OracleParameter("Book_ISBN", book.Book_ISBN));
-                cmd.Parameters.Add(new OracleParameter("Book_Title", book.Book_Title));
-                cmd.Parameters.Add(new OracleParameter("Book_Author", book.Book_Author));
-                cmd.Parameters.Add(new OracleParameter("Book_Pbl", book.Book_Pbl));
-                cmd.Parameters.Add(new OracleParameter("Book_Price", book.Book_Price));
-                cmd.Parameters.Add(new OracleParameter("Book_Link", book.Book_Link));
-                cmd.Parameters.Add(new OracleParameter("Book_Img", book.Book_Img));
-                cmd.Parameters.Add(new OracleParameter("Book_Explain", book.Book_Explain));
-                return cmd.ExecuteNonQuery() > 0;
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Books
+                        (Book_ISBN, Book_Title, Book_Author, Book_Pbl, Book_Price, Book_Link, Book_Img, Book_Exp)
+                        VALUES
+                        (:Book_ISBN, :Book_Title, :Book_Author, :Book_Pbl, :Book_Price, :Book_Link, :Book_Img, :Book_Exp)";
+                    
+                    // 파라미터 추가 시 NULL 체크와 OracleDbType 명시
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", OracleDbType.Varchar2) { Value = book.Book_ISBN ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Title", OracleDbType.Varchar2) { Value = book.Book_Title ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Author", OracleDbType.Varchar2) { Value = book.Book_Author ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Pbl", OracleDbType.Varchar2) { Value = book.Book_Pbl ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Price", OracleDbType.Int32) { Value = book.Book_Price });
+                    cmd.Parameters.Add(new OracleParameter("Book_Link", OracleDbType.Varchar2) { Value = book.Book_Link ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Img", OracleDbType.Varchar2) { Value = book.Book_Img ?? (object)DBNull.Value });
+                    
+                    // Book_Exp는 긴 텍스트일 수 있으므로 CLOB 타입으로 처리
+                    var explainParam = new OracleParameter("Book_Exp", OracleDbType.Clob);
+                    explainParam.Value = string.IsNullOrEmpty(book.Book_Exp) ? (object)DBNull.Value : book.Book_Exp;
+                    cmd.Parameters.Add(explainParam);
+                    
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // 상세한 오류 정보를 로그로 출력
+                System.Diagnostics.Debug.WriteLine($"BookRepository Create Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Book_Exp value: '{book.Book_Exp}'");
+                throw; // 상위로 예외 전파
             }
         }
 
         // READ: 특정 도서 조회 (ISBN 기준)
         public BookModel Read(string isbn)
         {
-            using (var cmd = _conn.CreateCommand())
+            try
             {
-                cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN";
-                cmd.Parameters.Add(new OracleParameter("Book_ISBN", isbn));
-                using (var reader = cmd.ExecuteReader())
+                using (var cmd = _conn.CreateCommand())
                 {
-                    if (reader.Read())
+                    cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN";
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", isbn));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        return new BookModel
+                        if (reader.Read())
                         {
-                            Book_ISBN = reader["Book_ISBN"].ToString(),
-                            Book_Title = reader["Book_Title"].ToString(),
-                            Book_Author = reader["Book_Author"].ToString(),
-                            Book_Pbl = reader["Book_Pbl"].ToString(),
-                            Book_Price = Convert.ToInt32(reader["Book_Price"]),
-                            Book_Link = reader["Book_Link"].ToString(),
-                            Book_Img = reader["Book_Img"].ToString(),
-                            Book_Explain = reader["Book_Explain"].ToString()
-                        };
+                            return new BookModel
+                            {
+                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
+                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
+                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
+                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
+                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
+                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
+                            };
+                        }
+                        return null;
                     }
-                    return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository Read Error: {ex.Message}");
+                throw;
             }
         }
 
         // READ ALL: 모든 도서 조회
         public List<BookModel> ReadAll()
         {
-            var list = new List<BookModel>();
-            using (var cmd = _conn.CreateCommand())
+            try
             {
-                cmd.CommandText = "SELECT * FROM Books";
-                using (var reader = cmd.ExecuteReader())
+                var list = new List<BookModel>();
+                using (var cmd = _conn.CreateCommand())
                 {
-                    while (reader.Read())
+                    cmd.CommandText = "SELECT * FROM Books";
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        list.Add(new BookModel
+                        while (reader.Read())
                         {
-                            Book_ISBN = reader["Book_ISBN"].ToString(),
-                            Book_Title = reader["Book_Title"].ToString(),
-                            Book_Author = reader["Book_Author"].ToString(),
-                            Book_Pbl = reader["Book_Pbl"].ToString(),
-                            Book_Price = Convert.ToInt32(reader["Book_Price"]),
-                            Book_Link = reader["Book_Link"].ToString(),
-                            Book_Img = reader["Book_Img"].ToString(),
-                            Book_Explain = reader["Book_Explain"].ToString()
-                        });
+                            list.Add(new BookModel
+                            {
+                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
+                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
+                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
+                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
+                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
+                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
+                            });
+                        }
                     }
                 }
+                return list;
             }
-            return list;
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository ReadAll Error: {ex.Message}");
+                throw;
+            }
         }
 
         // SEARCH: 제목으로 도서 검색
         public List<BookModel> SearchByTitle(string searchTitle)
         {
-            var list = new List<BookModel>();
-            using (var cmd = _conn.CreateCommand())
+            try
             {
-                cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_Title) LIKE UPPER(:searchTitle)";
-                cmd.Parameters.Add(new OracleParameter("searchTitle", "%" + searchTitle + "%"));
-                using (var reader = cmd.ExecuteReader())
+                var list = new List<BookModel>();
+                using (var cmd = _conn.CreateCommand())
                 {
-                    while (reader.Read())
+                    cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_Title) LIKE UPPER(:searchTitle)";
+                    cmd.Parameters.Add(new OracleParameter("searchTitle", "%" + searchTitle + "%"));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        list.Add(new BookModel
+                        while (reader.Read())
                         {
-                            Book_ISBN = reader["Book_ISBN"].ToString(),
-                            Book_Title = reader["Book_Title"].ToString(),
-                            Book_Author = reader["Book_Author"].ToString(),
-                            Book_Pbl = reader["Book_Pbl"].ToString(),
-                            Book_Price = Convert.ToInt32(reader["Book_Price"]),
-                            Book_Link = reader["Book_Link"].ToString(),
-                            Book_Img = reader["Book_Img"].ToString(),
-                            Book_Explain = reader["Book_Explain"].ToString()
-                        });
+                            list.Add(new BookModel
+                            {
+                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
+                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
+                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
+                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
+                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
+                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
+                            });
+                        }
                     }
                 }
+                return list;
             }
-            return list;
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository SearchByTitle Error: {ex.Message}");
+                throw;
+            }
         }
 
         // UPDATE: 도서 정보 수정
         public bool Update(BookModel book)
         {
-            using (var cmd = _conn.CreateCommand())
+            try
             {
-                cmd.CommandText = @"
-                    UPDATE Books SET
-                        Book_Title = :Book_Title,
-                        Book_Author = :Book_Author,
-                        Book_Pbl = :Book_Pbl,
-                        Book_Price = :Book_Price,
-                        Book_Link = :Book_Link,
-                        Book_Img = :Book_Img,
-                        Book_Explain = :Book_Explain
-                    WHERE Book_ISBN = :Book_ISBN";
-                cmd.Parameters.Add(new OracleParameter("Book_Title", book.Book_Title));
-                cmd.Parameters.Add(new OracleParameter("Book_Author", book.Book_Author));
-                cmd.Parameters.Add(new OracleParameter("Book_Pbl", book.Book_Pbl));
-                cmd.Parameters.Add(new OracleParameter("Book_Price", book.Book_Price));
-                cmd.Parameters.Add(new OracleParameter("Book_Link", book.Book_Link));
-                cmd.Parameters.Add(new OracleParameter("Book_Img", book.Book_Img));
-                cmd.Parameters.Add(new OracleParameter("Book_Explain", book.Book_Explain));
-                cmd.Parameters.Add(new OracleParameter("Book_ISBN", book.Book_ISBN));
-                return cmd.ExecuteNonQuery() > 0;
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Books SET
+                            Book_Title = :Book_Title,
+                            Book_Author = :Book_Author,
+                            Book_Pbl = :Book_Pbl,
+                            Book_Price = :Book_Price,
+                            Book_Link = :Book_Link,
+                            Book_Img = :Book_Img,
+                            Book_Exp = :Book_Exp
+                        WHERE Book_ISBN = :Book_ISBN";
+                    
+                    cmd.Parameters.Add(new OracleParameter("Book_Title", OracleDbType.Varchar2) { Value = book.Book_Title ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Author", OracleDbType.Varchar2) { Value = book.Book_Author ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Pbl", OracleDbType.Varchar2) { Value = book.Book_Pbl ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Price", OracleDbType.Int32) { Value = book.Book_Price });
+                    cmd.Parameters.Add(new OracleParameter("Book_Link", OracleDbType.Varchar2) { Value = book.Book_Link ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Img", OracleDbType.Varchar2) { Value = book.Book_Img ?? (object)DBNull.Value });
+                    
+                    // Book_Exp CLOB 처리
+                    var explainParam = new OracleParameter("Book_Exp", OracleDbType.Clob);
+                    explainParam.Value = string.IsNullOrEmpty(book.Book_Exp) ? (object)DBNull.Value : book.Book_Exp;
+                    cmd.Parameters.Add(explainParam);
+                    
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", OracleDbType.Varchar2) { Value = book.Book_ISBN });
+                    
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository Update Error: {ex.Message}");
+                throw;
             }
         }
 
         // DELETE: 도서 삭제 (ISBN 기준)
         public bool Delete(string isbn)
         {
-            using (var cmd = _conn.CreateCommand())
+            try
             {
-                cmd.CommandText = "DELETE FROM Books WHERE Book_ISBN = :Book_ISBN";
-                cmd.Parameters.Add(new OracleParameter("Book_ISBN", isbn));
-                return cmd.ExecuteNonQuery() > 0;
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Books WHERE Book_ISBN = :Book_ISBN";
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", isbn));
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository Delete Error: {ex.Message}");
+                throw;
             }
         }
 
