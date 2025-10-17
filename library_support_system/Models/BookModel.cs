@@ -16,7 +16,7 @@ namespace library_support_system.Models
         public int Book_Price { get; set; }
         public string Book_Link { get; set; }
         public string Book_Img { get; set; }
-        public string Book_Explain { get; set; }
+        public string Book_Exp { get; set; }
         #endregion
     }
 }

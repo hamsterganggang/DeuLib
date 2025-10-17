@@ -70,7 +70,9 @@ namespace library_support_system.Presenters
         {
             view.CurrentMenu1Text = "도서등록";
             view.CurrentMenu2Text = "도서등록";
-            view.ShowChildForm(new Book_Res());
+            IBook_Res bookResView = new Book_Res();
+            BookResPresenter bookResPresenter = new BookResPresenter(bookResView);
+            ((Form)bookResView).ShowDialog();  // 팝업 실행
         }
         private void OpenBookRental(object sender, EventArgs e)
         {
