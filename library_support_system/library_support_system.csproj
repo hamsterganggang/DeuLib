@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\BookResPresenter.cs" />
     <Compile Include="Views\Book_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +127,7 @@
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\RentalRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Views\IBook_Res.cs" />
     <Compile Include="Views\IUser_View.cs" />
     <Compile Include="Views\User_View.cs">
       <SubType>Form</SubType>
