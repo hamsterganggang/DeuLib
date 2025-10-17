@@ -10,6 +10,7 @@ namespace library_support_system.Views
 {
     public interface IHome_Search
     {
+        //1
         #region Properties
         string SearchText { get; }
         bool SearchButtonEnabled { set; }
