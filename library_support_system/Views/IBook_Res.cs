@@ -18,6 +18,7 @@ namespace library_support_system.Views
         PictureBox BookPictureBox { get; }
         #endregion
 
+
         #region Events
         event EventHandler ExitBookRes;
         event EventHandler btnSave_Click;
