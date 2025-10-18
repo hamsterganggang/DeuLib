@@ -32,16 +32,17 @@
             this.ddlSearch = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtWithDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPhonenum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtWithDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnChange = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.search_textbox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(151, 21);
+            this.search_textbox.Location = new System.Drawing.Point(139, 13);
             this.search_textbox.Multiline = true;
             this.search_textbox.Name = "search_textbox";
             this.search_textbox.Size = new System.Drawing.Size(270, 28);
@@ -63,9 +64,10 @@
             this.ddlSearch.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ddlSearch.FormattingEnabled = true;
             this.ddlSearch.Items.AddRange(new object[] {
+            "전체",
             "이름",
             "전화번호"});
-            this.ddlSearch.Location = new System.Drawing.Point(18, 21);
+            this.ddlSearch.Location = new System.Drawing.Point(12, 12);
             this.ddlSearch.Name = "ddlSearch";
             this.ddlSearch.Size = new System.Drawing.Size(121, 29);
             this.ddlSearch.TabIndex = 19;
@@ -85,30 +87,21 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.txtWithDR,
             this.name,
             this.txtBth,
             this.txtGender,
             this.txtPhonenum,
             this.txtEmail,
-            this.txtPicture});
-            this.dataGridView1.Location = new System.Drawing.Point(1, 105);
+            this.txtPicture,
+            this.txtWithDR});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 72);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1043, 444);
+            this.dataGridView1.Size = new System.Drawing.Size(1045, 184);
             this.dataGridView1.TabIndex = 21;
-            // 
-            // txtWithDR
-            // 
-            this.txtWithDR.DataPropertyName = "User_WithDR";
-            this.txtWithDR.HeaderText = "회원탈퇴";
-            this.txtWithDR.MinimumWidth = 6;
-            this.txtWithDR.Name = "txtWithDR";
-            this.txtWithDR.ReadOnly = true;
-            this.txtWithDR.Width = 125;
             // 
             // name
             // 
@@ -164,6 +157,15 @@
             this.txtPicture.ReadOnly = true;
             this.txtPicture.Width = 125;
             // 
+            // txtWithDR
+            // 
+            this.txtWithDR.DataPropertyName = "WTHDRDisplay";
+            this.txtWithDR.HeaderText = "상태";
+            this.txtWithDR.MinimumWidth = 6;
+            this.txtWithDR.Name = "txtWithDR";
+            this.txtWithDR.ReadOnly = true;
+            this.txtWithDR.Width = 125;
+            // 
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.SystemColors.ButtonShadow;
@@ -178,7 +180,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(18, 56);
+            this.btnChange.Location = new System.Drawing.Point(12, 47);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(87, 20);
             this.btnChange.TabIndex = 25;
@@ -196,11 +198,21 @@
             this.button1.Text = "등록";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // btnDel
+            // 
+            this.btnDel.Location = new System.Drawing.Point(114, 47);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(83, 19);
+            this.btnDel.TabIndex = 26;
+            this.btnDel.Text = "회원탈퇴";
+            this.btnDel.UseVisualStyleBackColor = true;
+            // 
             // User_View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 550);
+            this.Controls.Add(this.btnDel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnChange);
@@ -223,16 +235,17 @@
         private System.Windows.Forms.ComboBox ddlSearch;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtWithDR;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtBth;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtGender;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtPhonenum;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtPicture;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnChange;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtWithDR;
+        private System.Windows.Forms.Button btnDel;
     }
 }

@@ -20,6 +20,7 @@ namespace library_support_system.Views
         #region Events
         event EventHandler ChangeUserEvent;
         event EventHandler SearchEvent;
+        event EventHandler DeleteUserEvent;
         void ShowMessage(string message);
         #endregion
     }

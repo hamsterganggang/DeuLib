@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.search_button = new System.Windows.Forms.Button();
-            this.search_textbox = new System.Windows.Forms.TextBox();
             this.select = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +37,10 @@
             this.Book_Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Img = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.search_button = new System.Windows.Forms.Button();
+            this.search_textbox = new System.Windows.Forms.TextBox();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,21 +57,93 @@
             this.Book_Link,
             this.Book_Img,
             this.Book_Exp});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 145);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 68);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1120, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(1119, 242);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // select
+            // 
+            this.select.DataPropertyName = "Book_Title";
+            this.select.HeaderText = "도서 제목";
+            this.select.MinimumWidth = 6;
+            this.select.Name = "select";
+            this.select.ReadOnly = true;
+            this.select.Width = 125;
+            // 
+            // Book_ISBN
+            // 
+            this.Book_ISBN.DataPropertyName = "Book_ISBN";
+            this.Book_ISBN.HeaderText = "ISBN";
+            this.Book_ISBN.MinimumWidth = 6;
+            this.Book_ISBN.Name = "Book_ISBN";
+            this.Book_ISBN.ReadOnly = true;
+            this.Book_ISBN.Width = 125;
+            // 
+            // Book_Author
+            // 
+            this.Book_Author.DataPropertyName = "Book_Author";
+            this.Book_Author.HeaderText = "저자";
+            this.Book_Author.MinimumWidth = 6;
+            this.Book_Author.Name = "Book_Author";
+            this.Book_Author.ReadOnly = true;
+            this.Book_Author.Width = 125;
+            // 
+            // Book_Pbl
+            // 
+            this.Book_Pbl.DataPropertyName = "Book_Pbl";
+            this.Book_Pbl.HeaderText = "출판사";
+            this.Book_Pbl.MinimumWidth = 6;
+            this.Book_Pbl.Name = "Book_Pbl";
+            this.Book_Pbl.ReadOnly = true;
+            this.Book_Pbl.Width = 125;
+            // 
+            // Book_Price
+            // 
+            this.Book_Price.DataPropertyName = "Book_Price";
+            this.Book_Price.HeaderText = "가격";
+            this.Book_Price.MinimumWidth = 6;
+            this.Book_Price.Name = "Book_Price";
+            this.Book_Price.ReadOnly = true;
+            this.Book_Price.Width = 125;
+            // 
+            // Book_Link
+            // 
+            this.Book_Link.DataPropertyName = "Book_Link";
+            this.Book_Link.HeaderText = "관련 URL";
+            this.Book_Link.MinimumWidth = 6;
+            this.Book_Link.Name = "Book_Link";
+            this.Book_Link.ReadOnly = true;
+            this.Book_Link.Width = 125;
+            // 
+            // Book_Img
+            // 
+            this.Book_Img.DataPropertyName = "Book_Img";
+            this.Book_Img.HeaderText = "사진";
+            this.Book_Img.MinimumWidth = 6;
+            this.Book_Img.Name = "Book_Img";
+            this.Book_Img.ReadOnly = true;
+            this.Book_Img.Width = 125;
+            // 
+            // Book_Exp
+            // 
+            this.Book_Exp.DataPropertyName = "Book_Exp";
+            this.Book_Exp.HeaderText = "도서설명";
+            this.Book_Exp.MinimumWidth = 6;
+            this.Book_Exp.Name = "Book_Exp";
+            this.Book_Exp.ReadOnly = true;
+            this.Book_Exp.Width = 125;
             // 
             // search_button
             // 
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
-            this.search_button.Location = new System.Drawing.Point(639, 53);
+            this.search_button.Location = new System.Drawing.Point(617, 12);
             this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(44, 41);
+            this.search_button.Size = new System.Drawing.Size(50, 31);
             this.search_button.TabIndex = 11;
             this.search_button.UseVisualStyleBackColor = true;
             // 
@@ -79,74 +153,28 @@
             this.search_textbox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(35, 53);
-            this.search_textbox.Multiline = true;
+            this.search_textbox.Location = new System.Drawing.Point(12, 12);
             this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(599, 41);
+            this.search_textbox.Size = new System.Drawing.Size(599, 31);
             this.search_textbox.TabIndex = 10;
             // 
-            // select
+            // btnChange
             // 
-            this.select.HeaderText = "선택";
-            this.select.MinimumWidth = 6;
-            this.select.Name = "select";
-            this.select.Width = 125;
+            this.btnChange.Location = new System.Drawing.Point(20, 45);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(87, 23);
+            this.btnChange.TabIndex = 12;
+            this.btnChange.Text = "도서수정";
+            this.btnChange.UseVisualStyleBackColor = true;
             // 
-            // Book_ISBN
+            // btnDel
             // 
-            this.Book_ISBN.DataPropertyName = "Book_ISBN";
-            this.Book_ISBN.HeaderText = "ISBN";
-            this.Book_ISBN.MinimumWidth = 6;
-            this.Book_ISBN.Name = "Book_ISBN";
-            this.Book_ISBN.Width = 125;
-            // 
-            // Book_Author
-            // 
-            this.Book_Author.DataPropertyName = "Book_Author";
-            this.Book_Author.HeaderText = "저자";
-            this.Book_Author.MinimumWidth = 6;
-            this.Book_Author.Name = "Book_Author";
-            this.Book_Author.Width = 125;
-            // 
-            // Book_Pbl
-            // 
-            this.Book_Pbl.DataPropertyName = "Book_Pbl";
-            this.Book_Pbl.HeaderText = "출판사";
-            this.Book_Pbl.MinimumWidth = 6;
-            this.Book_Pbl.Name = "Book_Pbl";
-            this.Book_Pbl.Width = 125;
-            // 
-            // Book_Price
-            // 
-            this.Book_Price.DataPropertyName = "Book_Price";
-            this.Book_Price.HeaderText = "가격";
-            this.Book_Price.MinimumWidth = 6;
-            this.Book_Price.Name = "Book_Price";
-            this.Book_Price.Width = 125;
-            // 
-            // Book_Link
-            // 
-            this.Book_Link.DataPropertyName = "Book_Link";
-            this.Book_Link.HeaderText = "관련 URL";
-            this.Book_Link.MinimumWidth = 6;
-            this.Book_Link.Name = "Book_Link";
-            this.Book_Link.Width = 125;
-            // 
-            // Book_Img
-            // 
-            this.Book_Img.DataPropertyName = "Book_Img";
-            this.Book_Img.HeaderText = "사진";
-            this.Book_Img.MinimumWidth = 6;
-            this.Book_Img.Name = "Book_Img";
-            this.Book_Img.Width = 125;
-            // 
-            // Book_Exp
-            // 
-            this.Book_Exp.DataPropertyName = "Book_Exp";
-            this.Book_Exp.HeaderText = "도서설명";
-            this.Book_Exp.MinimumWidth = 6;
-            this.Book_Exp.Name = "Book_Exp";
-            this.Book_Exp.Width = 125;
+            this.btnDel.Location = new System.Drawing.Point(131, 45);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.TabIndex = 13;
+            this.btnDel.Text = "도서삭제";
+            this.btnDel.UseVisualStyleBackColor = true;
             // 
             // Book_View
             // 
@@ -154,6 +182,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1120, 576);
+            this.Controls.Add(this.btnDel);
+            this.Controls.Add(this.btnChange);
             this.Controls.Add(this.search_button);
             this.Controls.Add(this.search_textbox);
             this.Controls.Add(this.dataGridView1);
@@ -178,5 +208,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Link;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Img;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Exp;
+        private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.Button btnDel;
     }
 }

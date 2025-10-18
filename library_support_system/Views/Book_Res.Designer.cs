@@ -183,7 +183,6 @@
             this.lblTitle.Size = new System.Drawing.Size(51, 29);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "제목";
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // textBox5
             // 
@@ -195,7 +194,6 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(400, 39);
             this.textBox5.TabIndex = 6;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // lblAuthor
             // 
@@ -218,7 +216,6 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(300, 39);
             this.textBox4.TabIndex = 8;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // lblPublisher
             // 

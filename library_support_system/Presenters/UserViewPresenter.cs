@@ -24,6 +24,7 @@ namespace library_support_system.Presenters
 
             // this.view.SearchEvent += OnSearchUser; < 검색이벤트는 현재 사용하지 않음
             this.view.ChangeUserEvent += OnChangeUser;
+            this.view.DeleteUserEvent += OnDeleteUser;
         }
 
         private void Retrieve()
@@ -57,5 +58,27 @@ namespace library_support_system.Presenters
                 view.ShowMessage("수정할 회원을 먼저 선택하세요.");
             }
         }
+        private void OnDeleteUser(object sender, EventArgs e)
+        {
+            var user = view.SelectedUser;
+            if (user != null)
+            {
+                bool success = userRepository.UpdateUserWTHDR(user.User_Phone);
+                if (success)
+                {
+                    view.ShowMessage("회원 탈퇴가 완료되었습니다.");
+                    Retrieve(); // 삭제 후 리스트 갱신
+                }
+                else
+                {
+                    view.ShowMessage("회원 탈퇴에 실패했습니다.");
+                }
+            }
+            else
+            {
+                view.ShowMessage("삭제할 회원을 선택하세요.");
+            }
+        }
+
     }
 }

@@ -118,15 +118,8 @@ namespace library_support_system.Views
             // 홈 검색 페이지 실행
             OpenHomeSearch?.Invoke(sender, e);
         }
-        private void home_label_Click(object sender, EventArgs e)
-        {
-            home_button.PerformClick();
-        }
-        private void home_picturebox_Click(object sender, EventArgs e)
-        {
-            home_button.PerformClick();
-        }
         #endregion
+
 
     }
 }

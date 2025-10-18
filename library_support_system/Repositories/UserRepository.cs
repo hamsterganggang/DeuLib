@@ -124,6 +124,17 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        public bool UpdateUserWTHDR(string userPhone)
+        {
+            using (var cmd = _conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+            UPDATE Users SET User_WTHDR = 1 
+            WHERE User_Phone = :User_Phone";
+                cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
         // 자원 해제 (프로그램 종료 시 호출)
         public void Dispose()
         {

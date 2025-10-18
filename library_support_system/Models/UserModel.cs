@@ -24,6 +24,13 @@ namespace library_support_system.Models
                 return User_Gender == 1 ? "남자" : User_Gender == 2 ? "여자" : "-";
             }
         }
+        public string WTHDRDisplay
+        {
+            get
+            {
+                return User_WTHDR == 0 ? "가입" : User_WTHDR == 1 ? "탈퇴" : "-";
+            }
+        }
         #endregion
     }
 }
