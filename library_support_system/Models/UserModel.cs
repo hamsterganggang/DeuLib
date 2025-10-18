@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace library_support_system.Model
+namespace library_support_system.Models
 {
     public class UserModel
     {
+        //ORACLE USERS와 매핑되는 모델 클래스
         #region Properties
         public string User_Phone { get; set; }
         public string User_Name { get; set; }
@@ -15,7 +16,7 @@ namespace library_support_system.Model
         public int User_Gender { get; set; } = 0;
         public string User_Mail { get; set; }
         public string User_Image { get; set; }
-        public int User_WithDR { get; set; } = 1;
+        public int User_WTHDR { get; set; } = 1;
         public string GenderDisplay
         {
             get

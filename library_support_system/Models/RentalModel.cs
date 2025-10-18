@@ -8,6 +8,7 @@ namespace library_support_system.Models
 {
     public class RentalModel
     {
+        //ORACLE BOOK_RENTAL과 매핑되는 모델 클래스
         #region Properties
         public int Rental_Seq { get; set; }
         public string Book_ISBN { get; set; }
