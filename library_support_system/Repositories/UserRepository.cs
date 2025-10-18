@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using Oracle.ManagedDataAccess.Client;
-using library_support_system.Model;
 using System.Configuration;
+using System.Collections.Generic;
+using Oracle.ManagedDataAccess.Client;
+using library_support_system.Models;
 
 namespace library_support_system.Repositories
 {
@@ -33,7 +33,7 @@ namespace library_support_system.Repositories
                 cmd.Parameters.Add(new OracleParameter("User_Gender", user.User_Gender));
                 cmd.Parameters.Add(new OracleParameter("User_Mail", user.User_Mail));
                 cmd.Parameters.Add(new OracleParameter("User_Image", user.User_Image));
-                cmd.Parameters.Add(new OracleParameter("User_WTHDR", user.User_WithDR));
+                cmd.Parameters.Add(new OracleParameter("User_WTHDR", user.User_WTHDR));
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
@@ -55,7 +55,7 @@ namespace library_support_system.Repositories
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
                             User_Image = reader["User_Image"].ToString(),
-                            User_WithDR = Convert.ToInt32(reader["User_WithDR"])
+                            User_WTHDR = Convert.ToInt32(reader["User_WithDR"])
                         };
                     }
                     return null;
@@ -85,7 +85,7 @@ namespace library_support_system.Repositories
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
                             User_Image = reader["User_Image"].ToString(),
-                            User_WithDR = Convert.ToInt32(reader["User_WTHDR"])
+                            User_WTHDR = Convert.ToInt32(reader["User_WTHDR"])
                         });
                     }
                 }

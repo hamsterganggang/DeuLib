@@ -1,4 +1,4 @@
-﻿using library_support_system.Model;
+﻿using library_support_system.Models;
 using library_support_system.Repositories;
 using library_support_system.Views;
 using System;
@@ -100,7 +100,7 @@ namespace library_support_system.Presenters
                 User_Gender = view.UserGender,
                 User_Mail = view.UserMail,
                 User_Image = view.UserImage,
-                User_WithDR = 0
+                User_WTHDR = 0
             };
 
             bool result = isEditMode

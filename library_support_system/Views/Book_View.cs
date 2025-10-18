@@ -1,25 +1,24 @@
-﻿using System;
+﻿using library_support_system.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace library_support_system.Views
 {
-    public partial class Book_View : Form
+    public partial class Book_View : Form, IBook_View
     {
+        public event EventHandler ViewLoaded;
+
         public Book_View()
         {
             InitializeComponent();
+            this.Load += (s, e) => ViewLoaded?.Invoke(this, EventArgs.Empty);
         }
 
-        private void book_check_Load(object sender, EventArgs e)
+        public void SetBookList(List<BookModel> books)
         {
-
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = books;
         }
     }
 }
