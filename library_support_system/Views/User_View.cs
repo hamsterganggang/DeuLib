@@ -19,6 +19,7 @@ namespace library_support_system
         //Event Handler
         public event EventHandler ChangeUserEvent;
         public event EventHandler SearchEvent;
+        public event EventHandler DeleteUserEvent;
         private UserViewPresenter presenter;
 
         const string placeholder = "";
@@ -26,8 +27,12 @@ namespace library_support_system
         {
             InitializeComponent();
 
+            this.AutoSize = false;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+
             this.Load += User_View_Load;
             btnChange.Click += (sender, e) => ChangeUserEvent?.Invoke(sender, e);
+            btnDel.Click += (sender, e) => DeleteUserEvent?.Invoke(sender, e);
         }
         public IEnumerable<UserModel> UserList
         {
@@ -58,9 +63,6 @@ namespace library_support_system
         public string SearchValue { get => search_textbox.Text; set => search_textbox.Text = value; }
         public string SearchBy { get => ddlSearch.SelectedItem?.ToString() ?? "이름"; set { /* ... */ } }
         public void ShowMessage(string message) { MessageBox.Show(message); }
-
-
-        // 기존 user_check_Load 메서드는 비워둡니다.
 
     }
 }

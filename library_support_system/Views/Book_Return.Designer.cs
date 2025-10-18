@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cancel_button = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.txtWithDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBth = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +38,8 @@
             this.txtPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.반납여부 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cancel_button = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtBthDate = new System.Windows.Forms.TextBox();
             this.cmbGen = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -60,40 +60,14 @@
             this.txtPicture,
             this.반납여부,
             this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(89, 112);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 47);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1937, 914);
+            this.dataGridView1.Size = new System.Drawing.Size(1043, 457);
             this.dataGridView1.TabIndex = 22;
-            // 
-            // cancel_button
-            // 
-            this.cancel_button.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.cancel_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cancel_button.Location = new System.Drawing.Point(1803, 1081);
-            this.cancel_button.Margin = new System.Windows.Forms.Padding(6);
-            this.cancel_button.Name = "cancel_button";
-            this.cancel_button.Size = new System.Drawing.Size(186, 60);
-            this.cancel_button.TabIndex = 24;
-            this.cancel_button.Text = "삭제";
-            this.cancel_button.UseVisualStyleBackColor = false;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSave.Location = new System.Drawing.Point(1606, 1081);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(6);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(186, 60);
-            this.btnSave.TabIndex = 23;
-            this.btnSave.Text = "반납";
-            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // txtWithDR
             // 
@@ -176,16 +150,39 @@
             this.Column1.ReadOnly = true;
             this.Column1.Width = 200;
             // 
+            // cancel_button
+            // 
+            this.cancel_button.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.cancel_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cancel_button.Location = new System.Drawing.Point(933, 509);
+            this.cancel_button.Name = "cancel_button";
+            this.cancel_button.Size = new System.Drawing.Size(100, 30);
+            this.cancel_button.TabIndex = 24;
+            this.cancel_button.Text = "삭제";
+            this.cancel_button.UseVisualStyleBackColor = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSave.Location = new System.Drawing.Point(824, 509);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.TabIndex = 23;
+            this.btnSave.Text = "반납";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
             // txtBthDate
             // 
             this.txtBthDate.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtBthDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBthDate.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtBthDate.Location = new System.Drawing.Point(287, 26);
-            this.txtBthDate.Margin = new System.Windows.Forms.Padding(6);
+            this.txtBthDate.Location = new System.Drawing.Point(155, 13);
             this.txtBthDate.Multiline = true;
             this.txtBthDate.Name = "txtBthDate";
-            this.txtBthDate.Size = new System.Drawing.Size(517, 53);
+            this.txtBthDate.Size = new System.Drawing.Size(279, 28);
             this.txtBthDate.TabIndex = 25;
             // 
             // cmbGen
@@ -196,10 +193,9 @@
             this.cmbGen.Items.AddRange(new object[] {
             "제목",
             "저자"});
-            this.cmbGen.Location = new System.Drawing.Point(89, 26);
-            this.cmbGen.Margin = new System.Windows.Forms.Padding(6);
+            this.cmbGen.Location = new System.Drawing.Point(48, 13);
             this.cmbGen.Name = "cmbGen";
-            this.cmbGen.Size = new System.Drawing.Size(186, 53);
+            this.cmbGen.Size = new System.Drawing.Size(102, 29);
             this.cmbGen.TabIndex = 26;
             // 
             // button1
@@ -207,19 +203,18 @@
             this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(816, 26);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Location = new System.Drawing.Point(439, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 53);
+            this.button1.Size = new System.Drawing.Size(100, 26);
             this.button1.TabIndex = 27;
             this.button1.Text = "조회";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // Book_Return
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2041, 1179);
+            this.ClientSize = new System.Drawing.Size(1045, 550);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbGen);
@@ -228,7 +223,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Book_Return";
             this.Text = "book_return";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

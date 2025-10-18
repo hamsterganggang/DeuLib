@@ -33,12 +33,12 @@
             this.txtBthDate = new System.Windows.Forms.TextBox();
             this.oracleDataAdapter1 = new Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.oracleCommandBuilder1 = new Oracle.ManagedDataAccess.Client.OracleCommandBuilder();
             this.Book_Picture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.oracleCommandBuilder1 = new Oracle.ManagedDataAccess.Client.OracleCommandBuilder();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,10 +47,9 @@
             this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(753, 42);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Location = new System.Drawing.Point(405, 21);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 53);
+            this.button1.Size = new System.Drawing.Size(100, 26);
             this.button1.TabIndex = 30;
             this.button1.Text = "조회";
             this.button1.UseVisualStyleBackColor = false;
@@ -63,10 +62,9 @@
             this.cmbGen.Items.AddRange(new object[] {
             "제목",
             "저자"});
-            this.cmbGen.Location = new System.Drawing.Point(26, 42);
-            this.cmbGen.Margin = new System.Windows.Forms.Padding(6);
+            this.cmbGen.Location = new System.Drawing.Point(14, 21);
             this.cmbGen.Name = "cmbGen";
-            this.cmbGen.Size = new System.Drawing.Size(186, 53);
+            this.cmbGen.Size = new System.Drawing.Size(102, 29);
             this.cmbGen.TabIndex = 29;
             // 
             // txtBthDate
@@ -74,11 +72,10 @@
             this.txtBthDate.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtBthDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBthDate.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtBthDate.Location = new System.Drawing.Point(224, 42);
-            this.txtBthDate.Margin = new System.Windows.Forms.Padding(6);
+            this.txtBthDate.Location = new System.Drawing.Point(121, 21);
             this.txtBthDate.Multiline = true;
             this.txtBthDate.Name = "txtBthDate";
-            this.txtBthDate.Size = new System.Drawing.Size(517, 53);
+            this.txtBthDate.Size = new System.Drawing.Size(279, 28);
             this.txtBthDate.TabIndex = 28;
             // 
             // dataGridView1
@@ -90,11 +87,12 @@
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
             this.btnRent});
-            this.dataGridView1.Location = new System.Drawing.Point(26, 113);
+            this.dataGridView1.Location = new System.Drawing.Point(-2, 55);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 37;
-            this.dataGridView1.Size = new System.Drawing.Size(1272, 260);
+            this.dataGridView1.Size = new System.Drawing.Size(1044, 130);
             this.dataGridView1.TabIndex = 46;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -138,15 +136,14 @@
             // 
             // Book_Rental
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2041, 1179);
+            this.ClientSize = new System.Drawing.Size(1045, 550);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbGen);
             this.Controls.Add(this.txtBthDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Book_Rental";
             this.Text = "book_rental";
             this.Load += new System.EventHandler(this.book_rental_Load);
