@@ -138,7 +138,7 @@ namespace library_support_system.Repositories
                 cmd.CommandText = @"
             UPDATE Users SET User_WTHDR = 1 
             WHERE User_Phone = :User_Phone";
-                cmd.Parameters.Add(new OracleParameter("User_Phone", User_Seq));
+                cmd.Parameters.Add(new OracleParameter("User_Seq", User_Seq));
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
