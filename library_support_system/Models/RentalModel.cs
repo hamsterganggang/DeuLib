@@ -12,8 +12,13 @@ namespace library_support_system.Models
         #region Properties
         public int Rental_Seq { get; set; }
         public string Book_ISBN { get; set; }
+        public string Book_Title { get; set; }      // 추가
+        public string Book_Img { get; set; }
+        public string Book_Author { get; set; }
+        public string Book_Pbl { get; set; }
+        public int Rental_Status { get; set; }
         public string User_Phone { get; set; }
-        public int Rental_Status { get; set; } = 0;
+        public string User_Name { get; set; }       // 추가
         public DateTime Rental_Date { get; set; }
         public DateTime Rental_Return_Date { get; set; }
         #endregion

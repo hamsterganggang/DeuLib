@@ -94,6 +94,7 @@ namespace library_support_system.Presenters
         {
             UserModel model = new UserModel
             {
+                User_Seq = isEditMode ? editingUser.User_Seq : 0, // 수정 모드 PK 필수
                 User_Phone = view.UserPhone,
                 User_Name = view.UserName,
                 User_Birthdate = view.UserBirthdate,

@@ -10,7 +10,8 @@ namespace library_support_system.Models
     {
         //ORACLE BOOKS와 매핑되는 모델 클래스
         #region Properties
-        public string Book_ISBN { get; set; }
+        public int Book_Seq { get; set; }  // 새로운 PK 속성
+        public string Book_ISBN { get; set; }  // UNIQUE
         public string Book_Title { get; set; }
         public string Book_Author { get; set; }
         public string Book_Pbl { get; set; }

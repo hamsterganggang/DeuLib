@@ -33,13 +33,13 @@ namespace library_support_system
         public void SetUserData(UserModel user)
         {
             if (user == null) return;
-
             txtNum.Text = user.User_Phone ?? "";
             txtName.Text = user.User_Name ?? "";
             txtBthDate.Text = user.User_Birthdate ?? "";
-            cmbGen.SelectedIndex = user.User_Gender; // Gender가 int라면 바로 설정
+            cmbGen.SelectedIndex = user.User_Gender;
             txtEmail.Text = user.User_Mail ?? "";
             pictureBoxUpload.ImageLocation = user.User_Image ?? "";
+            // User_Seq는 내부적으로만 사용
         }
         public User_Res()
         {

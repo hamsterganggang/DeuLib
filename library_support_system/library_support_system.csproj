@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\BookRentalPresenter.cs" />
     <Compile Include="Presenters\BookResPresenter.cs" />
     <Compile Include="Presenters\BookViewPresenter.cs" />
     <Compile Include="Views\Book_View.cs">
@@ -128,6 +129,7 @@
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\RentalRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Views\IBook_Rental.cs" />
     <Compile Include="Views\IBook_Res.cs" />
     <Compile Include="Views\IBook_View.cs" />
     <Compile Include="Views\IUser_View.cs" />

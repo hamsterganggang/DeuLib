@@ -38,24 +38,20 @@ namespace library_support_system.Repositories
             }
         }
         // READ (특정 회원)
-        public UserModel Read(string userPhone)
+        public UserModel Read(int userSeq)
         {
             using (var cmd = _conn.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Users WHERE User_Phone = :User_Phone";
-                cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+                cmd.CommandText = "SELECT * FROM Users WHERE User_Seq = :User_Seq";
+                cmd.Parameters.Add(new OracleParameter("User_Seq", userSeq));
                 using (var reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         return new UserModel
                         {
-                            User_Phone = reader["User_Phone"].ToString(),
-                            User_Name = reader["User_Name"].ToString(),
-                            User_Gender = Convert.ToInt32(reader["User_Gender"]),
-                            User_Mail = reader["User_Mail"].ToString(),
-                            User_Image = reader["User_Image"].ToString(),
-                            User_WTHDR = Convert.ToInt32(reader["User_WithDR"])
+                            User_Seq = Convert.ToInt32(reader["User_Seq"]), // ★ 반드시 포함
+                                                                            // 이하 동일
                         };
                     }
                     return null;
@@ -75,13 +71,10 @@ namespace library_support_system.Repositories
                     {
                         list.Add(new UserModel
                         {
+                            User_Seq = Convert.ToInt32(reader["User_Seq"]), // ★ 반드시 포함
                             User_Phone = reader["User_Phone"].ToString(),
                             User_Name = reader["User_Name"].ToString(),
-
-                            // 💡 수정: DB의 날짜/시간(Date/Timestamp) 데이터를 
-                            // 모델의 string 속성에 할당하기 위해 명시적으로 ToString() 처리.
                             User_Birthdate = reader["User_Birthdate"].ToString(),
-
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
                             User_Image = reader["User_Image"].ToString(),
@@ -93,54 +86,63 @@ namespace library_support_system.Repositories
             return list;
         }
         // UPDATE
-        public bool Update(UserModel user)
-        {
-            using (var cmd = _conn.CreateCommand())
+            public bool Update(UserModel user)
             {
-                cmd.CommandText = @"
-            UPDATE Users SET
-                User_Name = :User_Name,
-                User_Birthdate = :User_Birthdate,
-                User_Gender = :User_Gender,
-                User_Mail = :User_Mail,
-                User_Image = :User_Image
-            WHERE User_Phone = :User_Phone";
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    UPDATE Users SET
+                    User_Phone = :User_Phone,
+                    User_Name = :User_Name,
+                    User_Birthdate = :User_Birthdate,
+                    User_Gender = :User_Gender,
+                    User_Mail = :User_Mail,
+                    User_Image = :User_Image,
+                    User_WTHDR = :User_WTHDR
+                    WHERE User_SEQ = :User_SEQ";
+
+                cmd.Parameters.Add(new OracleParameter("User_Phone", user.User_Phone));
                 cmd.Parameters.Add(new OracleParameter("User_Name", user.User_Name));
                 cmd.Parameters.Add(new OracleParameter("User_Birthdate", DateTime.Parse(user.User_Birthdate)));
                 cmd.Parameters.Add(new OracleParameter("User_Gender", user.User_Gender));
                 cmd.Parameters.Add(new OracleParameter("User_Mail", user.User_Mail));
                 cmd.Parameters.Add(new OracleParameter("User_Image", user.User_Image));
-                cmd.Parameters.Add(new OracleParameter("User_Phone", user.User_Phone));
+                cmd.Parameters.Add(new OracleParameter("User_WTHDR", user.User_WTHDR));
+                cmd.Parameters.Add(new OracleParameter("User_SEQ", user.User_Seq));
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-        // DELETE
-        public bool Delete(string userPhone)
+
+        // DELETE (User_SEQ 기준 삭제)
+        public bool Delete(int userSeq)
         {
             using (var cmd = _conn.CreateCommand())
             {
-                cmd.CommandText = "DELETE FROM Users WHERE User_Phone = :User_Phone";
-                cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+                cmd.CommandText = "DELETE FROM Users WHERE User_SEQ = :User_SEQ";
+                cmd.Parameters.Add(new OracleParameter("User_SEQ", userSeq));
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-        public bool UpdateUserWTHDR(string userPhone)
-        {
-            using (var cmd = _conn.CreateCommand())
-            {
-                cmd.CommandText = @"
-            UPDATE Users SET User_WTHDR = 1 
-            WHERE User_Phone = :User_Phone";
-                cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
-                return cmd.ExecuteNonQuery() > 0;
-            }
-        }
-        // 자원 해제 (프로그램 종료 시 호출)
+
         public void Dispose()
         {
             if (_conn != null && _conn.State != ConnectionState.Closed)
                 _conn.Close();
             _conn.Dispose();
         }
+
+        public bool UpdateUserWTHDR(string User_Seq)
+        {
+            using (var cmd = _conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+            UPDATE Users SET User_WTHDR = 1 
+            WHERE User_Phone = :User_Phone";
+                cmd.Parameters.Add(new OracleParameter("User_Phone", User_Seq));
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+        // 자원 해제 (프로그램 종료 시 호출)
+ 
     }
 }

@@ -15,24 +15,17 @@ namespace library_support_system.Views
         {
             InitializeComponent();
             this.Load += (s, e) => ViewLoaded?.Invoke(this, EventArgs.Empty);
-
             btnChange.Click += (s, e) => ChangeBookEvent?.Invoke(s, e);
             btnDel.Click += (s, e) => DeleteBookEvent?.Invoke(s, e);
+
+            // 컬럼 자동 생성 비활성화 (한 번만)
+            dataGridView1.AutoGenerateColumns = false;
         }
 
         public void SetBookList(List<BookModel> books)
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = books;
-        }
-        public List<BookModel> BookList
-        {
-            set
-            {
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = value;
-            }
         }
 
         public BookModel SelectedBook =>
@@ -42,4 +35,5 @@ namespace library_support_system.Views
 
         public void ShowMessage(string message) => MessageBox.Show(message);
     }
+
 }
