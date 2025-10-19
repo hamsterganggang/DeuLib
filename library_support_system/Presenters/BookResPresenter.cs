@@ -168,6 +168,9 @@ namespace library_support_system.Presenters
             if (result)
             {
                 MessageBox.Show(isEditMode ? "도서 정보 수정 완료" : "도서 등록 완료");
+
+                // DialogResult 설정 후 폼 닫기 (중요)
+                ((Form)view).DialogResult = DialogResult.OK;
                 view.CloseView();
             }
             else
