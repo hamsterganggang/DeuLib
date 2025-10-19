@@ -91,7 +91,6 @@ namespace library_support_system.Views
         {
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
             main_panel.Controls.Clear(); // 기존 화면 제거
             main_panel.Controls.Add(form);
             form.Show();
@@ -118,6 +117,7 @@ namespace library_support_system.Views
             // 홈 검색 페이지 실행
             OpenHomeSearch?.Invoke(sender, e);
         }
+
         #endregion
 
 

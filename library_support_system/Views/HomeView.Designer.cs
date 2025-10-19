@@ -104,7 +104,7 @@ namespace library_support_system.Views
             // 
             this.rental_panel.Controls.Add(this.book_rental_button);
             this.rental_panel.Controls.Add(this.book_return_button);
-            this.rental_panel.Location = new System.Drawing.Point(6, 516);
+            this.rental_panel.Location = new System.Drawing.Point(5, 502);
             this.rental_panel.Name = "rental_panel";
             this.rental_panel.Size = new System.Drawing.Size(150, 95);
             this.rental_panel.TabIndex = 6;
@@ -116,7 +116,7 @@ namespace library_support_system.Views
             this.book_rental_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_rental_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_rental_button.ForeColor = System.Drawing.Color.White;
-            this.book_rental_button.Location = new System.Drawing.Point(-2, 3);
+            this.book_rental_button.Location = new System.Drawing.Point(-3, 0);
             this.book_rental_button.Name = "book_rental_button";
             this.book_rental_button.Size = new System.Drawing.Size(150, 40);
             this.book_rental_button.TabIndex = 6;
@@ -130,7 +130,7 @@ namespace library_support_system.Views
             this.book_return_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_return_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_return_button.ForeColor = System.Drawing.Color.White;
-            this.book_return_button.Location = new System.Drawing.Point(-2, 49);
+            this.book_return_button.Location = new System.Drawing.Point(-2, 55);
             this.book_return_button.Name = "book_return_button";
             this.book_return_button.Size = new System.Drawing.Size(150, 40);
             this.book_return_button.TabIndex = 5;
@@ -144,7 +144,7 @@ namespace library_support_system.Views
             this.rental_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rental_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.rental_button.ForeColor = System.Drawing.Color.White;
-            this.rental_button.Location = new System.Drawing.Point(6, 449);
+            this.rental_button.Location = new System.Drawing.Point(5, 435);
             this.rental_button.Name = "rental_button";
             this.rental_button.Size = new System.Drawing.Size(150, 61);
             this.rental_button.TabIndex = 7;
@@ -155,7 +155,7 @@ namespace library_support_system.Views
             // 
             this.account_panel.Controls.Add(this.user_check_button);
             this.account_panel.Controls.Add(this.btnUserRes);
-            this.account_panel.Location = new System.Drawing.Point(6, 357);
+            this.account_panel.Location = new System.Drawing.Point(6, 343);
             this.account_panel.Name = "account_panel";
             this.account_panel.Size = new System.Drawing.Size(151, 93);
             this.account_panel.TabIndex = 4;
@@ -181,7 +181,7 @@ namespace library_support_system.Views
             this.btnUserRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnUserRes.ForeColor = System.Drawing.Color.White;
-            this.btnUserRes.Location = new System.Drawing.Point(0, 46);
+            this.btnUserRes.Location = new System.Drawing.Point(-1, 46);
             this.btnUserRes.Name = "btnUserRes";
             this.btnUserRes.Size = new System.Drawing.Size(150, 40);
             this.btnUserRes.TabIndex = 3;
@@ -195,7 +195,7 @@ namespace library_support_system.Views
             this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.account_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.account_button.ForeColor = System.Drawing.Color.White;
-            this.account_button.Location = new System.Drawing.Point(6, 290);
+            this.account_button.Location = new System.Drawing.Point(5, 283);
             this.account_button.Name = "account_button";
             this.account_button.Size = new System.Drawing.Size(150, 61);
             this.account_button.TabIndex = 5;
@@ -218,7 +218,7 @@ namespace library_support_system.Views
             this.book_check_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_check_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_check_button.ForeColor = System.Drawing.Color.White;
-            this.book_check_button.Location = new System.Drawing.Point(0, 0);
+            this.book_check_button.Location = new System.Drawing.Point(1, 0);
             this.book_check_button.Name = "book_check_button";
             this.book_check_button.Size = new System.Drawing.Size(151, 40);
             this.book_check_button.TabIndex = 2;
@@ -363,7 +363,7 @@ namespace library_support_system.Views
             this.panel4.Controls.Add(this.main_panel);
             this.panel4.Location = new System.Drawing.Point(149, 54);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1114, 629);
+            this.panel4.Size = new System.Drawing.Size(1115, 627);
             this.panel4.TabIndex = 9;
             // 
             // main_panel
@@ -380,7 +380,7 @@ namespace library_support_system.Views
             // 
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
-            this.search_button.Location = new System.Drawing.Point(728, 145);
+            this.search_button.Location = new System.Drawing.Point(669, 192);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(39, 31);
             this.search_button.TabIndex = 9;
@@ -392,7 +392,7 @@ namespace library_support_system.Views
             this.search_textbox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(200, 145);
+            this.search_textbox.Location = new System.Drawing.Point(143, 192);
             this.search_textbox.Name = "search_textbox";
             this.search_textbox.Size = new System.Drawing.Size(506, 31);
             this.search_textbox.TabIndex = 8;
