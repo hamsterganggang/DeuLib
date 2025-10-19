@@ -19,8 +19,6 @@ namespace library_support_system.Repositories
             _conn = new OracleConnection(connStr);
             _conn.Open();
         }
-
-        // CREATE: 도서 추가
         public bool Create(BookModel book)
         {
             try
@@ -115,43 +113,6 @@ namespace library_support_system.Repositories
                 throw;
             }
         }
-        // READ: 특정 도서 조회 (ISBN 기준)
-        public BookModel Read(string isbn)
-        {
-            try
-            {
-                using (var cmd = _conn.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN";
-                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", isbn));
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            return new BookModel
-                            {
-                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
-                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
-                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
-                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
-                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
-                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
-                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
-                                Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
-                            };
-                        }
-                        return null;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"BookRepository Read Error: {ex.Message}");
-                throw;
-            }
-        }
-
-        // READ ALL: 모든 도서 조회
         public List<BookModel> ReadAll()
         {
             var list = new List<BookModel>();
@@ -179,7 +140,40 @@ namespace library_support_system.Repositories
             }
             return list;
         }
-
+        public BookModel Read(string bookSeq)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN";
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", bookSeq));
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new BookModel
+                            {
+                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
+                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
+                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
+                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
+                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
+                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
+                            };
+                        }
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository Read Error: {ex.Message}");
+                throw;
+            }
+        }
         public BookModel ReadBySeq(int bookSeq)
         {
             using (var cmd = _conn.CreateCommand())
@@ -207,8 +201,6 @@ namespace library_support_system.Repositories
                 }
             }
         }
-
-        // SEARCH: 제목으로 도서 검색
         public List<BookModel> SearchByTitle(string searchTitle)
         {
             try
@@ -244,10 +236,6 @@ namespace library_support_system.Repositories
                 throw;
             }
         }
-
-        
-
-        // 자원 해제(종료시)
         public void Dispose()
         {
             if (_conn != null && _conn.State != ConnectionState.Closed)
