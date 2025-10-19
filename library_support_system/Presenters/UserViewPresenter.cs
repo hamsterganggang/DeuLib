@@ -31,10 +31,7 @@ namespace library_support_system.Presenters
         {
             try
             {
-                // 1. Repository를 통해 모든 회원 데이터 조회
-                List<UserModel> userList = userRepository.ReadAll();
-
-                // 2. 조회 결과를 View의 UserList 속성에 설정 (View 업데이트)
+                List<UserModel> userList = userRepository.ReadAll(); // User_Seq 포함
                 view.UserList = userList;
             }
             catch (Exception ex)

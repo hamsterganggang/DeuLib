@@ -124,6 +124,7 @@ namespace library_support_system.Presenters
         {
             BookModel model = new BookModel
             {
+                Book_Seq = isEditMode ? editingBook.Book_Seq : 0,  // 이 부분 추가
                 Book_ISBN = view.BookISBN.Trim(),
                 Book_Title = view.BookTitle.Trim(),
                 Book_Author = view.BookAuthor.Trim(),

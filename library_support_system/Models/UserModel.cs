@@ -10,6 +10,7 @@ namespace library_support_system.Models
     {
         //ORACLE USERS와 매핑되는 모델 클래스
         #region Properties
+        public int User_Seq { get; set; }  // 새로운 PK 속성
         public string User_Phone { get; set; }
         public string User_Name { get; set; }
         public string User_Birthdate { get; set; }

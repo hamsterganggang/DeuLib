@@ -17,22 +17,15 @@ namespace library_support_system.Presenters
             _view = view;
             _repository = new BookRepository();
 
-            _view.ViewLoaded += OnViewLoaded;
+            _view.ViewLoaded += (s, e) => RefreshBookList();
             _view.ChangeBookEvent += OnChangeBook;
             _view.DeleteBookEvent += OnDeleteBook;
-        }
-
-        private void OnViewLoaded(object sender, EventArgs e)
-        {
-            List<BookModel> books = _repository.ReadAll();
-            _view.SetBookList(books);
-            RefreshBookList();
         }
 
         private void RefreshBookList()
         {
             var books = _repository.ReadAll();
-            _view.BookList = books;
+            _view.SetBookList(books);
         }
 
         private void OnChangeBook(object sender, EventArgs e)
@@ -40,8 +33,8 @@ namespace library_support_system.Presenters
             var selected = _view.SelectedBook;
             if (selected != null)
             {
-                var bookResForm = new Book_Res(selected); // 선택도서 전달
-                var bookResPresenter = new BookResPresenter(bookResForm, selected); // [수정모드]
+                var bookResForm = new Book_Res(selected);
+                var bookResPresenter = new BookResPresenter(bookResForm, selected);
 
                 if (bookResForm.ShowDialog() == DialogResult.OK)
                     RefreshBookList();
@@ -57,7 +50,7 @@ namespace library_support_system.Presenters
             var selected = _view.SelectedBook;
             if (selected != null)
             {
-                if (_repository.Delete(selected.Book_ISBN))
+                if (_repository.Delete(selected.Book_Seq))
                 {
                     _view.ShowMessage("도서 삭제가 완료되었습니다.");
                     RefreshBookList();
