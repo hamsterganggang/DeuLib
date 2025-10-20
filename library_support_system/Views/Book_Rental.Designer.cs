@@ -34,13 +34,13 @@
             this.txtBthDate = new System.Windows.Forms.TextBox();
             this.oracleDataAdapter1 = new Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.oracleCommandBuilder1 = new Oracle.ManagedDataAccess.Client.OracleCommandBuilder();
             this.Book_Picture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRentCheck = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.oracleCommandBuilder1 = new Oracle.ManagedDataAccess.Client.OracleCommandBuilder();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,7 +156,7 @@
             // txtRent
             // 
             this.txtRent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.txtRent.DataPropertyName = "Rental_Status";
+            this.txtRent.DataPropertyName = "Rental_Status_Text";
             this.txtRent.HeaderText = "대여 여부";
             this.txtRent.MinimumWidth = 10;
             this.txtRent.Name = "txtRent";
