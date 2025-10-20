@@ -12,6 +12,7 @@ namespace library_support_system.Presenters
     {
         #region Fields
         private readonly IHomeView view;
+        private BookViewPresenter currentBookViewPresenter; // 현재 BookViewPresenter 참조 유지
         #endregion
 
         // pullrequst test
@@ -65,7 +66,10 @@ namespace library_support_system.Presenters
             view.CurrentMenu1Text = "도서조회";
             view.CurrentMenu2Text = "도서조회";
             var bookView = new Book_View();
-            var bookPresenter = new BookViewPresenter(bookView);
+            
+            // BookViewPresenter 참조를 유지
+            currentBookViewPresenter = new BookViewPresenter(bookView);
+            
             view.ShowChildForm(bookView);
         }
         private void OpenBookRes(object sender, EventArgs e)

@@ -208,6 +208,12 @@ namespace library_support_system.Repositories
                 var list = new List<BookModel>();
                 using (var cmd = _conn.CreateCommand())
                 {
+                    // 빈 검색어인 경우 모든 책을 반환
+                    if (string.IsNullOrWhiteSpace(searchTitle))
+                    {
+                        return ReadAll();
+                    }
+
                     cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_Title) LIKE UPPER(:searchTitle)";
                     cmd.Parameters.Add(new OracleParameter("searchTitle", "%" + searchTitle + "%"));
                     using (var reader = cmd.ExecuteReader())
@@ -216,6 +222,7 @@ namespace library_support_system.Repositories
                         {
                             list.Add(new BookModel
                             {
+                                Book_Seq = Convert.ToInt32(reader["Book_Seq"]),
                                 Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
                                 Book_Title = reader["Book_Title"]?.ToString() ?? "",
                                 Book_Author = reader["Book_Author"]?.ToString() ?? "",
@@ -236,6 +243,51 @@ namespace library_support_system.Repositories
                 throw;
             }
         }
+
+        // ISBN으로 검색하는 메서드 추가
+        public List<BookModel> SearchByISBN(string searchISBN)
+        {
+            try
+            {
+                var list = new List<BookModel>();
+                using (var cmd = _conn.CreateCommand())
+                {
+                    // 빈 검색어인 경우 모든 책을 반환
+                    if (string.IsNullOrWhiteSpace(searchISBN))
+                    {
+                        return ReadAll();
+                    }
+
+                    cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_ISBN) LIKE UPPER(:searchISBN)";
+                    cmd.Parameters.Add(new OracleParameter("searchISBN", "%" + searchISBN + "%"));
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new BookModel
+                            {
+                                Book_Seq = Convert.ToInt32(reader["Book_Seq"]),
+                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
+                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
+                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
+                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
+                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
+                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
+                            });
+                        }
+                    }
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository SearchByISBN Error: {ex.Message}");
+                throw;
+            }
+        }
+
         public void Dispose()
         {
             if (_conn != null && _conn.State != ConnectionState.Closed)

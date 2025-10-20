@@ -13,6 +13,7 @@ namespace library_support_system.Views
         //1
         #region Properties
         string SearchText { get; }
+        string SearchOption { get; }
         bool SearchButtonEnabled { set; }
         #endregion
 
@@ -20,11 +21,12 @@ namespace library_support_system.Views
         event EventHandler SearchButtonClick;
         event EventHandler SearchTextChanged;
         event EventHandler SearchKeyDown;
+        event EventHandler SearchOptionChanged;
         #endregion
 
         #region Methods
         void ShowMessage(string message, string title, MessageBoxIcon icon);
-        void NavigateToBookCheck();
+        void NavigateToBookCheck(List<BookModel> searchResults, string searchInfo);
         void ClearSearchText();
         void SetSearchButtonStyle(bool enabled);
         #endregion

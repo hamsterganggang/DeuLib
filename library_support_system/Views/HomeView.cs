@@ -56,7 +56,19 @@ namespace library_support_system.Views
             book_button.Click += (s, ev) => FlyoutPanelToggle(book_panel);
             account_button.Click += (s, ev) => FlyoutPanelToggle(account_panel);
             rental_button.Click += (s, ev) => FlyoutPanelToggle(rental_panel);
+
+            // 프로그램 시작 시 기본적으로 Home_Search 페이지 로드
+            LoadDefaultHomeSearch();
         }
+
+        // 기본 홈 검색 페이지 로드 메서드
+        private void LoadDefaultHomeSearch()
+        {
+            CurrentMenu1Text = "도서검색";
+            CurrentMenu2Text = "홈 검색";
+            ShowChildForm(new Home_Search());
+        }
+
         #region Method
         private void FlyoutPanelToggle(Panel panelToToggle)
         {
