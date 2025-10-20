@@ -114,7 +114,7 @@ namespace library_support_system.Views
             this.book_rental_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.book_rental_button.FlatAppearance.BorderSize = 0;
             this.book_rental_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.book_rental_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.book_rental_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_rental_button.ForeColor = System.Drawing.Color.White;
             this.book_rental_button.Location = new System.Drawing.Point(-3, 0);
             this.book_rental_button.Name = "book_rental_button";
@@ -128,7 +128,7 @@ namespace library_support_system.Views
             this.book_return_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.book_return_button.FlatAppearance.BorderSize = 0;
             this.book_return_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.book_return_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.book_return_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_return_button.ForeColor = System.Drawing.Color.White;
             this.book_return_button.Location = new System.Drawing.Point(-2, 55);
             this.book_return_button.Name = "book_return_button";
@@ -142,7 +142,7 @@ namespace library_support_system.Views
             this.rental_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.rental_button.FlatAppearance.BorderSize = 0;
             this.rental_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rental_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rental_button.Font = new System.Drawing.Font("Noto Sans KR Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rental_button.ForeColor = System.Drawing.Color.White;
             this.rental_button.Location = new System.Drawing.Point(5, 435);
             this.rental_button.Name = "rental_button";
@@ -165,7 +165,7 @@ namespace library_support_system.Views
             this.user_check_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.user_check_button.FlatAppearance.BorderSize = 0;
             this.user_check_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.user_check_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.user_check_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.user_check_button.ForeColor = System.Drawing.Color.White;
             this.user_check_button.Location = new System.Drawing.Point(-1, 0);
             this.user_check_button.Name = "user_check_button";
@@ -179,7 +179,7 @@ namespace library_support_system.Views
             this.btnUserRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.btnUserRes.FlatAppearance.BorderSize = 0;
             this.btnUserRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnUserRes.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserRes.ForeColor = System.Drawing.Color.White;
             this.btnUserRes.Location = new System.Drawing.Point(-1, 46);
             this.btnUserRes.Name = "btnUserRes";
@@ -193,7 +193,7 @@ namespace library_support_system.Views
             this.account_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.account_button.FlatAppearance.BorderSize = 0;
             this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.account_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.account_button.Font = new System.Drawing.Font("Noto Sans KR Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.account_button.ForeColor = System.Drawing.Color.White;
             this.account_button.Location = new System.Drawing.Point(5, 283);
             this.account_button.Name = "account_button";
@@ -216,7 +216,7 @@ namespace library_support_system.Views
             this.book_check_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.book_check_button.FlatAppearance.BorderSize = 0;
             this.book_check_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.book_check_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.book_check_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_check_button.ForeColor = System.Drawing.Color.White;
             this.book_check_button.Location = new System.Drawing.Point(1, 0);
             this.book_check_button.Name = "book_check_button";
@@ -230,7 +230,7 @@ namespace library_support_system.Views
             this.book_enroll_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.book_enroll_button.FlatAppearance.BorderSize = 0;
             this.book_enroll_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.book_enroll_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.book_enroll_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_enroll_button.ForeColor = System.Drawing.Color.White;
             this.book_enroll_button.Location = new System.Drawing.Point(0, 46);
             this.book_enroll_button.Name = "book_enroll_button";
@@ -244,7 +244,7 @@ namespace library_support_system.Views
             this.book_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.book_button.FlatAppearance.BorderSize = 0;
             this.book_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.book_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.book_button.Font = new System.Drawing.Font("Noto Sans KR Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.book_button.ForeColor = System.Drawing.Color.White;
             this.book_button.Location = new System.Drawing.Point(6, 132);
             this.book_button.Name = "book_button";
@@ -305,7 +305,7 @@ namespace library_support_system.Views
             // 
             // labelCurrentMenu2
             // 
-            this.labelCurrentMenu2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelCurrentMenu2.Font = new System.Drawing.Font("Noto Sans KR", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentMenu2.ForeColor = System.Drawing.Color.White;
             this.labelCurrentMenu2.Location = new System.Drawing.Point(7, 1);
             this.labelCurrentMenu2.Name = "labelCurrentMenu2";
@@ -338,7 +338,7 @@ namespace library_support_system.Views
             // 
             // labelCurrentMenu1
             // 
-            this.labelCurrentMenu1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelCurrentMenu1.Font = new System.Drawing.Font("Noto Sans KR Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentMenu1.ForeColor = System.Drawing.Color.White;
             this.labelCurrentMenu1.Location = new System.Drawing.Point(24, 31);
             this.labelCurrentMenu1.Name = "labelCurrentMenu1";
@@ -350,11 +350,11 @@ namespace library_support_system.Views
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(46, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(57, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "현재메뉴";
             // 

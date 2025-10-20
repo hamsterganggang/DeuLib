@@ -60,7 +60,7 @@ namespace library_support_system
         {
             this.presenter = new UserViewPresenter(this);
         }
-        public string SearchValue { get => search_textbox.Text; set => search_textbox.Text = value; }
+        public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
         public string SearchBy { get => ddlSearch.SelectedItem?.ToString() ?? "이름"; set { /* ... */ } }
         public void ShowMessage(string message) { MessageBox.Show(message); }
 

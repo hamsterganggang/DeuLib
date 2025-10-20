@@ -55,7 +55,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.exit_button);
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -66,11 +66,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Noto Sans KR", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 46);
+            this.label1.Size = new System.Drawing.Size(145, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "회원 등록";
             // 
@@ -95,30 +95,32 @@
             this.deu_logo.TabIndex = 4;
             this.deu_logo.TabStop = false;
             // 
-            // 전화번호 로직
+            // txtNum
             // 
-            this.lblNum.AutoSize = true;
-            this.lblNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblNum.Location = new System.Drawing.Point(100, 92);
-            this.lblNum.Name = "lblNum";
-            this.lblNum.Size = new System.Drawing.Size(70, 24);
-            this.lblNum.TabIndex = 6;
-            this.lblNum.Text = "전화번호";
-
-            this.txtNum.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNum.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtNum.Location = new System.Drawing.Point(100, 116);
+            this.txtNum.BackColor = System.Drawing.Color.White;
+            this.txtNum.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtNum.Location = new System.Drawing.Point(68, 116);
             this.txtNum.Multiline = true;
             this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(263, 25);
+            this.txtNum.Size = new System.Drawing.Size(323, 25);
             this.txtNum.TabIndex = 5;
             // 
+            // lblNum
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblNum.AutoSize = true;
+            this.lblNum.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNum.Location = new System.Drawing.Point(68, 94);
+            this.lblNum.Name = "lblNum";
+            this.lblNum.Size = new System.Drawing.Size(65, 19);
+            this.lblNum.TabIndex = 6;
+            this.lblNum.Text = "전화번호 :";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(100, 143);
+            this.button1.Font = new System.Drawing.Font("Noto Sans KR Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(397, 116);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 7;
@@ -128,80 +130,77 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblName.Location = new System.Drawing.Point(100, 182);
+            this.lblName.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblName.Location = new System.Drawing.Point(68, 160);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(40, 24);
+            this.lblName.Size = new System.Drawing.Size(41, 19);
             this.lblName.TabIndex = 9;
-            this.lblName.Text = "이름";
-            
-            this.txtName.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtName.Location = new System.Drawing.Point(100, 206);
+            this.lblName.Text = "이름 :";
+            // 
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.Color.White;
+            this.txtName.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtName.Location = new System.Drawing.Point(68, 182);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(263, 25);
+            this.txtName.Size = new System.Drawing.Size(323, 25);
             this.txtName.TabIndex = 8;
-            // 
-            // 
             // 
             // lblBthDate
             // 
             this.lblBthDate.AutoSize = true;
-            this.lblBthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblBthDate.Location = new System.Drawing.Point(100, 272);
+            this.lblBthDate.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBthDate.Location = new System.Drawing.Point(64, 227);
             this.lblBthDate.Name = "lblBthDate";
-            this.lblBthDate.Size = new System.Drawing.Size(70, 24);
+            this.lblBthDate.Size = new System.Drawing.Size(65, 19);
             this.lblBthDate.TabIndex = 11;
-            this.lblBthDate.Text = "생년월일";
+            this.lblBthDate.Text = "생년월일 :";
             // 
             // txtBthDate
             // 
-            this.txtBthDate.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtBthDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBthDate.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtBthDate.Location = new System.Drawing.Point(100, 296);
+            this.txtBthDate.BackColor = System.Drawing.Color.White;
+            this.txtBthDate.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtBthDate.Location = new System.Drawing.Point(68, 250);
             this.txtBthDate.Multiline = true;
             this.txtBthDate.Name = "txtBthDate";
-            this.txtBthDate.Size = new System.Drawing.Size(263, 25);
+            this.txtBthDate.Size = new System.Drawing.Size(323, 25);
             this.txtBthDate.TabIndex = 10;
             // 
             // lblGen
             // 
             this.lblGen.AutoSize = true;
-            this.lblGen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblGen.Location = new System.Drawing.Point(100, 362);
+            this.lblGen.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGen.Location = new System.Drawing.Point(68, 290);
             this.lblGen.Name = "lblGen";
-            this.lblGen.Size = new System.Drawing.Size(40, 24);
+            this.lblGen.Size = new System.Drawing.Size(41, 19);
             this.lblGen.TabIndex = 13;
-            this.lblGen.Text = "성별";
+            this.lblGen.Text = "성별 :";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblEmail.Location = new System.Drawing.Point(100, 452);
+            this.lblEmail.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(68, 357);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(55, 24);
+            this.lblEmail.Size = new System.Drawing.Size(53, 19);
             this.lblEmail.TabIndex = 15;
-            this.lblEmail.Text = "이메일";
+            this.lblEmail.Text = "이메일 :";
             // 
             // txtEmail
             // 
-            this.txtEmail.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtEmail.Location = new System.Drawing.Point(100, 476);
+            this.txtEmail.BackColor = System.Drawing.Color.White;
+            this.txtEmail.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtEmail.Location = new System.Drawing.Point(68, 379);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(263, 25);
+            this.txtEmail.Size = new System.Drawing.Size(323, 25);
             this.txtEmail.TabIndex = 14;
             // 
             // pictureBoxUpload
             // 
             this.pictureBoxUpload.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBoxUpload.Location = new System.Drawing.Point(100, 536);
+            this.pictureBoxUpload.Location = new System.Drawing.Point(68, 456);
             this.pictureBoxUpload.Name = "pictureBoxUpload";
             this.pictureBoxUpload.Size = new System.Drawing.Size(100, 130);
             this.pictureBoxUpload.TabIndex = 16;
@@ -210,33 +209,33 @@
             // cmbGen
             // 
             this.cmbGen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGen.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cmbGen.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbGen.FormattingEnabled = true;
             this.cmbGen.Items.AddRange(new object[] {
             "",
             "남",
             "여"});
-            this.cmbGen.Location = new System.Drawing.Point(104, 386);
+            this.cmbGen.Location = new System.Drawing.Point(68, 312);
             this.cmbGen.Name = "cmbGen";
-            this.cmbGen.Size = new System.Drawing.Size(121, 29);
+            this.cmbGen.Size = new System.Drawing.Size(121, 27);
             this.cmbGen.TabIndex = 18;
             // 
             // lblPictureBox
             // 
             this.lblPictureBox.AutoSize = true;
-            this.lblPictureBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblPictureBox.Location = new System.Drawing.Point(206, 624);
+            this.lblPictureBox.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPictureBox.Location = new System.Drawing.Point(187, 497);
             this.lblPictureBox.Name = "lblPictureBox";
-            this.lblPictureBox.Size = new System.Drawing.Size(170, 48);
+            this.lblPictureBox.Size = new System.Drawing.Size(137, 38);
             this.lblPictureBox.TabIndex = 19;
             this.lblPictureBox.Text = "박스를 클릭하여 \r\n이미지를 추가하십시오.​";
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSave.Location = new System.Drawing.Point(125, 712);
+            this.btnSave.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(116, 632);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 30);
             this.btnSave.TabIndex = 20;
@@ -245,10 +244,10 @@
             // 
             // cancel_button
             // 
-            this.cancel_button.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.cancel_button.BackColor = System.Drawing.Color.White;
             this.cancel_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cancel_button.Location = new System.Drawing.Point(231, 712);
+            this.cancel_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel_button.Location = new System.Drawing.Point(241, 632);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(100, 30);
             this.cancel_button.TabIndex = 21;
@@ -259,7 +258,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 761);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(484, 683);
             this.ControlBox = false;
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.btnSave);
