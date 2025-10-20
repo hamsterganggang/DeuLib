@@ -22,5 +22,12 @@ namespace library_support_system.Models
         public DateTime Rental_Date { get; set; }
         public DateTime Rental_Return_Date { get; set; }
         #endregion
+        public string Rental_Status_Text
+        {
+            get
+            {
+                return Rental_Status == 1 ? "대여중" : "대여가능";
+            }
+        }
     }
 }
