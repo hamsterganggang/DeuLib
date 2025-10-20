@@ -22,10 +22,11 @@ namespace library_support_system.Presenters
             this.view = view;
             this.bookRepository = new BookRepository();
 
-            // View 이벤트 구독
+            // View 이벤트 연결
             this.view.SearchButtonClick += OnSearchButtonClick;
             this.view.SearchTextChanged += OnSearchTextChanged;
             this.view.SearchKeyDown += OnSearchKeyDown;
+            this.view.SearchOptionChanged += OnSearchOptionChanged;
 
             // 초기 상태 설정
             InitializeView();
@@ -65,33 +66,57 @@ namespace library_support_system.Presenters
             }
         }
 
+        private void OnSearchOptionChanged(object sender, EventArgs e)
+        {
+            // 검색 옵션이 변경될 때 필요한 처리
+            // 현재는 특별한 작업 없음
+        }
+
         private void PerformSearch()
         {
             try
             {
-                string searchTitle = view.SearchText?.Trim() ?? string.Empty;
+                string searchText = view.SearchText?.Trim() ?? string.Empty;
+                string searchOption = view.SearchOption ?? "책이름";
 
-                if (string.IsNullOrEmpty(searchTitle))
+                if (string.IsNullOrEmpty(searchText))
                 {
-                    view.ShowMessage("검색할 책 제목을 입력해주세요.", "알림", MessageBoxIcon.Information);
+                    view.ShowMessage("검색할 내용을 입력해주세요.", "알림", MessageBoxIcon.Information);
                     return;
                 }
 
-                var searchResults = bookRepository.SearchByTitle(searchTitle);
+                List<BookModel> searchResults = null;
+
+                // 검색 옵션에 따라 다른 검색 메서드 호출
+                if (searchOption == "ISBN")
+                {
+                    searchResults = bookRepository.SearchByISBN(searchText);
+                }
+                else // 책이름
+                {
+                    searchResults = bookRepository.SearchByTitle(searchText);
+                }
 
                 if (searchResults != null && searchResults.Count > 0)
                 {
-                    // 검색 결과가 있으면 book_check 페이지로 이동
-                    view.NavigateToBookCheck();
+                    // 검색 결과를 매개변수로 전달하여 페이지 이동
+                    string searchInfo = $"{searchOption}: {searchText}";
+                    view.NavigateToBookCheck(searchResults, searchInfo);
                 }
                 else
                 {
-                    view.ShowMessage($"'{searchTitle}' 제목을 포함한 도서를 찾을 수 없습니다.", "검색 결과", MessageBoxIcon.Information);
+                    string optionText = searchOption == "ISBN" ? "ISBN" : "책 제목";
+                    view.ShowMessage($"'{searchText}'로 검색된 {optionText} 결과가 없습니다.", "검색 결과", MessageBoxIcon.Information);
+                    
+                    // 검색 결과가 없어도 빈 리스트로 전달
+                    string searchInfo = $"{searchOption}: {searchText}";
+                    view.NavigateToBookCheck(new List<BookModel>(), searchInfo);
                 }
             }
             catch (Exception ex)
             {
                 view.ShowMessage($"검색 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxIcon.Error);
+                System.Diagnostics.Debug.WriteLine($"HomeSearchPresenter PerformSearch Error: {ex.Message}");
             }
         }
         #endregion
