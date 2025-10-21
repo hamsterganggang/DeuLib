@@ -21,6 +21,7 @@ namespace library_support_system.Models
         public string User_Name { get; set; }       // 추가
         public DateTime Rental_Date { get; set; }
         public DateTime Rental_Return_Date { get; set; }
+        public bool IsChildRow { get; set; } = false;
         #endregion
         public string Rental_Status_Text
         {
