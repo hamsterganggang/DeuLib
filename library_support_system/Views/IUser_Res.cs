@@ -25,8 +25,13 @@ namespace library_support_system.Views
         event EventHandler btnSave_Click;
         event EventHandler btnCancel_Click;
         event EventHandler pictureBoxUpload_Click;
+        event EventHandler btnCheckDuplicate_Click; // 중복 확인 버튼 이벤트 추가
+
         void SetUserData(UserModel user); // ← 반드시 추가!
         void CloseView();
+        void ShowMessage(string message);           // 메시지 표시 메서드 추가
+        void ShowErrorMessage(string message);     // 에러 메시지 표시 메서드 추가
+        void ShowSuccessMessage(string message);   // 성공 메시지 표시 메서드 추가
         #endregion
     }
 }
