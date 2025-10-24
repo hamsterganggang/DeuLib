@@ -15,11 +15,15 @@ namespace library_support_system.Views
         // 생성자 오버로드: 검색 결과와 함께 생성하는 경우
         private List<BookModel> _initialBooks;
         
+        // 초기 데이터가 설정되었는지 확인하는 속성 추가
+        public bool HasInitialData => _initialBooks != null;
+        
         public Book_View()
         {
             InitializeComponent();
             InitializeEvents();
             InitializeDataGrid();
+            InitializeSearchOptions();
             
             // 즉시 ViewLoaded 이벤트 발생
             ViewLoaded?.Invoke(this, EventArgs.Empty);
@@ -31,6 +35,7 @@ namespace library_support_system.Views
             InitializeComponent();
             InitializeEvents();
             InitializeDataGrid();
+            InitializeSearchOptions();
             _initialBooks = searchResults;
             
             // 검색 결과가 있는 경우 바로 표시
@@ -61,6 +66,17 @@ namespace library_support_system.Views
             dataGridView1.AutoGenerateColumns = false;
         }
 
+        private void InitializeSearchOptions()
+        {
+            if (search_option_combobox != null)
+            {
+                search_option_combobox.Items.Clear();
+                search_option_combobox.Items.Add("책이름");
+                search_option_combobox.Items.Add("ISBN");
+                search_option_combobox.SelectedIndex = 0; // 기본값: 책이름
+            }
+        }
+
         public void SetBookList(List<BookModel> books)
         {
             dataGridView1.DataSource = null;
@@ -76,6 +92,9 @@ namespace library_support_system.Views
 
         // 검색 텍스트 속성
         public string SearchText => search_textbox.Text?.Trim() ?? string.Empty;
+
+        // 검색 옵션 속성
+        public string SearchOption => search_option_combobox?.SelectedItem?.ToString() ?? "책이름";
     }
 
 }
