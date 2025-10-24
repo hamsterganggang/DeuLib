@@ -16,6 +16,8 @@ namespace library_support_system.Views
         void ShowMessage(string message);
         
         string SearchText { get; }  // 검색 텍스트 속성 추가
+        string SearchOption { get; }  // 검색 옵션 속성 추가
+        bool HasInitialData { get; }  // 초기 데이터 존재 여부 확인 속성 추가
     }
 
 }

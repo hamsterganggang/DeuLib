@@ -81,7 +81,7 @@ namespace library_support_system.Presenters
 
                 if (string.IsNullOrEmpty(searchText))
                 {
-                    view.ShowMessage("검색할 내용을 입력해주세요.", "알림", MessageBoxIcon.Information);
+                    view.ShowMessage("검색어를 입력해주세요.", "알림", MessageBoxIcon.Information);
                     return;
                 }
 
@@ -99,18 +99,16 @@ namespace library_support_system.Presenters
 
                 if (searchResults != null && searchResults.Count > 0)
                 {
-                    // 검색 결과를 매개변수로 전달하여 페이지 이동
+                    // 검색 결과가 있을 때만 Book_View로 이동
                     string searchInfo = $"{searchOption}: {searchText}";
                     view.NavigateToBookCheck(searchResults, searchInfo);
                 }
                 else
                 {
+                    // 검색 결과가 없으면 현재 화면을 그대로 유지하고 메시지만 표시
                     string optionText = searchOption == "ISBN" ? "ISBN" : "책 제목";
-                    view.ShowMessage($"'{searchText}'로 검색된 {optionText} 결과가 없습니다.", "검색 결과", MessageBoxIcon.Information);
-                    
-                    // 검색 결과가 없어도 빈 리스트로 전달
-                    string searchInfo = $"{searchOption}: {searchText}";
-                    view.NavigateToBookCheck(new List<BookModel>(), searchInfo);
+                    view.ShowMessage($"'{searchText}'에 해당하는 {optionText} 도서를 찾을 수 없습니다.", "검색 결과", MessageBoxIcon.Information);
+                    // NavigateToBookCheck 호출 제거 - 현재 화면 유지
                 }
             }
             catch (Exception ex)

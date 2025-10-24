@@ -41,6 +41,7 @@
             this.Book_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.search_button = new System.Windows.Forms.Button();
             this.search_textbox = new System.Windows.Forms.TextBox();
+            this.search_option_combobox = new System.Windows.Forms.ComboBox();
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -177,10 +178,20 @@
             this.search_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.search_textbox.BackColor = System.Drawing.Color.White;
             this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(12, 12);
+            this.search_textbox.Location = new System.Drawing.Point(147, 12);
             this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(539, 31);
+            this.search_textbox.Size = new System.Drawing.Size(404, 31);
             this.search_textbox.TabIndex = 10;
+            // 
+            // search_option_combobox
+            // 
+            this.search_option_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.search_option_combobox.Font = new System.Drawing.Font("Noto Sans KR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.search_option_combobox.FormattingEnabled = true;
+            this.search_option_combobox.Location = new System.Drawing.Point(12, 12);
+            this.search_option_combobox.Name = "search_option_combobox";
+            this.search_option_combobox.Size = new System.Drawing.Size(129, 31);
+            this.search_option_combobox.TabIndex = 14;
             // 
             // btnChange
             // 
@@ -207,6 +218,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1115, 627);
+            this.Controls.Add(this.search_option_combobox);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.search_button);
@@ -226,6 +238,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button search_button;
         private System.Windows.Forms.TextBox search_textbox;
+        private System.Windows.Forms.ComboBox search_option_combobox;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtBookTitle;
