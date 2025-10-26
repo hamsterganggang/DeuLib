@@ -35,13 +35,13 @@
             this.search_option_combobox = new System.Windows.Forms.ComboBox();
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
+            this.Book_Img = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtBookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Pbl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Book_Img = new System.Windows.Forms.DataGridViewImageColumn();
             this.Book_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -53,13 +53,13 @@
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Book_Img,
             this.txtBookTitle,
             this.Book_ISBN,
             this.Book_Author,
             this.Book_Pbl,
             this.Book_Price,
             this.Book_Link,
-            this.Book_Img,
             this.Book_Exp});
             this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(0, 114);
@@ -132,6 +132,18 @@
             this.btnDel.Text = "도서삭제";
             this.btnDel.UseVisualStyleBackColor = true;
             // 
+            // Book_Img
+            // 
+            this.Book_Img.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Book_Img.DataPropertyName = "Book_Img";
+            this.Book_Img.HeaderText = "사진";
+            this.Book_Img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Book_Img.MinimumWidth = 6;
+            this.Book_Img.Name = "Book_Img";
+            this.Book_Img.ReadOnly = true;
+            this.Book_Img.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Book_Img.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // txtBookTitle
             // 
             this.txtBookTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -186,18 +198,6 @@
             this.Book_Link.Name = "Book_Link";
             this.Book_Link.ReadOnly = true;
             // 
-            // Book_Img
-            // 
-            this.Book_Img.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Book_Img.DataPropertyName = "Book_Img";
-            this.Book_Img.HeaderText = "사진";
-            this.Book_Img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Book_Img.MinimumWidth = 6;
-            this.Book_Img.Name = "Book_Img";
-            this.Book_Img.ReadOnly = true;
-            this.Book_Img.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Book_Img.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // Book_Exp
             // 
             this.Book_Exp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -235,13 +235,13 @@
         private System.Windows.Forms.ComboBox search_option_combobox;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.DataGridViewImageColumn Book_Img;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtBookTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_ISBN;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Author;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Pbl;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Link;
-        private System.Windows.Forms.DataGridViewImageColumn Book_Img;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Exp;
     }
 }
