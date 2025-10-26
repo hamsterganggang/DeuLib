@@ -58,7 +58,10 @@ namespace library_support_system.Repositories
                 cmd.Parameters.Add(new OracleParameter("User_Birthdate", user.User_Birthdate));
                 cmd.Parameters.Add(new OracleParameter("User_Gender", user.User_Gender));
                 cmd.Parameters.Add(new OracleParameter("User_Mail", user.User_Mail));
-                cmd.Parameters.Add(new OracleParameter("User_Image", user.User_Image));
+                cmd.Parameters.Add(new OracleParameter("User_Image", OracleDbType.Blob)
+                {
+                    Value = user.User_Image ?? (object)DBNull.Value
+                });
                 cmd.Parameters.Add(new OracleParameter("User_WTHDR", user.User_WTHDR));
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -83,7 +86,10 @@ namespace library_support_system.Repositories
                 cmd.Parameters.Add(new OracleParameter("User_Birthdate", user.User_Birthdate));
                 cmd.Parameters.Add(new OracleParameter("User_Gender", user.User_Gender));
                 cmd.Parameters.Add(new OracleParameter("User_Mail", user.User_Mail));
-                cmd.Parameters.Add(new OracleParameter("User_Image", user.User_Image));
+                cmd.Parameters.Add(new OracleParameter("User_Image", OracleDbType.Blob)
+                {
+                    Value = user.User_Image ?? (object)DBNull.Value
+                });
                 cmd.Parameters.Add(new OracleParameter("User_WTHDR", user.User_WTHDR));
                 cmd.Parameters.Add(new OracleParameter("User_SEQ", user.User_Seq));
                 return cmd.ExecuteNonQuery() > 0;
@@ -116,7 +122,7 @@ namespace library_support_system.Repositories
                             User_Birthdate = FormatBirthdate(reader["User_Birthdate"]), // 형식 변환
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
-                            User_Image = reader["User_Image"].ToString(),
+                            User_Image = reader["User_Image"] == DBNull.Value ? null : (byte[])reader["User_Image"],
                             User_WTHDR = Convert.ToInt32(reader["User_WTHDR"])
                         });
                     }
@@ -142,7 +148,7 @@ namespace library_support_system.Repositories
                             User_Birthdate = FormatBirthdate(reader["User_Birthdate"]), // 형식 변환
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
-                            User_Image = reader["User_Image"].ToString(),
+                            User_Image = reader["User_Image"] == DBNull.Value ? null : (byte[])reader["User_Image"],
                             User_WTHDR = Convert.ToInt32(reader["User_WTHDR"])
                         };
                     }
@@ -170,7 +176,7 @@ namespace library_support_system.Repositories
                             User_Birthdate = FormatBirthdate(reader["User_Birthdate"]), // 형식 변환
                             User_Gender = Convert.ToInt32(reader["User_Gender"]),
                             User_Mail = reader["User_Mail"].ToString(),
-                            User_Image = reader["User_Image"].ToString(),
+                            User_Image = reader["User_Image"] == DBNull.Value ? null : (byte[])reader["User_Image"],
                             User_WTHDR = Convert.ToInt32(reader["User_WTHDR"])
                         };
                     }

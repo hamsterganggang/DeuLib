@@ -1,8 +1,9 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using library_support_system.Models;
+﻿using library_support_system.Models;
 using library_support_system.Presenters;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace library_support_system.Views
 {
@@ -10,7 +11,8 @@ namespace library_support_system.Views
     {
         #region Properties
         private BookModel _bookModel;
-
+        private byte[] _uploadedImageBytes;
+        
         public string BookISBN => txtNum.Text.Trim();
         public string BookTitle => textBox5.Text.Trim();
         public string BookAuthor => textBox4.Text.Trim();
@@ -24,7 +26,7 @@ namespace library_support_system.Views
             }
         }
         public string BookLink => textBox2.Text.Trim();
-        public string BookImage => pictureBoxUpload.ImageLocation ?? "";
+        public byte[] UploadImageBytes => _uploadedImageBytes;
         public string BookExplain => textBox3.Text.Trim();
         PictureBox IBook_Res.BookPictureBox => this.pictureBoxUpload;
         #endregion
@@ -68,7 +70,10 @@ namespace library_support_system.Views
             _bookModel = book;
             SetBookData(book);
         }
-
+        public void SetUploadedImage(byte[] bytes)
+        {
+            _uploadedImageBytes = bytes;
+        }
         private void InitializeScrollFeatures()
         {
             scrollablePanel.AutoScroll = true;
@@ -133,6 +138,7 @@ namespace library_support_system.Views
         {
             if (book == null) return;
 
+            // 텍스트 필드 세팅
             txtNum.Text = book.Book_ISBN ?? "";
             textBox5.Text = book.Book_Title ?? "";
             textBox4.Text = book.Book_Author ?? "";
@@ -141,18 +147,30 @@ namespace library_support_system.Views
             textBox2.Text = book.Book_Link ?? "";
             textBox3.Text = book.Book_Exp ?? "";
 
-            if (!string.IsNullOrEmpty(book.Book_Img))
+            // 이미지 byte[] → PictureBox 변환
+            if (book.Book_Img != null && book.Book_Img.Length > 0)
             {
                 try
                 {
-                    pictureBoxUpload.ImageLocation = book.Book_Img;
+                    using (var ms = new MemoryStream(book.Book_Img))
+                    {
+                        pictureBoxUpload.Image = Image.FromStream(ms);
+                    }
+                    _uploadedImageBytes = book.Book_Img;
                 }
                 catch
                 {
-                    // 무시
+                    pictureBoxUpload.Image = null;
+                    _uploadedImageBytes = null;
                 }
             }
+            else
+            {
+                pictureBoxUpload.Image = null;
+                _uploadedImageBytes = null;
+            }
 
+            // 스크롤/초기화 등 부가작업
             scrollablePanel.VerticalScroll.Value = 0;
             scrollablePanel.HorizontalScroll.Value = 0;
         }

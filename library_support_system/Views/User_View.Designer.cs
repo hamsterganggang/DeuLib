@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.ddlSearch = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPhonenum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtPicture = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtWithDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnChange = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,14 +98,14 @@
             this.txtEmail,
             this.txtPicture,
             this.txtWithDR});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.Location = new System.Drawing.Point(0, 114);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
@@ -116,12 +116,41 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.DividerHeight = 3;
-            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.RowTemplate.Height = 80;
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1115, 436);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 21;
+            // 
+            // btnChange
+            // 
+            this.btnChange.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnChange.Location = new System.Drawing.Point(12, 82);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(104, 29);
+            this.btnChange.TabIndex = 25;
+            this.btnChange.Text = "회원수정";
+            // 
+            // btnDel
+            // 
+            this.btnDel.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDel.Location = new System.Drawing.Point(122, 82);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(100, 29);
+            this.btnDel.TabIndex = 26;
+            this.btnDel.Text = "회원탈퇴";
+            this.btnDel.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSearch.Location = new System.Drawing.Point(485, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(81, 27);
+            this.btnSearch.TabIndex = 27;
+            this.btnSearch.Text = "조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // name
             // 
@@ -173,9 +202,12 @@
             this.txtPicture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.txtPicture.DataPropertyName = "User_Image";
             this.txtPicture.HeaderText = "사진";
+            this.txtPicture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.txtPicture.MinimumWidth = 6;
             this.txtPicture.Name = "txtPicture";
             this.txtPicture.ReadOnly = true;
+            this.txtPicture.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtPicture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // txtWithDR
             // 
@@ -185,35 +217,6 @@
             this.txtWithDR.MinimumWidth = 6;
             this.txtWithDR.Name = "txtWithDR";
             this.txtWithDR.ReadOnly = true;
-            // 
-            // btnChange
-            // 
-            this.btnChange.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnChange.Location = new System.Drawing.Point(12, 82);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(104, 29);
-            this.btnChange.TabIndex = 25;
-            this.btnChange.Text = "회원수정";
-            // 
-            // btnDel
-            // 
-            this.btnDel.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnDel.Location = new System.Drawing.Point(122, 82);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(100, 29);
-            this.btnDel.TabIndex = 26;
-            this.btnDel.Text = "회원탈퇴";
-            this.btnDel.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSearch.Location = new System.Drawing.Point(485, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(81, 27);
-            this.btnSearch.TabIndex = 27;
-            this.btnSearch.Text = "조회";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // User_View
             // 
@@ -246,13 +249,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtBth;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtGender;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtPhonenum;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtPicture;
+        private System.Windows.Forms.DataGridViewImageColumn txtPicture;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtWithDR;
-        private System.Windows.Forms.Button btnSearch;
     }
 }

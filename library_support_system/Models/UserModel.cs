@@ -16,7 +16,7 @@ namespace library_support_system.Models
         public string User_Birthdate { get; set; }
         public int User_Gender { get; set; } = 0;
         public string User_Mail { get; set; }
-        public string User_Image { get; set; }
+        public byte[] User_Image { get; set; }
         public int User_WTHDR { get; set; } = 1;
         public string GenderDisplay
         {

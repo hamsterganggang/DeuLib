@@ -17,7 +17,7 @@ namespace library_support_system.Models
         public string Book_Pbl { get; set; }
         public int Book_Price { get; set; }
         public string Book_Link { get; set; }
-        public string Book_Img { get; set; }
+        public byte[] Book_Img { get; set; }
         public string Book_Exp { get; set; }
         #endregion
     }

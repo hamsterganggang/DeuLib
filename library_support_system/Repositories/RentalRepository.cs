@@ -70,7 +70,7 @@ namespace library_support_system.Repositories
                         {
                             Book_ISBN = reader.IsDBNull(reader.GetOrdinal("Book_ISBN")) ? "" : reader.GetString(reader.GetOrdinal("Book_ISBN")),
                             Book_Title = reader.IsDBNull(reader.GetOrdinal("Book_Title")) ? "" : reader.GetString(reader.GetOrdinal("Book_Title")),
-                            Book_Img = reader.IsDBNull(reader.GetOrdinal("Book_Img")) ? "" : reader.GetString(reader.GetOrdinal("Book_Img")),
+                            Book_Img = reader.IsDBNull(reader.GetOrdinal("Book_Img")) ? null : (byte[])reader["Book_Img"],
                             Book_Author = reader.IsDBNull(reader.GetOrdinal("Book_Author")) ? "" : reader.GetString(reader.GetOrdinal("Book_Author")),
                             Book_Pbl = reader.IsDBNull(reader.GetOrdinal("Book_Pbl")) ? "" : reader.GetString(reader.GetOrdinal("Book_Pbl")),
                             Rental_Status = reader.IsDBNull(reader.GetOrdinal("Rental_Status")) ? 0 : reader.GetInt32(reader.GetOrdinal("Rental_Status")),

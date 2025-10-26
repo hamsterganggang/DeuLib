@@ -16,6 +16,7 @@ namespace library_support_system
 {
     public partial class User_View : Form, IUser_View
     {
+
         //Event Handler
         public event EventHandler ChangeUserEvent;
         public event EventHandler SearchEvent;

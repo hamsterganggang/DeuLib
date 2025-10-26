@@ -38,8 +38,11 @@ namespace library_support_system.Repositories
                     cmd.Parameters.Add(new OracleParameter("Book_Pbl", OracleDbType.Varchar2) { Value = book.Book_Pbl ?? (object)DBNull.Value });
                     cmd.Parameters.Add(new OracleParameter("Book_Price", OracleDbType.Int32) { Value = book.Book_Price });
                     cmd.Parameters.Add(new OracleParameter("Book_Link", OracleDbType.Varchar2) { Value = book.Book_Link ?? (object)DBNull.Value });
-                    cmd.Parameters.Add(new OracleParameter("Book_Img", OracleDbType.Varchar2) { Value = book.Book_Img ?? (object)DBNull.Value });
-                    
+                    cmd.Parameters.Add(new OracleParameter("Book_Img", OracleDbType.Blob)
+                    {
+                        Value = book.Book_Img ?? (object)DBNull.Value
+                    });
+
                     // Book_Exp는 긴 텍스트일 수 있으므로 CLOB 타입으로 처리
                     var explainParam = new OracleParameter("Book_Exp", OracleDbType.Clob);
                     explainParam.Value = string.IsNullOrEmpty(book.Book_Exp) ? (object)DBNull.Value : book.Book_Exp;
@@ -80,7 +83,10 @@ namespace library_support_system.Repositories
                     cmd.Parameters.Add(new OracleParameter("Book_Pbl", OracleDbType.Varchar2) { Value = book.Book_Pbl ?? (object)DBNull.Value });
                     cmd.Parameters.Add(new OracleParameter("Book_Price", OracleDbType.Int32) { Value = book.Book_Price });
                     cmd.Parameters.Add(new OracleParameter("Book_Link", OracleDbType.Varchar2) { Value = book.Book_Link ?? (object)DBNull.Value });
-                    cmd.Parameters.Add(new OracleParameter("Book_Img", OracleDbType.Varchar2) { Value = book.Book_Img ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Img", OracleDbType.Blob)
+                    {
+                        Value = book.Book_Img ?? (object)DBNull.Value
+                    });
                     var explainParam = new OracleParameter("Book_Exp", OracleDbType.Clob);
                     explainParam.Value = string.IsNullOrEmpty(book.Book_Exp) ? (object)DBNull.Value : book.Book_Exp;
                     cmd.Parameters.Add(explainParam);
@@ -132,7 +138,7 @@ namespace library_support_system.Repositories
                             Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
                             Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
                             Book_Link = reader["Book_Link"]?.ToString() ?? "",
-                            Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                            Book_Img = reader["Book_Img"] == DBNull.Value ? null : (byte[])reader["Book_Img"],
                             Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
                         });
                     }
@@ -160,7 +166,7 @@ namespace library_support_system.Repositories
                                 Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
                                 Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
                                 Book_Link = reader["Book_Link"]?.ToString() ?? "",
-                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"] == DBNull.Value ? null : (byte[])reader["Book_Img"],
                                 Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
                             };
                         }
@@ -193,7 +199,7 @@ namespace library_support_system.Repositories
                             Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
                             Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
                             Book_Link = reader["Book_Link"]?.ToString() ?? "",
-                            Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                            Book_Img = reader["Book_Img"] == DBNull.Value ? null : (byte[])reader["Book_Img"],
                             Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
                         };
                     }
@@ -229,7 +235,7 @@ namespace library_support_system.Repositories
                                 Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
                                 Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
                                 Book_Link = reader["Book_Link"]?.ToString() ?? "",
-                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"] == DBNull.Value ? null : (byte[])reader["Book_Img"],
                                 Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
                             });
                         }
@@ -273,7 +279,7 @@ namespace library_support_system.Repositories
                                 Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
                                 Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
                                 Book_Link = reader["Book_Link"]?.ToString() ?? "",
-                                Book_Img = reader["Book_Img"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"] == DBNull.Value ? null : (byte[])reader["Book_Img"],
                                 Book_Exp = reader["Book_Exp"]?.ToString() ?? ""
                             });
                         }

@@ -2,6 +2,7 @@ using library_support_system.Models;
 using library_support_system.Repositories;
 using library_support_system.Views;
 using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -109,14 +110,24 @@ namespace library_support_system.Presenters
             OpenFileDialog dialog = new OpenFileDialog
             {
                 Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png)|*.bmp;*.jpg;*.jpeg;*.png",
-                Title = "도서 이미지 업로드",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+                Title = "도서 이미지 업로드"
             };
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                view.BookPictureBox.Image = Image.FromFile(dialog.FileName);
-                view.BookPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                // 파일 → byte[] 변환
+                byte[] imageBytes = File.ReadAllBytes(dialog.FileName);
+
+                // View에 있는 PictureBox에 이미지 표시
+                var picBox = view.BookPictureBox;
+                picBox.Image = Image.FromFile(dialog.FileName);
+                picBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                // View에 업로드 정보 전달 (Book_Res에 프로퍼티 추가)
+                if (view is Book_Res form)
+                {
+                    form.SetUploadedImage(imageBytes);
+                }
             }
         }
 
@@ -131,7 +142,7 @@ namespace library_support_system.Presenters
                 Book_Pbl = view.BookPublisher.Trim(),
                 Book_Price = view.BookPrice,
                 Book_Link = view.BookLink.Trim(),
-                Book_Img = view.BookImage ?? "",
+                Book_Img = (view as Book_Res)?.UploadImageBytes,
                 Book_Exp = view.BookExplain.Trim()
             };
 
