@@ -85,48 +85,32 @@ namespace library_support_system.Presenters
                 view.CloseView();
             }
         }
-        
+
         private void pictureBoxUpload_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog
             {
                 Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png)|*.bmp;*.jpg;*.jpeg;*.png",
-                Title = "사진 업로드",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+                Title = "사진 업로드"
             };
-            
+
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                try
+                byte[] imageBytes = File.ReadAllBytes(dialog.FileName);
+
+                // View의 PictureBox를 property로 접근
+                var picBox = view.pictureBoxUpload;
+                using (var ms = new MemoryStream(imageBytes))
                 {
-                    // 이미지 파일을 애플리케이션 폴더에 복사
-                    string appPath = Application.StartupPath;
-                    string imageFolder = Path.Combine(appPath, "UserImages");
-                    
-                    // 폴더가 없으면 생성
-                    if (!Directory.Exists(imageFolder))
-                    {
-                        Directory.CreateDirectory(imageFolder);
-                    }
-
-                    // 고유한 파일명 생성 (타임스탬프 + 원본 파일명)
-                    string originalFileName = Path.GetFileName(dialog.FileName);
-                    string newFileName = $"{DateTime.Now:yyyyMMddHHmmss}_{originalFileName}";
-                    string destinationPath = Path.Combine(imageFolder, newFileName);
-
-                    // 파일 복사
-                    File.Copy(dialog.FileName, destinationPath, true);
-
-                    // PictureBox에 이미지 표시
-                    view.pictureBoxUpload.Image = Image.FromFile(destinationPath);
-                    view.pictureBoxUpload.ImageLocation = destinationPath;
-                    view.pictureBoxUpload.SizeMode = PictureBoxSizeMode.StretchImage;
-                    
-                    view.ShowMessage("이미지가 성공적으로 업로드되었습니다.");
+                    picBox.Image = Image.FromStream(ms);
+                    picBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
-                catch (Exception ex)
+
+                // View에 byte[] 데이터 저장
+                // 캐스팅하지 않고 인터페이스의 UploadImageBytes(setter나 메서드로 할당해도 됨)
+                if (view is User_Res viewImpl)
                 {
-                    view.ShowErrorMessage($"이미지 업로드 중 오류가 발생했습니다: {ex.Message}");
+                    viewImpl.SetUploadedImage(imageBytes); // 아래처럼 Set 메서드 추가해도 됨
                 }
             }
         }
@@ -212,7 +196,7 @@ namespace library_support_system.Presenters
                     User_Birthdate = view.UserBirthdate,
                     User_Gender = view.UserGender,
                     User_Mail = view.UserMail,
-                    User_Image = view.UserImage,
+                    User_Image = (view as User_Res)?.UploadImageBytes,
                     User_WTHDR = 0
                 };
 

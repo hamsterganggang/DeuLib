@@ -17,6 +17,7 @@ namespace library_support_system.Views
         int UserGender { get; }
         string UserMail { get; }
         string UserImage { get; }
+        byte[] UploadImageBytes { get; }
         PictureBox pictureBoxUpload { get; }
         #endregion
 

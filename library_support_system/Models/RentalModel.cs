@@ -13,7 +13,7 @@ namespace library_support_system.Models
         public int Rental_Seq { get; set; }
         public string Book_ISBN { get; set; }
         public string Book_Title { get; set; }      // 추가
-        public string Book_Img { get; set; }
+        public byte[] Book_Img { get; set; }
         public string Book_Author { get; set; }
         public string Book_Pbl { get; set; }
         public int Rental_Status { get; set; }

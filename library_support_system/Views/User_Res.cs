@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Globalization;
 
 namespace library_support_system
 {
@@ -32,7 +33,8 @@ namespace library_support_system
         public event EventHandler btnCancel_Click;
         public event EventHandler pictureBoxUpload_Click;
         public event EventHandler btnCheckDuplicate_Click; // 중복 확인 이벤트
-
+        private byte[] _uploadedImageBytes;           // 업로드된 이미지 임시 저장소
+        public byte[] UploadImageBytes => _uploadedImageBytes;
         public void SetUserData(UserModel user)
         {
             if (user == null) return;
@@ -41,10 +43,25 @@ namespace library_support_system
             txtBthDate.Text = user.User_Birthdate ?? "";
             cmbGen.SelectedIndex = user.User_Gender;
             txtEmail.Text = user.User_Mail ?? "";
-            pictureBoxUpload.ImageLocation = user.User_Image ?? "";
-            // User_Seq는 내부적으로만 사용
+
+            if (user.User_Image != null && user.User_Image.Length > 0)
+            {
+                using (var ms = new MemoryStream(user.User_Image))
+                {
+                    pictureBoxUpload.Image = Image.FromStream(ms);
+                }
+                _uploadedImageBytes = user.User_Image;
+            }
+            else
+            {
+                pictureBoxUpload.Image = null;
+                _uploadedImageBytes = null;
+            }
         }
-        
+        public void SetUploadedImage(byte[] bytes)
+        {
+            _uploadedImageBytes = bytes;
+        }
         public User_Res()
         {
             InitializeComponent();

@@ -35,7 +35,7 @@
             this.oracleDataAdapter1 = new Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.oracleCommandBuilder1 = new Oracle.ManagedDataAccess.Client.OracleCommandBuilder();
-            this.Book_Picture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Book_Picture = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,21 +107,22 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.DividerHeight = 3;
-            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.RowTemplate.Height = 80;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1115, 436);
             this.dataGridView1.TabIndex = 46;
-            dataGridView1.ReadOnly = false;
-
             // 
             // Book_Picture
             // 
             this.Book_Picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Book_Picture.DataPropertyName = "Book_Img";
             this.Book_Picture.HeaderText = "도서 이미지";
+            this.Book_Picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Book_Picture.MinimumWidth = 10;
             this.Book_Picture.Name = "Book_Picture";
             this.Book_Picture.ReadOnly = true;
+            this.Book_Picture.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Book_Picture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -168,7 +169,6 @@
             this.btnRentCheck.Name = "btnRentCheck";
             this.btnRentCheck.Text = "조회";
             this.btnRentCheck.UseColumnTextForButtonValue = true;
-            btnRentCheck.ReadOnly = false;
             // 
             // Book_Rental
             // 
@@ -197,7 +197,7 @@
         private Oracle.ManagedDataAccess.Client.OracleDataAdapter oracleDataAdapter1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private Oracle.ManagedDataAccess.Client.OracleCommandBuilder oracleCommandBuilder1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Book_Picture;
+        private System.Windows.Forms.DataGridViewImageColumn Book_Picture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;

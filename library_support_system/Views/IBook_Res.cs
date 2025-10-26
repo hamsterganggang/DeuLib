@@ -13,7 +13,7 @@ namespace library_support_system.Views
         string BookPublisher { get; }
         int BookPrice { get; }
         string BookLink { get; }
-        string BookImage { get; }
+        byte[] UploadImageBytes { get; }
         string BookExplain { get; }
         PictureBox BookPictureBox { get; }
         #endregion
