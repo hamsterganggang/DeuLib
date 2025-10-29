@@ -40,7 +40,7 @@
             // 
             // TimeRent
             // 
-            this.TimeRent.Location = new System.Drawing.Point(12, 68);
+            this.TimeRent.Location = new System.Drawing.Point(16, 82);
             this.TimeRent.Name = "TimeRent";
             this.TimeRent.Size = new System.Drawing.Size(319, 22);
             this.TimeRent.TabIndex = 0;
@@ -48,24 +48,27 @@
             // lblRent
             // 
             this.lblRent.AutoSize = true;
-            this.lblRent.Location = new System.Drawing.Point(12, 51);
+            this.lblRent.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRent.Location = new System.Drawing.Point(14, 60);
             this.lblRent.Name = "lblRent";
-            this.lblRent.Size = new System.Drawing.Size(57, 14);
+            this.lblRent.Size = new System.Drawing.Size(73, 19);
             this.lblRent.TabIndex = 1;
             this.lblRent.Text = "대여일자 :";
             // 
             // lblReturn
             // 
             this.lblReturn.AutoSize = true;
-            this.lblReturn.Location = new System.Drawing.Point(13, 93);
+            this.lblReturn.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblReturn.Location = new System.Drawing.Point(14, 107);
             this.lblReturn.Name = "lblReturn";
-            this.lblReturn.Size = new System.Drawing.Size(57, 14);
+            this.lblReturn.Size = new System.Drawing.Size(73, 19);
             this.lblReturn.TabIndex = 2;
             this.lblReturn.Text = "반납일자 :";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 138);
+            this.btnSave.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSave.Location = new System.Drawing.Point(132, 194);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 34);
             this.btnSave.TabIndex = 3;
@@ -74,7 +77,7 @@
             // 
             // TimeReturn
             // 
-            this.TimeReturn.Location = new System.Drawing.Point(12, 110);
+            this.TimeReturn.Location = new System.Drawing.Point(16, 129);
             this.TimeReturn.Name = "TimeReturn";
             this.TimeReturn.Size = new System.Drawing.Size(319, 22);
             this.TimeReturn.TabIndex = 4;
@@ -82,24 +85,27 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(13, 9);
+            this.lblName.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblName.Location = new System.Drawing.Point(14, 9);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(93, 14);
+            this.lblName.Size = new System.Drawing.Size(119, 19);
             this.lblName.TabIndex = 5;
             this.lblName.Text = "대여자 전화번호 :";
             // 
             // txtPhoneNum
             // 
-            this.txtPhoneNum.Location = new System.Drawing.Point(12, 26);
+            this.txtPhoneNum.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtPhoneNum.Location = new System.Drawing.Point(16, 31);
             this.txtPhoneNum.Name = "txtPhoneNum";
-            this.txtPhoneNum.Size = new System.Drawing.Size(121, 22);
+            this.txtPhoneNum.Size = new System.Drawing.Size(181, 26);
             this.txtPhoneNum.TabIndex = 6;
             // 
             // btnNumCheck
             // 
-            this.btnNumCheck.Location = new System.Drawing.Point(139, 26);
+            this.btnNumCheck.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnNumCheck.Location = new System.Drawing.Point(203, 31);
             this.btnNumCheck.Name = "btnNumCheck";
-            this.btnNumCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnNumCheck.Size = new System.Drawing.Size(102, 26);
             this.btnNumCheck.TabIndex = 7;
             this.btnNumCheck.Text = "사용자 인증";
             this.btnNumCheck.UseVisualStyleBackColor = true;
@@ -108,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 201);
+            this.ClientSize = new System.Drawing.Size(361, 240);
             this.Controls.Add(this.btnNumCheck);
             this.Controls.Add(this.txtPhoneNum);
             this.Controls.Add(this.lblName);

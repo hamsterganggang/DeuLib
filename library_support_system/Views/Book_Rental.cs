@@ -17,6 +17,7 @@ namespace library_support_system.Views
         public Book_Rental()
         {
             InitializeComponent();
+            BindDropDownListSearch();
             _presenter = new BookRentalPresenter(this); // 반드시 추가
             dataGridView1.AutoGenerateColumns = false;
 
@@ -24,7 +25,16 @@ namespace library_support_system.Views
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
 
         }
-      
+        private void BindDropDownListSearch()
+        {
+            if (ddlSearch != null)
+            {
+                ddlSearch.Items.Clear();
+                ddlSearch.Items.Add("도서 제목");
+                ddlSearch.Items.Add("저자");
+                ddlSearch.SelectedIndex = 0;
+            }
+        }
         public List<RentalModel> RentalList
         {
             set

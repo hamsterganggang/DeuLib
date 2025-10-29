@@ -207,10 +207,13 @@
             // pictureBoxUpload
             // 
             this.pictureBoxUpload.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBoxUpload.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxUpload.ErrorImage = null;
             this.pictureBoxUpload.Location = new System.Drawing.Point(57, 399);
             this.pictureBoxUpload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxUpload.Name = "pictureBoxUpload";
             this.pictureBoxUpload.Size = new System.Drawing.Size(114, 152);
+            this.pictureBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxUpload.TabIndex = 16;
             this.pictureBoxUpload.TabStop = false;
             // 
@@ -219,10 +222,6 @@
             this.cmbGen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGen.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbGen.FormattingEnabled = true;
-            this.cmbGen.Items.AddRange(new object[] {
-            "",
-            "남",
-            "여"});
             this.cmbGen.Location = new System.Drawing.Point(16, 300);
             this.cmbGen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbGen.Name = "cmbGen";

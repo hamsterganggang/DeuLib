@@ -44,7 +44,11 @@ namespace library_support_system.Views
                 SetBookList(_initialBooks);
             }
         }
-
+        public BookModel SelectedBook =>
+            dataGridView1.SelectedRows.Count > 0
+                ? dataGridView1.SelectedRows[0].DataBoundItem as BookModel
+                : null;
+        #region Method
         private void InitializeEvents()
         {
             btnChange.Click += (s, e) => ChangeBookEvent?.Invoke(s, e);
@@ -59,13 +63,11 @@ namespace library_support_system.Views
                 }
             };
         }
-
         private void InitializeDataGrid()
         {
             // 컬럼 자동 생성 비활성화 (한 번만)
             dataGridView1.AutoGenerateColumns = false;
         }
-
         private void InitializeSearchOptions()
         {
             if (search_option_combobox != null)
@@ -76,25 +78,21 @@ namespace library_support_system.Views
                 search_option_combobox.SelectedIndex = 0; // 기본값: 책이름
             }
         }
-
         public void SetBookList(List<BookModel> books)
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = books;
         }
-
-        public BookModel SelectedBook =>
-            dataGridView1.SelectedRows.Count > 0
-                ? dataGridView1.SelectedRows[0].DataBoundItem as BookModel
-                : null;
-
         public void ShowMessage(string message) => MessageBox.Show(message);
+        #endregion
 
+        #region Properties
         // 검색 텍스트 속성
         public string SearchText => search_textbox.Text?.Trim() ?? string.Empty;
-
         // 검색 옵션 속성
         public string SearchOption => search_option_combobox?.SelectedItem?.ToString() ?? "책이름";
+        #endregion
+
     }
 
 }

@@ -70,6 +70,7 @@ namespace library_support_system.Views
             _bookModel = book;
             SetBookData(book);
         }
+    
         public void SetUploadedImage(byte[] bytes)
         {
             _uploadedImageBytes = bytes;

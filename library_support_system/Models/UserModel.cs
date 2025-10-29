@@ -22,7 +22,7 @@ namespace library_support_system.Models
         {
             get
             {
-                return User_Gender == 1 ? "남자" : User_Gender == 2 ? "여자" : "-";
+                return User_Gender == 1 ? "남성" : User_Gender == 2 ? "여성" : "-";
             }
         }
         public string WTHDRDisplay
