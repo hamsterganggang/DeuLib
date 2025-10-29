@@ -375,7 +375,7 @@ namespace library_support_system.Views
             // 
             this.main_panel.Controls.Add(this.search_button);
             this.main_panel.Controls.Add(this.search_textbox);
-            this.main_panel.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.main_panel.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.main_panel.Location = new System.Drawing.Point(0, 0);
             this.main_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.main_panel.Name = "main_panel";
@@ -411,8 +411,7 @@ namespace library_support_system.Views
             // 
             // HomeView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1445, 794);
             this.ControlBox = false;
