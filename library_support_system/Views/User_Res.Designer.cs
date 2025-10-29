@@ -59,18 +59,19 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.exit_button);
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(483, 54);
+            this.panel3.Size = new System.Drawing.Size(459, 51);
             this.panel3.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Noto Sans KR", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 46);
+            this.label1.Size = new System.Drawing.Size(141, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "회원 등록";
             // 
@@ -80,18 +81,20 @@
             this.exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit_button.ForeColor = System.Drawing.Color.Red;
             this.exit_button.Image = global::library_support_system.Properties.Resources.exit_logo1;
-            this.exit_button.Location = new System.Drawing.Point(426, 0);
+            this.exit_button.Location = new System.Drawing.Point(397, 0);
+            this.exit_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.exit_button.Name = "exit_button";
-            this.exit_button.Size = new System.Drawing.Size(54, 54);
+            this.exit_button.Size = new System.Drawing.Size(62, 51);
             this.exit_button.TabIndex = 0;
             this.exit_button.UseVisualStyleBackColor = false;
             // 
             // deu_logo
             // 
             this.deu_logo.Image = global::library_support_system.Properties.Resources.deu_logo;
-            this.deu_logo.Location = new System.Drawing.Point(150, 250);
+            this.deu_logo.Location = new System.Drawing.Point(116, 206);
+            this.deu_logo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deu_logo.Name = "deu_logo";
-            this.deu_logo.Size = new System.Drawing.Size(174, 182);
+            this.deu_logo.Size = new System.Drawing.Size(199, 212);
             this.deu_logo.TabIndex = 4;
             this.deu_logo.TabStop = false;
             // 
@@ -99,29 +102,31 @@
             // 
             this.txtNum.BackColor = System.Drawing.Color.White;
             this.txtNum.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtNum.Location = new System.Drawing.Point(68, 116);
+            this.txtNum.Location = new System.Drawing.Point(16, 124);
+            this.txtNum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNum.Multiline = true;
             this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(323, 25);
+            this.txtNum.Size = new System.Drawing.Size(337, 28);
             this.txtNum.TabIndex = 5;
             // 
             // lblNum
             // 
             this.lblNum.AutoSize = true;
-            this.lblNum.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblNum.Location = new System.Drawing.Point(68, 94);
+            this.lblNum.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNum.Location = new System.Drawing.Point(14, 104);
             this.lblNum.Name = "lblNum";
-            this.lblNum.Size = new System.Drawing.Size(65, 19);
+            this.lblNum.Size = new System.Drawing.Size(63, 16);
             this.lblNum.TabIndex = 6;
             this.lblNum.Text = "전화번호 :";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Noto Sans KR Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(397, 116);
+            this.button1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(359, 124);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
+            this.button1.Size = new System.Drawing.Size(86, 31);
             this.button1.TabIndex = 7;
             this.button1.Text = "중복확인";
             this.button1.UseVisualStyleBackColor = false;
@@ -129,10 +134,10 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblName.Location = new System.Drawing.Point(68, 160);
+            this.lblName.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblName.Location = new System.Drawing.Point(12, 167);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 19);
+            this.lblName.Size = new System.Drawing.Size(39, 16);
             this.lblName.TabIndex = 9;
             this.lblName.Text = "이름 :";
             // 
@@ -140,19 +145,20 @@
             // 
             this.txtName.BackColor = System.Drawing.Color.White;
             this.txtName.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtName.Location = new System.Drawing.Point(68, 182);
+            this.txtName.Location = new System.Drawing.Point(16, 190);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(323, 25);
+            this.txtName.Size = new System.Drawing.Size(337, 28);
             this.txtName.TabIndex = 8;
             // 
             // lblBthDate
             // 
             this.lblBthDate.AutoSize = true;
-            this.lblBthDate.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBthDate.Location = new System.Drawing.Point(64, 227);
+            this.lblBthDate.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblBthDate.Location = new System.Drawing.Point(12, 222);
             this.lblBthDate.Name = "lblBthDate";
-            this.lblBthDate.Size = new System.Drawing.Size(65, 19);
+            this.lblBthDate.Size = new System.Drawing.Size(63, 16);
             this.lblBthDate.TabIndex = 11;
             this.lblBthDate.Text = "생년월일 :";
             // 
@@ -160,29 +166,30 @@
             // 
             this.txtBthDate.BackColor = System.Drawing.Color.White;
             this.txtBthDate.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtBthDate.Location = new System.Drawing.Point(68, 250);
+            this.txtBthDate.Location = new System.Drawing.Point(16, 245);
+            this.txtBthDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBthDate.Multiline = true;
             this.txtBthDate.Name = "txtBthDate";
-            this.txtBthDate.Size = new System.Drawing.Size(323, 25);
+            this.txtBthDate.Size = new System.Drawing.Size(337, 28);
             this.txtBthDate.TabIndex = 10;
             // 
             // lblGen
             // 
             this.lblGen.AutoSize = true;
-            this.lblGen.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGen.Location = new System.Drawing.Point(68, 290);
+            this.lblGen.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblGen.Location = new System.Drawing.Point(12, 277);
             this.lblGen.Name = "lblGen";
-            this.lblGen.Size = new System.Drawing.Size(41, 19);
+            this.lblGen.Size = new System.Drawing.Size(39, 16);
             this.lblGen.TabIndex = 13;
             this.lblGen.Text = "성별 :";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(68, 357);
+            this.lblEmail.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblEmail.Location = new System.Drawing.Point(12, 331);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(53, 19);
+            this.lblEmail.Size = new System.Drawing.Size(51, 16);
             this.lblEmail.TabIndex = 15;
             this.lblEmail.Text = "이메일 :";
             // 
@@ -190,18 +197,20 @@
             // 
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtEmail.Location = new System.Drawing.Point(68, 379);
+            this.txtEmail.Location = new System.Drawing.Point(16, 354);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(323, 25);
+            this.txtEmail.Size = new System.Drawing.Size(337, 28);
             this.txtEmail.TabIndex = 14;
             // 
             // pictureBoxUpload
             // 
             this.pictureBoxUpload.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBoxUpload.Location = new System.Drawing.Point(68, 456);
+            this.pictureBoxUpload.Location = new System.Drawing.Point(57, 399);
+            this.pictureBoxUpload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxUpload.Name = "pictureBoxUpload";
-            this.pictureBoxUpload.Size = new System.Drawing.Size(100, 130);
+            this.pictureBoxUpload.Size = new System.Drawing.Size(114, 152);
             this.pictureBoxUpload.TabIndex = 16;
             this.pictureBoxUpload.TabStop = false;
             // 
@@ -214,28 +223,30 @@
             "",
             "남",
             "여"});
-            this.cmbGen.Location = new System.Drawing.Point(68, 312);
+            this.cmbGen.Location = new System.Drawing.Point(16, 300);
+            this.cmbGen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbGen.Name = "cmbGen";
-            this.cmbGen.Size = new System.Drawing.Size(121, 27);
+            this.cmbGen.Size = new System.Drawing.Size(138, 27);
             this.cmbGen.TabIndex = 18;
             // 
             // lblPictureBox
             // 
             this.lblPictureBox.AutoSize = true;
-            this.lblPictureBox.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPictureBox.Location = new System.Drawing.Point(187, 497);
+            this.lblPictureBox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblPictureBox.Location = new System.Drawing.Point(199, 464);
             this.lblPictureBox.Name = "lblPictureBox";
-            this.lblPictureBox.Size = new System.Drawing.Size(137, 38);
+            this.lblPictureBox.Size = new System.Drawing.Size(135, 32);
             this.lblPictureBox.TabIndex = 19;
             this.lblPictureBox.Text = "박스를 클릭하여 \r\n이미지를 추가하십시오.​";
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(116, 632);
+            this.btnSave.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSave.Location = new System.Drawing.Point(69, 585);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.Size = new System.Drawing.Size(114, 35);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "저장";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -243,20 +254,21 @@
             // cancel_button
             // 
             this.cancel_button.BackColor = System.Drawing.Color.White;
-            this.cancel_button.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancel_button.Location = new System.Drawing.Point(241, 632);
+            this.cancel_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cancel_button.Location = new System.Drawing.Point(220, 585);
+            this.cancel_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancel_button.Name = "cancel_button";
-            this.cancel_button.Size = new System.Drawing.Size(100, 30);
+            this.cancel_button.Size = new System.Drawing.Size(114, 35);
             this.cancel_button.TabIndex = 21;
             this.cancel_button.Text = "취소";
             this.cancel_button.UseVisualStyleBackColor = false;
             // 
             // User_Res
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(484, 683);
+            this.ClientSize = new System.Drawing.Size(458, 657);
             this.ControlBox = false;
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.btnSave);
@@ -277,6 +289,7 @@
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "User_Res";

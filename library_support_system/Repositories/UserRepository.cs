@@ -104,12 +104,13 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-        public List<UserModel> ReadAll()
+        public List<UserModel> ReadAll(int withdrawalStatus = 0)
         {
             var list = new List<UserModel>();
             using (var cmd = _conn.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Users";
+                cmd.CommandText = "SELECT * FROM Users WHERE User_WTHDR = :User_WTHDR";
+                cmd.Parameters.Add(new OracleParameter("User_WTHDR", withdrawalStatus)); // 파라미터 바인딩
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())

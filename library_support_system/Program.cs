@@ -19,6 +19,8 @@ namespace library_support_system
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            FontManager.LoadFonts();
+
             IHomeView view = new HomeView();
             HomePresenter presenter = new HomePresenter(view);
             Application.Run((Form)view); // 똑같은 view 인스턴스 사용!

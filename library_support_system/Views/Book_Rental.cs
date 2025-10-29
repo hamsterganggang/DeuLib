@@ -24,15 +24,13 @@ namespace library_support_system.Views
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
 
         }
-
+      
         public List<RentalModel> RentalList
         {
             set
             {
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = value;
-                // 컬럼 자동 생성 등 필요시 설정 추가 가능
-                ApplyRowStyles();
             }
         }
 
@@ -40,8 +38,17 @@ namespace library_support_system.Views
             ? dataGridView1.SelectedRows[0].DataBoundItem as RentalModel
             : null;
 
-        public void ShowMessage(string message) => MessageBox.Show(message);
+        #region Method
+        public void ShowRentalPopup(RentalModel rental)
+        {
+            // Presenter의 명령을 받아 팝업을 띄웁니다.
+            var popupForm = new Rental_Popup(rental);
+            popupForm.ShowDialog();
 
+            // 팝업이 닫힌 후, 목록을 새로고침합니다.
+            ViewLoaded?.Invoke(this, EventArgs.Empty);
+        }
+        //셀 클릭 하면 Rental_Popup 띄우기
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -51,33 +58,14 @@ namespace library_support_system.Views
             {
                 var currentList = dataGridView1.DataSource as List<RentalModel>;
                 if (currentList == null) return;
-
                 var clickedRental = currentList[e.RowIndex];
+
+                // !!! 여기가 수정되어야 합니다 !!!
+                // (팝업을 직접 띄우는 대신) Presenter에게 이벤트를 보냅니다.
                 RentalCheckClicked?.Invoke(this, new RentalModelEventArgs(clickedRental, e.RowIndex));
             }
         }
-
-        private void ApplyRowStyles()
-        {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                var row = dataGridView1.Rows[i];
-                var rental = row.DataBoundItem as RentalModel;
-                if (rental == null) continue;
-
-                if (rental.IsChildRow)
-                {
-                    row.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Italic);
-                    row.DefaultCellStyle.ForeColor = Color.DarkBlue;
-                    row.DefaultCellStyle.BackColor = Color.LightGray;
-                }
-                else
-                {
-                    row.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Regular);
-                    row.DefaultCellStyle.ForeColor = Color.Black;
-                    row.DefaultCellStyle.BackColor = Color.White;
-                }
-            }
-        }
+        public void ShowMessage(string message) => MessageBox.Show(message);
+        #endregion
     }
 }

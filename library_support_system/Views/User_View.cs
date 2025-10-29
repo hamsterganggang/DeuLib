@@ -21,6 +21,7 @@ namespace library_support_system
         public event EventHandler ChangeUserEvent;
         public event EventHandler SearchEvent;
         public event EventHandler DeleteUserEvent;
+        public event EventHandler RetireFilterChanged;
         private UserViewPresenter presenter;
 
         const string placeholder = "";
@@ -34,6 +35,7 @@ namespace library_support_system
             this.Load += User_View_Load;
             btnChange.Click += (sender, e) => ChangeUserEvent?.Invoke(sender, e);
             btnDel.Click += (sender, e) => DeleteUserEvent?.Invoke(sender, e);
+            this.chkRetireUser.CheckedChanged += (sender, e) => RetireFilterChanged?.Invoke(this, EventArgs.Empty);
         }
         public IEnumerable<UserModel> UserList
         {
@@ -61,6 +63,14 @@ namespace library_support_system
         {
             this.presenter = new UserViewPresenter(this);
         }
+        public void ShowUserEditForm(UserModel userToEdit)
+        {
+            // 💡 화면 이동/생성 로직은 View가 담당
+            var userResForm = new User_Res();
+            var userResPresenter = new UserResPresenter(userResForm, userToEdit);
+            userResForm.ShowDialog();
+        }
+        public bool IsRetireUserChecked => chkRetireUser.Checked;
         public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
         public string SearchBy { get => ddlSearch.SelectedItem?.ToString() ?? "이름"; set { /* ... */ } }
         public void ShowMessage(string message) { MessageBox.Show(message); }

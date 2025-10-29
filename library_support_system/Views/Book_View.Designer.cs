@@ -29,12 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.search_button = new System.Windows.Forms.Button();
-            this.search_textbox = new System.Windows.Forms.TextBox();
-            this.search_option_combobox = new System.Windows.Forms.ComboBox();
-            this.btnChange = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
             this.Book_Img = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtBookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +39,11 @@
             this.Book_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.search_button = new System.Windows.Forms.Button();
+            this.search_textbox = new System.Windows.Forms.TextBox();
+            this.search_option_combobox = new System.Windows.Forms.ComboBox();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +52,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Book_Img,
@@ -66,71 +75,21 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.DividerHeight = 3;
-            this.dataGridView1.RowTemplate.Height = 80;
+            this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1115, 346);
+            this.dataGridView1.Size = new System.Drawing.Size(1275, 346);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // search_button
-            // 
-            this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
-            this.search_button.Location = new System.Drawing.Point(557, 12);
-            this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(50, 31);
-            this.search_button.TabIndex = 11;
-            this.search_button.UseVisualStyleBackColor = true;
-            // 
-            // search_textbox
-            // 
-            this.search_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.search_textbox.BackColor = System.Drawing.Color.White;
-            this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(147, 12);
-            this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(404, 31);
-            this.search_textbox.TabIndex = 10;
-            // 
-            // search_option_combobox
-            // 
-            this.search_option_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.search_option_combobox.Font = new System.Drawing.Font("Noto Sans KR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_option_combobox.FormattingEnabled = true;
-            this.search_option_combobox.Location = new System.Drawing.Point(12, 12);
-            this.search_option_combobox.Name = "search_option_combobox";
-            this.search_option_combobox.Size = new System.Drawing.Size(129, 32);
-            this.search_option_combobox.TabIndex = 14;
-            // 
-            // btnChange
-            // 
-            this.btnChange.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnChange.Location = new System.Drawing.Point(12, 82);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(104, 29);
-            this.btnChange.TabIndex = 12;
-            this.btnChange.Text = "도서수정";
-            this.btnChange.UseVisualStyleBackColor = true;
-            // 
-            // btnDel
-            // 
-            this.btnDel.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnDel.Location = new System.Drawing.Point(122, 82);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(103, 29);
-            this.btnDel.TabIndex = 13;
-            this.btnDel.Text = "도서삭제";
-            this.btnDel.UseVisualStyleBackColor = true;
             // 
             // Book_Img
             // 
@@ -207,18 +166,68 @@
             this.Book_Exp.Name = "Book_Exp";
             this.Book_Exp.ReadOnly = true;
             // 
+            // search_button
+            // 
+            this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
+            this.search_button.Location = new System.Drawing.Point(720, 15);
+            this.search_button.Name = "search_button";
+            this.search_button.Size = new System.Drawing.Size(50, 31);
+            this.search_button.TabIndex = 11;
+            this.search_button.UseVisualStyleBackColor = true;
+            // 
+            // search_textbox
+            // 
+            this.search_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.search_textbox.BackColor = System.Drawing.Color.White;
+            this.search_textbox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search_textbox.Location = new System.Drawing.Point(136, 12);
+            this.search_textbox.Name = "search_textbox";
+            this.search_textbox.Size = new System.Drawing.Size(563, 32);
+            this.search_textbox.TabIndex = 10;
+            // 
+            // search_option_combobox
+            // 
+            this.search_option_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.search_option_combobox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.search_option_combobox.FormattingEnabled = true;
+            this.search_option_combobox.Location = new System.Drawing.Point(12, 12);
+            this.search_option_combobox.Name = "search_option_combobox";
+            this.search_option_combobox.Size = new System.Drawing.Size(129, 27);
+            this.search_option_combobox.TabIndex = 14;
+            // 
+            // btnChange
+            // 
+            this.btnChange.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnChange.Location = new System.Drawing.Point(12, 82);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(104, 29);
+            this.btnChange.TabIndex = 12;
+            this.btnChange.Text = "도서수정";
+            this.btnChange.UseVisualStyleBackColor = true;
+            // 
+            // btnDel
+            // 
+            this.btnDel.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDel.Location = new System.Drawing.Point(122, 82);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(103, 29);
+            this.btnDel.TabIndex = 13;
+            this.btnDel.Text = "도서삭제";
+            this.btnDel.UseVisualStyleBackColor = true;
+            // 
             // Book_View
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1115, 627);
+            this.ClientSize = new System.Drawing.Size(1274, 732);
             this.Controls.Add(this.search_option_combobox);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.search_button);
             this.Controls.Add(this.search_textbox);
             this.Controls.Add(this.dataGridView1);
-            this.Font = new System.Drawing.Font("Noto Sans KR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Book_View";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
