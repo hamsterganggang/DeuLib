@@ -50,7 +50,7 @@
             this.main_panel.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.main_panel.Location = new System.Drawing.Point(0, 0);
             this.main_panel.Name = "main_panel";
-            this.main_panel.Size = new System.Drawing.Size(1115, 627);
+            this.main_panel.Size = new System.Drawing.Size(1274, 732);
             this.main_panel.TabIndex = 0;
             this.main_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.main_panel_Paint);
             // 
@@ -59,12 +59,12 @@
             this.search_option_combobox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.search_option_combobox.BackColor = System.Drawing.Color.White;
             this.search_option_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.search_option_combobox.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.search_option_combobox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.search_option_combobox.FormattingEnabled = true;
-            this.search_option_combobox.Location = new System.Drawing.Point(242, 276);
+            this.search_option_combobox.Location = new System.Drawing.Point(322, 329);
             this.search_option_combobox.Margin = new System.Windows.Forms.Padding(4);
             this.search_option_combobox.Name = "search_option_combobox";
-            this.search_option_combobox.Size = new System.Drawing.Size(73, 29);
+            this.search_option_combobox.Size = new System.Drawing.Size(73, 27);
             this.search_option_combobox.TabIndex = 12;
             // 
             // search_button
@@ -74,7 +74,7 @@
             this.search_button.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
-            this.search_button.Location = new System.Drawing.Point(698, 276);
+            this.search_button.Location = new System.Drawing.Point(778, 329);
             this.search_button.Margin = new System.Windows.Forms.Padding(4);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(44, 37);
@@ -85,14 +85,14 @@
             // search_textbox
             // 
             this.search_textbox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.search_textbox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.search_textbox.BackColor = System.Drawing.Color.White;
             this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.search_textbox.Location = new System.Drawing.Point(323, 276);
+            this.search_textbox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search_textbox.Location = new System.Drawing.Point(394, 329);
             this.search_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.search_textbox.Multiline = true;
             this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(367, 37);
+            this.search_textbox.Size = new System.Drawing.Size(367, 27);
             this.search_textbox.TabIndex = 10;
             this.search_textbox.TextChanged += new System.EventHandler(this.search_textbox_TextChanged);
             this.search_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_textbox_KeyDown);
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(1115, 627);
+            this.ClientSize = new System.Drawing.Size(1274, 732);
             this.Controls.Add(this.main_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Home_Search";

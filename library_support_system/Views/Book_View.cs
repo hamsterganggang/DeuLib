@@ -71,7 +71,7 @@ namespace library_support_system.Views
             if (search_option_combobox != null)
             {
                 search_option_combobox.Items.Clear();
-                search_option_combobox.Items.Add("책이름");
+                search_option_combobox.Items.Add("도서 제목");
                 search_option_combobox.Items.Add("ISBN");
                 search_option_combobox.SelectedIndex = 0; // 기본값: 책이름
             }
