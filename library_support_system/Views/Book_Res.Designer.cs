@@ -350,8 +350,7 @@
             // 
             // Book_Res
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(562, 817);
             this.ControlBox = false;
             this.Controls.Add(this.scrollablePanel);
