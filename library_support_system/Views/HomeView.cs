@@ -41,6 +41,7 @@ namespace library_support_system.Views
         public HomeView()
         {
             InitializeComponent();
+            FontManager.ForceApplyFontToAllControls(this);
 
             btnUserRes.Click += (sender, e) => OpenUserRes?.Invoke(sender, e);
             user_check_button.Click += (sender, e) => OpenUserRetrieve?.Invoke(sender, e);
