@@ -384,25 +384,24 @@ namespace library_support_system.Views
             // 
             // search_button
             // 
-            this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
-            this.search_button.Location = new System.Drawing.Point(765, 224);
+            this.search_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.search_button.Location = new System.Drawing.Point(747, 224);
             this.search_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(45, 36);
+            this.search_button.Size = new System.Drawing.Size(70, 32);
             this.search_button.TabIndex = 9;
+            this.search_button.Text = "조회";
             this.search_button.UseVisualStyleBackColor = true;
             // 
             // search_textbox
             // 
             this.search_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.search_textbox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.search_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.search_textbox.BackColor = System.Drawing.Color.White;
+            this.search_textbox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search_textbox.Location = new System.Drawing.Point(163, 224);
             this.search_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.search_textbox.Name = "search_textbox";
-            this.search_textbox.Size = new System.Drawing.Size(578, 31);
+            this.search_textbox.Size = new System.Drawing.Size(578, 32);
             this.search_textbox.TabIndex = 8;
             // 
             // contextMenuStrip1

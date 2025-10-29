@@ -66,7 +66,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Font = new System.Drawing.Font("Noto Sans KR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(562, 53);
             this.panel3.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.exit_button.ForeColor = System.Drawing.Color.Red;
             this.exit_button.Image = global::library_support_system.Properties.Resources.exit_logo1;
             this.exit_button.Location = new System.Drawing.Point(494, 0);
-            this.exit_button.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.exit_button.Margin = new System.Windows.Forms.Padding(5);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(69, 53);
             this.exit_button.TabIndex = 0;
@@ -122,7 +122,7 @@
             this.scrollablePanel.Controls.Add(this.deu_logo);
             this.scrollablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scrollablePanel.Location = new System.Drawing.Point(0, 53);
-            this.scrollablePanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scrollablePanel.Margin = new System.Windows.Forms.Padding(5);
             this.scrollablePanel.Name = "scrollablePanel";
             this.scrollablePanel.Size = new System.Drawing.Size(562, 764);
             this.scrollablePanel.TabIndex = 1;
@@ -130,11 +130,11 @@
             // txtNum
             // 
             this.txtNum.BackColor = System.Drawing.Color.White;
-            this.txtNum.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtNum.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtNum.Location = new System.Drawing.Point(57, 44);
-            this.txtNum.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtNum.Margin = new System.Windows.Forms.Padding(5);
             this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(322, 31);
+            this.txtNum.Size = new System.Drawing.Size(322, 30);
             this.txtNum.TabIndex = 2;
             // 
             // lblNum
@@ -153,7 +153,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.Location = new System.Drawing.Point(389, 44);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 31);
             this.button1.TabIndex = 4;
@@ -174,11 +174,11 @@
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox5.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox5.Location = new System.Drawing.Point(57, 112);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(5);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(445, 31);
+            this.textBox5.Size = new System.Drawing.Size(445, 30);
             this.textBox5.TabIndex = 6;
             // 
             // lblAuthor
@@ -195,11 +195,11 @@
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox4.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox4.Location = new System.Drawing.Point(57, 180);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(5);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(445, 31);
+            this.textBox4.Size = new System.Drawing.Size(445, 30);
             this.textBox4.TabIndex = 8;
             // 
             // lblPublisher
@@ -216,11 +216,11 @@
             // txtEmail
             // 
             this.txtEmail.BackColor = System.Drawing.Color.White;
-            this.txtEmail.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtEmail.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtEmail.Location = new System.Drawing.Point(57, 247);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(185, 31);
+            this.txtEmail.Size = new System.Drawing.Size(185, 30);
             this.txtEmail.TabIndex = 10;
             // 
             // lblPrice
@@ -238,11 +238,11 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox1.Location = new System.Drawing.Point(286, 247);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 31);
+            this.textBox1.Size = new System.Drawing.Size(217, 30);
             this.textBox1.TabIndex = 12;
             // 
             // lblLink
@@ -259,11 +259,11 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox2.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox2.Location = new System.Drawing.Point(57, 315);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(457, 31);
+            this.textBox2.Size = new System.Drawing.Size(457, 30);
             this.textBox2.TabIndex = 14;
             // 
             // lblExplain
@@ -280,9 +280,9 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Font = new System.Drawing.Font("Noto Sans KR Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox3.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox3.Location = new System.Drawing.Point(57, 383);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(5);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -293,8 +293,9 @@
             // 
             this.pictureBoxUpload.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBoxUpload.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxUpload.ErrorImage = null;
             this.pictureBoxUpload.Location = new System.Drawing.Point(57, 477);
-            this.pictureBoxUpload.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pictureBoxUpload.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBoxUpload.Name = "pictureBoxUpload";
             this.pictureBoxUpload.Size = new System.Drawing.Size(144, 161);
             this.pictureBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -317,7 +318,7 @@
             this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSave.Location = new System.Drawing.Point(105, 673);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 47);
             this.btnSave.TabIndex = 19;
@@ -329,7 +330,7 @@
             this.cancel_button.BackColor = System.Drawing.Color.White;
             this.cancel_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cancel_button.Location = new System.Drawing.Point(296, 673);
-            this.cancel_button.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cancel_button.Margin = new System.Windows.Forms.Padding(5);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(137, 47);
             this.cancel_button.TabIndex = 20;
@@ -340,7 +341,7 @@
             // 
             this.deu_logo.Image = global::library_support_system.Properties.Resources.deu_logo;
             this.deu_logo.Location = new System.Drawing.Point(163, 180);
-            this.deu_logo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.deu_logo.Margin = new System.Windows.Forms.Padding(5);
             this.deu_logo.Name = "deu_logo";
             this.deu_logo.Size = new System.Drawing.Size(229, 268);
             this.deu_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

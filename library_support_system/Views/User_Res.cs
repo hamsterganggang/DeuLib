@@ -65,6 +65,7 @@ namespace library_support_system
         public User_Res()
         {
             InitializeComponent();
+            BindDropDownListGen();
 
             exit_button.Click += (sender, e) => ExitUserRes?.Invoke(sender, e);
             btnSave.Click += (sender, e) => btnSave_Click?.Invoke(sender, e);
@@ -81,9 +82,19 @@ namespace library_support_system
             // 성별 콤보박스 초기화
             cmbGen.SelectedIndex = 0; // 빈 항목으로 초기화
         }
-       
+
         #region Method
-        
+        private void BindDropDownListGen()
+        {
+            if (cmbGen != null)
+            {
+                cmbGen.Items.Clear();
+                cmbGen.Items.Add("선택");
+                cmbGen.Items.Add("남");
+                cmbGen.Items.Add("여");
+                cmbGen.SelectedIndex = 0;
+            }
+        }
         // 메시지 표시 메서드들
         public void ShowMessage(string message)
         {

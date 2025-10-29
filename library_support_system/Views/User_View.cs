@@ -28,6 +28,7 @@ namespace library_support_system
         public User_View()
         {
             InitializeComponent();
+            BindDropDownListSearch();
 
             this.AutoSize = false;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
@@ -37,6 +38,18 @@ namespace library_support_system
             btnDel.Click += (sender, e) => DeleteUserEvent?.Invoke(sender, e);
             this.chkRetireUser.CheckedChanged += (sender, e) => RetireFilterChanged?.Invoke(this, EventArgs.Empty);
         }
+        #region Bind
+        private void BindDropDownListSearch()
+        {
+            if (ddlSearch != null)
+            {
+                ddlSearch.Items.Clear();
+                ddlSearch.Items.Add("이름");
+                ddlSearch.Items.Add("전화번호");
+                ddlSearch.SelectedIndex = 0;
+            }
+        }
+        #endregion
         public IEnumerable<UserModel> UserList
         {
             set

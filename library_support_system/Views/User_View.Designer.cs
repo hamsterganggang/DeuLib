@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.ddlSearch = new System.Windows.Forms.ComboBox();
             this.chkRetireUser = new System.Windows.Forms.CheckBox();
@@ -53,10 +54,10 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(287, 12);
+            this.txtSearch.Location = new System.Drawing.Point(161, 13);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(516, 24);
+            this.txtSearch.Size = new System.Drawing.Size(282, 27);
             this.txtSearch.TabIndex = 9;
             // 
             // ddlSearch
@@ -64,21 +65,17 @@
             this.ddlSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ddlSearch.BackColor = System.Drawing.Color.White;
             this.ddlSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ddlSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ddlSearch.FormattingEnabled = true;
-            this.ddlSearch.Items.AddRange(new object[] {
-            "전체",
-            "이름",
-            "전화번호"});
-            this.ddlSearch.Location = new System.Drawing.Point(12, 12);
+            this.ddlSearch.Location = new System.Drawing.Point(12, 13);
             this.ddlSearch.Name = "ddlSearch";
-            this.ddlSearch.Size = new System.Drawing.Size(280, 24);
+            this.ddlSearch.Size = new System.Drawing.Size(153, 27);
             this.ddlSearch.TabIndex = 19;
             // 
             // chkRetireUser
             // 
             this.chkRetireUser.AutoSize = true;
-            this.chkRetireUser.Location = new System.Drawing.Point(227, 83);
+            this.chkRetireUser.Location = new System.Drawing.Point(261, 74);
             this.chkRetireUser.Margin = new System.Windows.Forms.Padding(2);
             this.chkRetireUser.Name = "chkRetireUser";
             this.chkRetireUser.Size = new System.Drawing.Size(141, 24);
@@ -109,14 +106,14 @@
             this.txtPhonenum,
             this.txtEmail,
             this.txtWithDR});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.Location = new System.Drawing.Point(0, 114);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
@@ -136,29 +133,29 @@
             // 
             // btnChange
             // 
-            this.btnChange.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnChange.Location = new System.Drawing.Point(12, 82);
+            this.btnChange.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnChange.Location = new System.Drawing.Point(12, 64);
             this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(104, 29);
+            this.btnChange.Size = new System.Drawing.Size(121, 42);
             this.btnChange.TabIndex = 25;
             this.btnChange.Text = "회원수정";
             // 
             // btnDel
             // 
-            this.btnDel.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnDel.Location = new System.Drawing.Point(122, 82);
+            this.btnDel.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDel.Location = new System.Drawing.Point(139, 64);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(100, 29);
+            this.btnDel.Size = new System.Drawing.Size(117, 42);
             this.btnDel.TabIndex = 26;
             this.btnDel.Text = "회원탈퇴";
             this.btnDel.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
-            this.btnSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSearch.Location = new System.Drawing.Point(798, 10);
+            this.btnSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSearch.Location = new System.Drawing.Point(459, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(81, 27);
+            this.btnSearch.Size = new System.Drawing.Size(72, 28);
             this.btnSearch.TabIndex = 27;
             this.btnSearch.Text = "조회";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -197,6 +194,8 @@
             // 
             this.txtGender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.txtGender.DataPropertyName = "GenderDisplay";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtGender.DefaultCellStyle = dataGridViewCellStyle2;
             this.txtGender.HeaderText = "성별";
             this.txtGender.MinimumWidth = 6;
             this.txtGender.Name = "txtGender";
@@ -224,8 +223,8 @@
             // 
             this.txtWithDR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.txtWithDR.DataPropertyName = "WTHDRDisplay";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.txtWithDR.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtWithDR.DefaultCellStyle = dataGridViewCellStyle3;
             this.txtWithDR.HeaderText = "상태";
             this.txtWithDR.MinimumWidth = 6;
             this.txtWithDR.Name = "txtWithDR";

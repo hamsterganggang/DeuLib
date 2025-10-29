@@ -72,13 +72,13 @@
             this.search_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.search_button.BackColor = System.Drawing.Color.White;
             this.search_button.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.search_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search_button.Image = global::library_support_system.Properties.Resources.search_logo;
+            this.search_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.search_button.Location = new System.Drawing.Point(778, 329);
             this.search_button.Margin = new System.Windows.Forms.Padding(4);
             this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(44, 37);
+            this.search_button.Size = new System.Drawing.Size(74, 27);
             this.search_button.TabIndex = 11;
+            this.search_button.Text = "조회";
             this.search_button.UseVisualStyleBackColor = false;
             this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
@@ -86,7 +86,6 @@
             // 
             this.search_textbox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.search_textbox.BackColor = System.Drawing.Color.White;
-            this.search_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_textbox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search_textbox.Location = new System.Drawing.Point(394, 329);
             this.search_textbox.Margin = new System.Windows.Forms.Padding(4);

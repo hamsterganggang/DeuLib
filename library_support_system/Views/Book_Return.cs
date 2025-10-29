@@ -19,6 +19,7 @@ namespace library_support_system.Views
         public Book_Return()
         {
             InitializeComponent();
+            BindDropDownListSearch();
             _presenter = new BookReturnPresenter(this);
 
             dataGridView1.AutoGenerateColumns = false;
@@ -31,7 +32,16 @@ namespace library_support_system.Views
             this.dataGridView1.CellFormatting += DataGridView1_CellFormatting;
         }
 
-        // --- 인터페이스 속성/메서드 구현 ---
+        private void BindDropDownListSearch()
+        {
+            if (ddlSearch != null)
+            {
+                ddlSearch.Items.Clear();
+                ddlSearch.Items.Add("도서 제목");
+                ddlSearch.Items.Add("저자");
+                ddlSearch.SelectedIndex = 0;
+            }
+        }
         public bool IsReturnedListChecked => chkReturnList.Checked;
         // *** (추가) SelectedRental 속성 구현 ***
         public RentalModel SelectedRental => dataGridView1.SelectedRows.Count > 0
