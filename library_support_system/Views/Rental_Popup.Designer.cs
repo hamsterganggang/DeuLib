@@ -112,8 +112,7 @@
             // 
             // Rental_Popup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(361, 240);
             this.Controls.Add(this.btnNumCheck);
             this.Controls.Add(this.txtPhoneNum);
