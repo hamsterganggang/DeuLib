@@ -106,7 +106,13 @@ namespace library_support_system.Repositories
             {
                 using (var cmd = _conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Books WHERE Book_Seq = :Book_Seq";
+                    cmd.CommandText = @"
+                        DELETE FROM Books b
+                        WHERE b.Book_Seq = :Book_Seq
+                          AND NOT EXISTS (SELECT 1
+                                          FROM BOOK_RNT r
+                                          WHERE r.Book_ISBN = b.Book_ISBN
+                                            AND r.Rental_Status = 1)";
                     cmd.Parameters.Add(new OracleParameter("Book_Seq", bookSeq));
                     return cmd.ExecuteNonQuery() > 0;
                 }
@@ -115,6 +121,34 @@ namespace library_support_system.Repositories
             {
                 System.Diagnostics.Debug.WriteLine($"BookRepository Delete Error: {ex.Message}");
                 throw;
+            }
+        }
+        public bool IsBookRented(int bookSeq)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    // Books 테이블과 BOOK_RNT 테이블을 조인하여
+                    // Book_Seq가 일치하고 Rental_Status가 1인 것이 있는지 카운트
+                    cmd.CommandText = @"
+                        SELECT COUNT(1)
+                        FROM BOOK_RNT r
+                        JOIN BOOKS b ON r.Book_ISBN = b.Book_ISBN
+                        WHERE b.Book_Seq = :Book_Seq
+                          AND r.Rental_Status = 1";
+
+                    cmd.Parameters.Add(new OracleParameter("Book_Seq", bookSeq));
+
+                    // COUNT가 0보다 크면(1 이상이면) true (대여중) 반환
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository IsBookRented Error: {ex.Message}");
+                throw; // 오류 발생 시 Presenter로 예외 전달
             }
         }
         public List<BookModel> ReadAll()

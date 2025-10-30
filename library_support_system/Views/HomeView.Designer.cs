@@ -91,10 +91,10 @@ namespace library_support_system.Views
             // 
             this.rental_panel.Controls.Add(this.book_rental_button);
             this.rental_panel.Controls.Add(this.book_return_button);
-            this.rental_panel.Location = new System.Drawing.Point(6, 586);
+            this.rental_panel.Location = new System.Drawing.Point(8, 607);
             this.rental_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rental_panel.Name = "rental_panel";
-            this.rental_panel.Size = new System.Drawing.Size(171, 111);
+            this.rental_panel.Size = new System.Drawing.Size(170, 110);
             this.rental_panel.TabIndex = 6;
             // 
             // book_rental_button
@@ -104,10 +104,10 @@ namespace library_support_system.Views
             this.book_rental_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_rental_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_rental_button.ForeColor = System.Drawing.Color.White;
-            this.book_rental_button.Location = new System.Drawing.Point(-3, 0);
+            this.book_rental_button.Location = new System.Drawing.Point(1, 4);
             this.book_rental_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.book_rental_button.Name = "book_rental_button";
-            this.book_rental_button.Size = new System.Drawing.Size(171, 47);
+            this.book_rental_button.Size = new System.Drawing.Size(167, 47);
             this.book_rental_button.TabIndex = 6;
             this.book_rental_button.Text = "도서대여";
             this.book_rental_button.UseVisualStyleBackColor = false;
@@ -119,10 +119,10 @@ namespace library_support_system.Views
             this.book_return_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_return_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_return_button.ForeColor = System.Drawing.Color.White;
-            this.book_return_button.Location = new System.Drawing.Point(-2, 64);
+            this.book_return_button.Location = new System.Drawing.Point(1, 55);
             this.book_return_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.book_return_button.Name = "book_return_button";
-            this.book_return_button.Size = new System.Drawing.Size(171, 47);
+            this.book_return_button.Size = new System.Drawing.Size(167, 47);
             this.book_return_button.TabIndex = 5;
             this.book_return_button.Text = "도서반납";
             this.book_return_button.UseVisualStyleBackColor = false;
@@ -134,10 +134,10 @@ namespace library_support_system.Views
             this.rental_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rental_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.rental_button.ForeColor = System.Drawing.Color.White;
-            this.rental_button.Location = new System.Drawing.Point(6, 507);
+            this.rental_button.Location = new System.Drawing.Point(6, 529);
             this.rental_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rental_button.Name = "rental_button";
-            this.rental_button.Size = new System.Drawing.Size(171, 71);
+            this.rental_button.Size = new System.Drawing.Size(171, 70);
             this.rental_button.TabIndex = 7;
             this.rental_button.Text = "대여관리";
             this.rental_button.UseVisualStyleBackColor = false;
@@ -146,10 +146,10 @@ namespace library_support_system.Views
             // 
             this.account_panel.Controls.Add(this.user_check_button);
             this.account_panel.Controls.Add(this.btnUserRes);
-            this.account_panel.Location = new System.Drawing.Point(7, 400);
+            this.account_panel.Location = new System.Drawing.Point(6, 418);
             this.account_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.account_panel.Name = "account_panel";
-            this.account_panel.Size = new System.Drawing.Size(173, 108);
+            this.account_panel.Size = new System.Drawing.Size(170, 110);
             this.account_panel.TabIndex = 4;
             // 
             // user_check_button
@@ -159,10 +159,10 @@ namespace library_support_system.Views
             this.user_check_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.user_check_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.user_check_button.ForeColor = System.Drawing.Color.White;
-            this.user_check_button.Location = new System.Drawing.Point(-2, 4);
+            this.user_check_button.Location = new System.Drawing.Point(1, 4);
             this.user_check_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.user_check_button.Name = "user_check_button";
-            this.user_check_button.Size = new System.Drawing.Size(173, 47);
+            this.user_check_button.Size = new System.Drawing.Size(168, 47);
             this.user_check_button.TabIndex = 4;
             this.user_check_button.Text = "회원조회";
             this.user_check_button.UseVisualStyleBackColor = false;
@@ -174,10 +174,10 @@ namespace library_support_system.Views
             this.btnUserRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserRes.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnUserRes.ForeColor = System.Drawing.Color.White;
-            this.btnUserRes.Location = new System.Drawing.Point(-2, 59);
+            this.btnUserRes.Location = new System.Drawing.Point(1, 59);
             this.btnUserRes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUserRes.Name = "btnUserRes";
-            this.btnUserRes.Size = new System.Drawing.Size(171, 47);
+            this.btnUserRes.Size = new System.Drawing.Size(168, 47);
             this.btnUserRes.TabIndex = 3;
             this.btnUserRes.Text = "회원등록";
             this.btnUserRes.UseVisualStyleBackColor = false;
@@ -189,10 +189,10 @@ namespace library_support_system.Views
             this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.account_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.account_button.ForeColor = System.Drawing.Color.White;
-            this.account_button.Location = new System.Drawing.Point(6, 330);
+            this.account_button.Location = new System.Drawing.Point(6, 340);
             this.account_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.account_button.Name = "account_button";
-            this.account_button.Size = new System.Drawing.Size(171, 71);
+            this.account_button.Size = new System.Drawing.Size(171, 70);
             this.account_button.TabIndex = 5;
             this.account_button.Text = "회원관리";
             this.account_button.UseVisualStyleBackColor = false;
@@ -201,10 +201,10 @@ namespace library_support_system.Views
             // 
             this.book_panel.Controls.Add(this.book_check_button);
             this.book_panel.Controls.Add(this.book_enroll_button);
-            this.book_panel.Location = new System.Drawing.Point(5, 223);
+            this.book_panel.Location = new System.Drawing.Point(7, 226);
             this.book_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.book_panel.Name = "book_panel";
-            this.book_panel.Size = new System.Drawing.Size(173, 108);
+            this.book_panel.Size = new System.Drawing.Size(170, 110);
             this.book_panel.TabIndex = 3;
             // 
             // book_check_button
@@ -214,10 +214,10 @@ namespace library_support_system.Views
             this.book_check_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_check_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_check_button.ForeColor = System.Drawing.Color.White;
-            this.book_check_button.Location = new System.Drawing.Point(1, 0);
+            this.book_check_button.Location = new System.Drawing.Point(-1, 4);
             this.book_check_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.book_check_button.Name = "book_check_button";
-            this.book_check_button.Size = new System.Drawing.Size(173, 47);
+            this.book_check_button.Size = new System.Drawing.Size(171, 47);
             this.book_check_button.TabIndex = 2;
             this.book_check_button.Text = "도서조회";
             this.book_check_button.UseVisualStyleBackColor = false;
@@ -229,10 +229,10 @@ namespace library_support_system.Views
             this.book_enroll_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_enroll_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_enroll_button.ForeColor = System.Drawing.Color.White;
-            this.book_enroll_button.Location = new System.Drawing.Point(0, 54);
+            this.book_enroll_button.Location = new System.Drawing.Point(-1, 59);
             this.book_enroll_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.book_enroll_button.Name = "book_enroll_button";
-            this.book_enroll_button.Size = new System.Drawing.Size(171, 47);
+            this.book_enroll_button.Size = new System.Drawing.Size(170, 47);
             this.book_enroll_button.TabIndex = 1;
             this.book_enroll_button.Text = "도서등록";
             this.book_enroll_button.UseVisualStyleBackColor = false;
@@ -244,10 +244,10 @@ namespace library_support_system.Views
             this.book_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.book_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.book_button.ForeColor = System.Drawing.Color.White;
-            this.book_button.Location = new System.Drawing.Point(7, 154);
+            this.book_button.Location = new System.Drawing.Point(7, 148);
             this.book_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.book_button.Name = "book_button";
-            this.book_button.Size = new System.Drawing.Size(171, 71);
+            this.book_button.Size = new System.Drawing.Size(171, 70);
             this.book_button.TabIndex = 3;
             this.book_button.Text = "도서관리";
             this.book_button.UseVisualStyleBackColor = false;
@@ -342,9 +342,9 @@ namespace library_support_system.Views
             // 
             // labelCurrentMenu1
             // 
-            this.labelCurrentMenu1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelCurrentMenu1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelCurrentMenu1.ForeColor = System.Drawing.Color.White;
-            this.labelCurrentMenu1.Location = new System.Drawing.Point(27, 36);
+            this.labelCurrentMenu1.Location = new System.Drawing.Point(27, 38);
             this.labelCurrentMenu1.Name = "labelCurrentMenu1";
             this.labelCurrentMenu1.Size = new System.Drawing.Size(111, 21);
             this.labelCurrentMenu1.TabIndex = 1;
@@ -354,11 +354,11 @@ namespace library_support_system.Views
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(53, 5);
+            this.label1.Location = new System.Drawing.Point(52, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
+            this.label1.Size = new System.Drawing.Size(60, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "현재메뉴";
             // 

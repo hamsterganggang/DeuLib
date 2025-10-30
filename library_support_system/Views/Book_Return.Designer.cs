@@ -39,7 +39,6 @@
             this.txtEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPicture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.반납여부 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cancel_button = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.ddlSearch = new System.Windows.Forms.ComboBox();
@@ -53,7 +52,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -161,24 +160,13 @@
             this.반납여부.Name = "반납여부";
             this.반납여부.ReadOnly = true;
             // 
-            // cancel_button
-            // 
-            this.cancel_button.BackColor = System.Drawing.Color.White;
-            this.cancel_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cancel_button.Location = new System.Drawing.Point(122, 82);
-            this.cancel_button.Name = "cancel_button";
-            this.cancel_button.Size = new System.Drawing.Size(103, 29);
-            this.cancel_button.TabIndex = 24;
-            this.cancel_button.Text = "삭제";
-            this.cancel_button.UseVisualStyleBackColor = false;
-            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSave.Location = new System.Drawing.Point(12, 82);
+            this.btnSave.Location = new System.Drawing.Point(12, 67);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 29);
+            this.btnSave.Size = new System.Drawing.Size(110, 39);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "반납";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -220,7 +208,7 @@
             // chkReturnList
             // 
             this.chkReturnList.AutoSize = true;
-            this.chkReturnList.Location = new System.Drawing.Point(231, 85);
+            this.chkReturnList.Location = new System.Drawing.Point(133, 77);
             this.chkReturnList.Name = "chkReturnList";
             this.chkReturnList.Size = new System.Drawing.Size(141, 24);
             this.chkReturnList.TabIndex = 28;
@@ -237,7 +225,6 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.ddlSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -254,7 +241,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button cancel_button;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ComboBox ddlSearch;

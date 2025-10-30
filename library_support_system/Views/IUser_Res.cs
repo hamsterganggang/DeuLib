@@ -18,6 +18,9 @@ namespace library_support_system.Views
         // [추가] Presenter가 View의 UI 텍스트를 제어하기 위한 속성
         string FormText { get; set; }
         string SaveButtonText { get; set; }
+        bool IsSaveButtonEnabled { set; }         // ★ (추가) "저장" 버튼 활성화/비활성화
+        bool IsPhoneTextBoxReadOnly { set; }      // ★ (추가) "전화번호" 텍스트박스 읽기전용/활성화
+        bool IsCheckButtonEnabled { set; }
         #endregion
 
         #region Events

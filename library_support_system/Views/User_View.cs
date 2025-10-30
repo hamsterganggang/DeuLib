@@ -37,6 +37,7 @@ namespace library_support_system
             btnChange.Click += (sender, e) => ChangeUserEvent?.Invoke(sender, e);
             btnDel.Click += (sender, e) => DeleteUserEvent?.Invoke(sender, e);
             this.chkRetireUser.CheckedChanged += (sender, e) => RetireFilterChanged?.Invoke(this, EventArgs.Empty);
+            this.chkRetireUser.CheckedChanged += ChkRetireUser_CheckedChanged;
             btnSearch.Click += (sender, e) => SearchEvent?.Invoke(this, EventArgs.Empty); // 검색 버튼 클릭 시
             // 엔터키로 검색 실행
             txtSearch.KeyDown += (s, e) => {
@@ -80,6 +81,7 @@ namespace library_support_system
         private void User_View_Load(object sender, EventArgs e)
         {
             this.presenter = new UserViewPresenter(this);
+            btnDel.Text = "회원 탈퇴";
         }
         public void ShowUserEditForm(UserModel userToEdit)
         {
@@ -92,6 +94,20 @@ namespace library_support_system
         public string SearchValue => txtSearch.Text.Trim();
         public string SearchBy => ddlSearch.SelectedItem?.ToString() ?? "이름";
         public void ShowMessage(string message) { MessageBox.Show(message); }
+        private void ChkRetireUser_CheckedChanged(object sender, EventArgs e)
+        {
+            // 1. Presenter에게 "필터 변경됨" 보고 (DB 새로고침)
+            RetireFilterChanged?.Invoke(this, EventArgs.Empty);
 
+            // 2. ★★★ (추가) 체크박스 상태에 따라 "탈퇴/재가입" 버튼 텍스트 변경 ★★★
+            if (chkRetireUser.Checked) // "탈퇴 회원 조회"가 체크되면
+            {
+                btnDel.Text = "재가입"; // 버튼 텍스트를 "재가입"으로
+            }
+            else // 체크가 해제되면
+            {
+                btnDel.Text = "회원 탈퇴"; // 버튼 텍스트를 "회원 탈퇴"로
+            }
+        }
     }
 }

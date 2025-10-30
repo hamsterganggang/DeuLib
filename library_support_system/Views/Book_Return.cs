@@ -79,7 +79,56 @@ namespace library_support_system.Views
         // --- DataGridView 포맷팅 (변경 없음) ---
         private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // ... (기존 코드와 동일) ...
+            // Designer.cs의 "반납여부" 컬럼 (DataPropertyName: "Rental_Status")을 찾음
+            // ★★★ Designer.cs에서 해당 컬럼의 Name 속성도 "반납여부"로 설정했는지 확인하세요 ★★★
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "반납여부" && e.Value != null)
+            {
+                // e.Value는 Rental_Status (int) 값입니다.
+                if (e.Value is int status) // 형변환이 안전하게 되는지 확인
+                {
+                    if (status == 1)
+                    {
+                        e.Value = "대여중";
+                    }
+                    else // status가 0 또는 그 외의 값일 경우
+                    {
+                        e.Value = "반납 완료";
+                    }
+                    e.FormattingApplied = true; // WinForms에게 값이 처리되었음을 알림
+                }
+            }
+
+            // --- 날짜 컬럼 형식 변경 (기존 로직 유지) ---
+
+            // Designer.cs의 대여일 컬럼 (DataPropertyName: "Rental_Date")
+            // ★★★ Designer.cs에서 해당 컬럼의 Name이 "txtEmail"로 되어있는지 확인하세요 ★★★
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "txtEmail" && e.Value != null)
+            {
+                if (e.Value is DateTime date && date.Year > 1900)
+                {
+                    e.Value = date.ToString("yyyy-MM-dd");
+                    e.FormattingApplied = true;
+                }
+                else
+                {
+                    e.Value = ""; // 1900년이거나 날짜 형식이 아니면 비움
+                }
+            }
+
+            // Designer.cs의 반납 예정일 컬럼 (DataPropertyName: "Rental_Return_Date")
+            // ★★★ Designer.cs에서 해당 컬럼의 Name이 "txtPicture"로 되어있는지 확인하세요 ★★★
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "txtPicture" && e.Value != null)
+            {
+                if (e.Value is DateTime date && date.Year > 1900)
+                {
+                    e.Value = date.ToString("yyyy-MM-dd");
+                    e.FormattingApplied = true;
+                }
+                else
+                {
+                    e.Value = "";
+                }
+            }
         }
     }
 }

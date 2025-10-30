@@ -4,6 +4,7 @@ using library_support_system.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace library_support_system.Presenters
 {
@@ -11,6 +12,7 @@ namespace library_support_system.Presenters
     {
         private readonly IUser_View view;
         private readonly UserRepository userRepository;
+        private readonly RentalRepository rentalRepository;
 
         private List<UserModel> _cachedUserList;
 
@@ -18,7 +20,7 @@ namespace library_support_system.Presenters
         {
             this.view = view;
             this.userRepository = new UserRepository();
-
+            this.rentalRepository = new RentalRepository();
             // --- 이벤트 구독 ---
             this.view.ChangeUserEvent += OnChangeUser;
             this.view.DeleteUserEvent += OnDeleteUser;
@@ -101,22 +103,70 @@ namespace library_support_system.Presenters
         private void OnDeleteUser(object sender, EventArgs e)
         {
             var user = view.SelectedUser;
-            if (user != null)
+            if (user == null)
             {
-                bool success = userRepository.UpdateUserWTHDR(user.User_Phone);
-                if (success)
+                view.ShowMessage("처리할 회원을 선택하세요.");
+                return;
+            }
+
+            try
+            {
+                // --- ★★★ 3. (로직 분기) 선택된 회원의 상태 확인 ★★★ ---
+                if (user.User_WTHDR == 0) // 현재 "활성 회원"인 경우 -> "탈퇴" 처리
                 {
-                    view.ShowMessage("회원 탈퇴가 완료되었습니다.");
-                    RetrieveDataFromDB(); // ★★★ 수정: 삭제 후 새로고침
+                    // 3-1. 탈퇴 확인 메시지
+                    DialogResult confirm = MessageBox.Show($"'{user.User_Name}' 회원을 정말로 탈퇴 처리하시겠습니까?",
+                                                         "탈퇴 확인",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Warning);
+                    if (confirm == DialogResult.No) return;
+
+                    // 3-2. 대여 상태 확인 (기존 로직)
+                    bool isRenting = rentalRepository.IsUserRenting(user.User_Phone);
+                    if (isRenting)
+                    {
+                        view.ShowMessage("대여중인 도서가 있는 회원은 탈퇴시킬 수 없습니다.\n먼저 도서를 모두 반납 처리해주세요.");
+                        return;
+                    }
+
+                    // 3-3. 탈퇴(WTHDR=1) 처리
+                    bool success = userRepository.UpdateUserWTHDR(user.User_Phone);
+                    if (success)
+                    {
+                        view.ShowMessage("회원 탈퇴가 완료되었습니다.");
+                        RetrieveDataFromDB(); // 새로고침
+                    }
+                    else
+                    {
+                        view.ShowMessage("회원 탈퇴에 실패했습니다.");
+                    }
                 }
-                else
+                else // 현재 "탈퇴 회원"(User_WTHDR == 1)인 경우 -> "복구" 처리
                 {
-                    view.ShowMessage("회원 탈퇴에 실패했습니다.");
+                    // 3-4. 복구 확인 메시지
+                    DialogResult confirm = MessageBox.Show($"'{user.User_Name}' 회원을 다시 가입 상태로 복구하시겠습니까?",
+                                                         "복구 확인",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question);
+                    if (confirm == DialogResult.No) return;
+
+                    // 3-5. 복구(WTHDR=0) 처리
+                    // (Repository에 RestoreUserWTHDR 메서드가 있어야 함)
+                    bool success = userRepository.RestoreUserWTHDR(user.User_Phone);
+                    if (success)
+                    {
+                        view.ShowMessage("회원 복구가 완료되었습니다.");
+                        RetrieveDataFromDB(); // 새로고침
+                    }
+                    else
+                    {
+                        view.ShowMessage("회원 복구에 실패했습니다.");
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                view.ShowMessage("삭제할 회원을 선택하세요.");
+                view.ShowMessage($"회원 상태 변경 처리 중 오류가 발생했습니다: {ex.Message}");
             }
         }
     }

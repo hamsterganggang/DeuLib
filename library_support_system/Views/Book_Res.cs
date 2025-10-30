@@ -29,6 +29,49 @@ namespace library_support_system.Views
         public byte[] UploadImageBytes => _uploadedImageBytes;
         public string BookExplain => textBox3.Text.Trim();
         PictureBox IBook_Res.BookPictureBox => this.pictureBoxUpload;
+        public bool IsSaveButtonEnabled
+        {
+            set { btnSave.Enabled = value; }
+        }
+
+        public bool IsIsbnTextBoxReadOnly
+        {
+            set
+            {
+                txtNum.ReadOnly = value; // 1. 읽기 전용 상태 설정
+            
+                // 2. 상태(value)에 따라 배경색 변경
+                if (value == true) // "ReadOnly = true" (수정 모드)일 때
+                {
+                    // "비활성화된 컨트롤"의 표준 회색으로 변경
+                    txtNum.BackColor = SystemColors.Control;
+                }
+                else // "ReadOnly = false" (신규 등록 모드)일 때
+                {
+                    // "활성화된 창"의 표준 흰색으로 변경
+                    txtNum.BackColor = SystemColors.Window;
+                }
+            }
+        }
+        public bool IsDuplicateCheckButtonEnabled
+        {
+            set
+            {
+                button1.Enabled = value;
+
+                // --- ★★★ 2. (추가) 상태에 따라 배경색 변경 ★★★ ---
+                if (value == true) // "Enabled = true" (신규 등록 모드)일 때
+                {
+                    // 기본 버튼 색상 (보통 흰색 또는 시스템 기본값)
+                    button1.BackColor = SystemColors.Window;
+                }
+                else // "Enabled = false" (수정 모드)일 때
+                {
+                    // 요청하신 "비활성화된 회색"
+                    button1.BackColor = SystemColors.Control;
+                }
+            }
+        }
         #endregion
 
         #region Events
@@ -37,6 +80,7 @@ namespace library_support_system.Views
         public event EventHandler btnCancel_Click;
         public event EventHandler btnDuplicateCheck_Click;
         public event EventHandler pictureBoxUpload_Click;
+        public event EventHandler IsbnTextChanged;
         #endregion
 
         // 기본 생성자
@@ -51,6 +95,7 @@ namespace library_support_system.Views
             cancel_button.Click += (sender, e) => btnCancel_Click?.Invoke(sender, e);
             button1.Click += (sender, e) => btnDuplicateCheck_Click?.Invoke(sender, e);
             pictureBoxUpload.Click += (sender, e) => pictureBoxUpload_Click?.Invoke(sender, e);
+            txtNum.TextChanged += (sender, e) => IsbnTextChanged?.Invoke(sender, e);
 
             pictureBoxUpload.BorderStyle = BorderStyle.FixedSingle;
             pictureBoxUpload.SizeMode = PictureBoxSizeMode.StretchImage;
