@@ -215,7 +215,63 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
-        // 자원 해제 (프로그램 종료 시 호출)
- 
+
+        public List<UserModel> SearchByName(string name, int withdrawalStatus = 0)
+        {
+            var list = new List<UserModel>();
+            using (var cmd = _conn.CreateCommand())
+            {
+                cmd.CommandText = "SELECT * FROM Users WHERE User_WTHDR = :User_WTHDR AND UPPER(User_Name) LIKE UPPER(:User_Name)";
+                cmd.Parameters.Add(new OracleParameter("User_WTHDR", withdrawalStatus));
+                cmd.Parameters.Add(new OracleParameter("User_Name", $"%{name}%"));
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new UserModel
+                        {
+                            User_Seq = Convert.ToInt32(reader["User_Seq"]),
+                            User_Phone = reader["User_Phone"].ToString(),
+                            User_Name = reader["User_Name"].ToString(),
+                            User_Birthdate = FormatBirthdate(reader["User_Birthdate"]),
+                            User_Gender = Convert.ToInt32(reader["User_Gender"]),
+                            User_Mail = reader["User_Mail"].ToString(),
+                            User_Image = reader["User_Image"] == DBNull.Value ? null : (byte[])reader["User_Image"],
+                            User_WTHDR = Convert.ToInt32(reader["User_WTHDR"])
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<UserModel> SearchByPhone(string phone, int withdrawalStatus = 0)
+        {
+            var list = new List<UserModel>();
+            using (var cmd = _conn.CreateCommand())
+            {
+                cmd.CommandText = "SELECT * FROM Users WHERE User_WTHDR = :User_WTHDR AND User_Phone LIKE :User_Phone";
+                cmd.Parameters.Add(new OracleParameter("User_WTHDR", withdrawalStatus));
+                cmd.Parameters.Add(new OracleParameter("User_Phone", $"%{phone}%"));
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new UserModel
+                        {
+                            User_Seq = Convert.ToInt32(reader["User_Seq"]),
+                            User_Phone = reader["User_Phone"].ToString(),
+                            User_Name = reader["User_Name"].ToString(),
+                            User_Birthdate = FormatBirthdate(reader["User_Birthdate"]),
+                            User_Gender = Convert.ToInt32(reader["User_Gender"]),
+                            User_Mail = reader["User_Mail"].ToString(),
+                            User_Image = reader["User_Image"] == DBNull.Value ? null : (byte[])reader["User_Image"],
+                            User_WTHDR = Convert.ToInt32(reader["User_WTHDR"])
+                        });
+                    }
+                }
+            }
+            return list;
+        }
     }
 }
