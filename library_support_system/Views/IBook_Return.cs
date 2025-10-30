@@ -9,11 +9,16 @@ namespace library_support_system.Views
     {
         // 1. View -> Presenter (이벤트)
         event EventHandler ViewLoaded;
-        event EventHandler ReturnClicked; // *** "반납" 버튼 클릭 이벤트 추가 ***
+        event EventHandler ReturnClicked;
         event EventHandler ReturnListFilterChanged;
+        event EventHandler SearchClicked; // *** "검색" 버튼 클릭 이벤트 추가 ***
+
         // 2. View -> Presenter (데이터 제공)
-        RentalModel SelectedRental { get; } // *** 그리드 선택 항목 속성 추가 ***
+        RentalModel SelectedRental { get; }
         bool IsReturnedListChecked { get; }
+        string SearchType { get; }      // *** (추가) 검색 조건 (예: "도서 제목")
+        string SearchKeyword { get; }   // *** (추가) 검색어 (예: "C#")
+
         // 3. Presenter -> View (명령)
         List<RentalModel> RentalList { set; }
         void ShowMessage(string message);

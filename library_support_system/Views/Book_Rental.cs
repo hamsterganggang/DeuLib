@@ -13,17 +13,28 @@ namespace library_support_system.Views
         private BookRentalPresenter _presenter;
         public event EventHandler ViewLoaded;
         public event EventHandler<RentalModelEventArgs> RentalCheckClicked;
+        public event EventHandler SearchClicked; // ★★★ 1. 이벤트 선언 ★★★
 
         public Book_Rental()
         {
             InitializeComponent();
             BindDropDownListSearch();
-            _presenter = new BookRentalPresenter(this); // 반드시 추가
+            _presenter = new BookRentalPresenter(this);
             dataGridView1.AutoGenerateColumns = false;
 
             this.Load += (s, e) => ViewLoaded?.Invoke(this, EventArgs.Empty);
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
 
+            // --- ★★★ 2. 검색 버튼 및 엔터 키 이벤트 연결 ★★★ ---
+            // (디자이너에 btnSearch, txtSearch 컨트롤이 있다고 가정)
+            this.btnSearch.Click += (s, e) => SearchClicked?.Invoke(this, EventArgs.Empty);
+            this.txtSearch.KeyDown += (s, e) => {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchClicked?.Invoke(this, EventArgs.Empty);
+                    e.SuppressKeyPress = true; // 엔터 키 입력 시 "삑" 소리 방지
+                }
+            };
         }
         private void BindDropDownListSearch()
         {
@@ -75,7 +86,10 @@ namespace library_support_system.Views
                 RentalCheckClicked?.Invoke(this, new RentalModelEventArgs(clickedRental, e.RowIndex));
             }
         }
+
         public void ShowMessage(string message) => MessageBox.Show(message);
         #endregion
+        public string SearchType => ddlSearch.SelectedItem?.ToString() ?? "도서 제목";
+        public string SearchKeyword => txtSearch.Text.Trim(); // Trim()으로 양쪽 공백 제거
     }
 }
