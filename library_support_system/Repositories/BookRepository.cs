@@ -73,11 +73,9 @@ namespace library_support_system.Repositories
                     Book_Price = :Book_Price,
                     Book_Link = :Book_Link,
                     Book_Img = :Book_Img,
-                    Book_Exp = :Book_Exp,
-                    Book_ISBN = :Book_ISBN
+                    Book_Exp = :Book_Exp
                 WHERE Book_Seq = :Book_Seq";
 
-                    cmd.Parameters.Add(new OracleParameter("Book_Seq", OracleDbType.Int32) { Value = book.Book_Seq });
                     cmd.Parameters.Add(new OracleParameter("Book_Title", OracleDbType.Varchar2) { Value = book.Book_Title ?? (object)DBNull.Value });
                     cmd.Parameters.Add(new OracleParameter("Book_Author", OracleDbType.Varchar2) { Value = book.Book_Author ?? (object)DBNull.Value });
                     cmd.Parameters.Add(new OracleParameter("Book_Pbl", OracleDbType.Varchar2) { Value = book.Book_Pbl ?? (object)DBNull.Value });
@@ -90,7 +88,7 @@ namespace library_support_system.Repositories
                     var explainParam = new OracleParameter("Book_Exp", OracleDbType.Clob);
                     explainParam.Value = string.IsNullOrEmpty(book.Book_Exp) ? (object)DBNull.Value : book.Book_Exp;
                     cmd.Parameters.Add(explainParam);
-                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", OracleDbType.Varchar2) { Value = book.Book_ISBN ?? (object)DBNull.Value });
+                    cmd.Parameters.Add(new OracleParameter("Book_Seq", OracleDbType.Int32) { Value = book.Book_Seq });
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
