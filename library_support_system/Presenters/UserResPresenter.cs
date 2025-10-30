@@ -31,8 +31,7 @@ namespace library_support_system.Presenters
             this.view.pictureBoxUpload_Click += pictureBoxUpload_Click;
             this.view.btnCheckDuplicate_Click += btnCheckDuplicate_Click;
             this.view.PhoneNumberChanged += OnPhoneNumberChanged; // [추가]
-
-            if (user != null)
+            if (user != null) // --- "수정" 모드일 때 ---
             {
                 isEditMode = true;
                 editingUser = user;
@@ -40,14 +39,28 @@ namespace library_support_system.Presenters
                 view.FormText = "회원정보 수정";
                 view.SaveButtonText = "수정";
 
+                // (수정 모드) 전화번호는 이미 검증됨
                 isPhoneChecked = true;
                 checkedPhone = user.User_Phone;
+
+                // --- (수정) UI 상태 제어 ---
+                view.IsSaveButtonEnabled = true;     // "수정" 버튼은 항상 활성화
+                view.IsPhoneTextBoxReadOnly = true;  // "전화번호" ReadOnly + 회색
+                view.IsCheckButtonEnabled = false;   // "중복확인" Disabled + 회색
             }
-            else
+            else // --- "신규 등록" 모드일 때 ---
             {
                 isEditMode = false;
                 view.FormText = "회원 신규등록";
                 view.SaveButtonText = "등록";
+
+                // (신규 모드) 아직 검증 안 됨
+                isPhoneChecked = false;
+
+                // --- (수정) UI 상태 제어 ---
+                view.IsSaveButtonEnabled = false;    // "등록" 버튼은 비활성화로 시작
+                view.IsPhoneTextBoxReadOnly = false; // "전화번호" 활성화 + 흰색
+                view.IsCheckButtonEnabled = true;    // "중복확인" 활성화 + 흰색
             }
         }
 
@@ -56,9 +69,14 @@ namespace library_support_system.Presenters
         // [추가] 전화번호가 변경되면 중복확인 상태를 초기화
         private void OnPhoneNumberChanged(object sender, EventArgs e)
         {
-            isPhoneChecked = false;
-        }
+            // "수정" 모드일 때는 전화번호가 ReadOnly이므로 이 이벤트가 발생하지 않아야 하지만,
+            // 만약 발생하더라도 아무것도 하지 않도록 방어.
+            if (isEditMode) return;
 
+            // "신규" 모드에서 텍스트가 변경되면, "확인" 상태를 리셋하고 "등록" 버튼 비활성화
+            isPhoneChecked = false;
+            view.IsSaveButtonEnabled = false;
+        }
         // [수정] 전화번호 중복 확인 로직
         private void btnCheckDuplicate_Click(object sender, EventArgs e)
         {
@@ -77,30 +95,22 @@ namespace library_support_system.Presenters
                 view.FocusPhoneInput();
                 return;
             }
-
-            // 2. 유효성 검사 통과 후 DB 조회
             try
             {
-                if (isEditMode && phone == editingUser.User_Phone)
-                {
-                    isPhoneChecked = true;
-                    checkedPhone = phone;
-                    view.ShowSuccessMessage("사용 가능한 전화번호입니다.");
-                    return;
-                }
-
                 bool exists = userRepository.IsPhoneExists(phone);
 
                 if (exists)
                 {
                     isPhoneChecked = false;
                     checkedPhone = "";
+                    view.IsSaveButtonEnabled = false; // ★ (추가) 중복이면 저장 버튼 비활성화
                     view.ShowErrorMessage("이미 사용중인 전화번호입니다.");
                 }
                 else
                 {
                     isPhoneChecked = true;
                     checkedPhone = phone;
+                    view.IsSaveButtonEnabled = true; // ★ (추가) 사용 가능하면 저장 버튼 활성화
                     view.ShowSuccessMessage("사용 가능한 전화번호입니다.");
                 }
             }
@@ -142,10 +152,16 @@ namespace library_support_system.Presenters
                     User_WTHDR = 0
                 };
 
-                bool result = isEditMode
-                    ? userRepository.Update(model)
-                    : userRepository.Create(model);
-
+                bool result = false;
+                if (isEditMode)
+                {
+                    // ★ (수정) 전화번호(PK)는 수정하지 않음
+                    result = userRepository.Update(model);
+                }
+                else
+                {
+                    result = userRepository.Create(model);
+                }
                 if (result)
                 {
                     view.ShowSuccessMessage(isEditMode ? "회원 정보 수정이 완료되었습니다." : "회원 등록이 완료되었습니다.");

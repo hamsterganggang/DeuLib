@@ -37,7 +37,7 @@
             this.Book_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Pbl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Book_Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Book_Link = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Book_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.search_button = new System.Windows.Forms.Button();
             this.search_textbox = new System.Windows.Forms.TextBox();
@@ -156,6 +156,8 @@
             this.Book_Link.MinimumWidth = 6;
             this.Book_Link.Name = "Book_Link";
             this.Book_Link.ReadOnly = true;
+            this.Book_Link.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Book_Link.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Book_Exp
             // 
@@ -168,6 +170,7 @@
             // 
             // search_button
             // 
+            this.search_button.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.search_button.Location = new System.Drawing.Point(560, 12);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(76, 27);
@@ -249,7 +252,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Author;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Pbl;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Book_Link;
+        private System.Windows.Forms.DataGridViewLinkColumn Book_Link;
         private System.Windows.Forms.DataGridViewTextBoxColumn Book_Exp;
     }
 }

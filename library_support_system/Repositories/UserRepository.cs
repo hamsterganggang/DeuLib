@@ -215,7 +215,21 @@ namespace library_support_system.Repositories
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        public bool RestoreUserWTHDR(string userPhone)
+        {
+            using (var cmd = _conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+                    UPDATE Users SET User_WTHDR = 0 
+                    WHERE User_Phone = :User_Phone
+                      AND User_WTHDR = 1"; // 탈퇴 상태인 회원만 복구
 
+                cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+
+                // 1개 행이 업데이트되었으면 성공
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
         public List<UserModel> SearchByName(string name, int withdrawalStatus = 0)
         {
             var list = new List<UserModel>();

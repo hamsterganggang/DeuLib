@@ -30,7 +30,26 @@ namespace library_support_system
         // Form의 제목(Text)과 저장 버튼의 텍스트를 가져오거나 설정합니다.
         public string FormText { get => this.Text; set => this.Text = value; }
         public string SaveButtonText { get => this.btnSave.Text; set => this.btnSave.Text = value; }
-
+        public bool IsSaveButtonEnabled
+        {
+            set { btnSave.Enabled = value; }
+        }
+        public bool IsPhoneTextBoxReadOnly
+        {
+            set
+            {
+                txtNum.ReadOnly = value;
+                txtNum.BackColor = value ? SystemColors.Control : SystemColors.Window;
+            }
+        }
+        public bool IsCheckButtonEnabled
+        {
+            set
+            {
+                button1.Enabled = value; // (디자이너의 버튼 이름이 'button1'이라고 가정)
+                button1.BackColor = value ? SystemColors.Window : SystemColors.Control;
+            }
+        }
         #endregion
 
         #region Events (인터페이스 구현)

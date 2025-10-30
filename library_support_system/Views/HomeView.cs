@@ -19,7 +19,7 @@ namespace library_support_system.Views
         public string CurrentMenu2Text { set => labelCurrentMenu2.Text = value; }
         #endregion
         //디자인 요소
-        private const int PANEL_HEIGHT = 140; // 패널 펼칠 때 높이
+        private const int PANEL_HEIGHT = 110; // 패널 펼칠 때 높이
         
         public void ToggleAccountPanel() => TogglePanel(account_panel);
         public void ToggleBookPanel() => TogglePanel(book_panel);

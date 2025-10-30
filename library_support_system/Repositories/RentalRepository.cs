@@ -180,11 +180,107 @@ namespace library_support_system.Repositories
             }
             return list;
         }
+        public bool IsUserRenting(string userPhone)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT COUNT(1)
+                        FROM BOOK_RNT
+                        WHERE User_Phone = :User_Phone
+                          AND Rental_Status = 1";
+
+                    cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // 0보다 크면(대여중이면) true
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"RentalRepository IsUserRenting Error: {ex.Message}");
+                throw;
+            }
+        }
+        public UserStatus CheckUserStatus(string userPhone)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT User_WTHDR 
+                        FROM USERS 
+                        WHERE User_Phone = :User_Phone";
+
+                    cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+
+                    object result = cmd.ExecuteScalar(); // 결과를 object로 받음
+
+                    if (result == null || result == DBNull.Value)
+                    {
+                        // 1. 조회 결과가 없음 (등록되지 않은 회원)
+                        return UserStatus.NotFound;
+                    }
+
+                    int wthdrStatus = Convert.ToInt32(result);
+
+                    if (wthdrStatus == 1)
+                    {
+                        // 2. 탈퇴한 회원 (WTHDR = 1)
+                        return UserStatus.Withdrawn;
+                    }
+                    else
+                    {
+                        // 3. 활성 회원 (WTHDR = 0)
+                        return UserStatus.Active;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"RentalRepository CheckUserStatus Error: {ex.Message}");
+                throw;
+            }
+        }
+        public int CountActiveRentalsByUser(string userPhone)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT COUNT(1)
+                        FROM BOOK_RNT
+                        WHERE User_Phone = :User_Phone
+                          AND Rental_Status = 1";
+
+                    cmd.Parameters.Add(new OracleParameter("User_Phone", userPhone));
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"RentalRepository CountActiveRentalsByUser Error: {ex.Message}");
+                throw; // 오류 발생 시 Presenter로 예외 전달
+            }
+        }
+     
         public void Dispose()
         {
             if (_conn != null && _conn.State != ConnectionState.Closed)
                 _conn.Close();
             _conn.Dispose();
         }
+    }
+    public enum UserStatus
+    {
+        Active,    // 활성
+        Withdrawn, // 탈퇴
+        NotFound   // 없음
     }
 }
