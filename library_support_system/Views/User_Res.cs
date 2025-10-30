@@ -1,40 +1,73 @@
 ﻿using library_support_system.Models;
 using library_support_system.Views;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace library_support_system
 {
-    public partial class User_Res : Form , IUser_Res
+    // partial 키워드를 사용하여 .Designer.cs 파일과 클래스를 공유합니다.
+    public partial class User_Res : Form, IUser_Res
     {
-        #region Properties
+        #region Properties (인터페이스 구현)
+
+        // 각 컨트롤의 값을 반환합니다.
         public string UserPhone => txtNum.Text.Trim();
         public string UserName => txtName.Text.Trim();
         public string UserBirthdate => txtBthDate.Text.Trim();
         public int UserGender => cmbGen.SelectedIndex;
         public string UserMail => txtEmail.Text.Trim();
-        public string UserImage => pictureBoxUpload.ImageLocation ?? ""; // 또는 이미지 파일 경로 등
+
+        // 업로드된 이미지의 byte 데이터를 저장하고 반환합니다.
+        public byte[] UploadImageBytes { get; private set; }
+
+        // 디자이너가 만든 필드와의 이름 충돌을 피하기 위해 '명시적 인터페이스 구현'을 사용합니다.
         PictureBox IUser_Res.pictureBoxUpload => this.pictureBoxUpload;
+
+        // Form의 제목(Text)과 저장 버튼의 텍스트를 가져오거나 설정합니다.
+        public string FormText { get => this.Text; set => this.Text = value; }
+        public string SaveButtonText { get => this.btnSave.Text; set => this.btnSave.Text = value; }
+
         #endregion
 
-        //Event Handler
+        #region Events (인터페이스 구현)
+
+        // Presenter가 구독할 이벤트들을 정의합니다.
         public event EventHandler ExitUserRes;
         public event EventHandler btnSave_Click;
         public event EventHandler btnCancel_Click;
         public event EventHandler pictureBoxUpload_Click;
-        public event EventHandler btnCheckDuplicate_Click; // 중복 확인 이벤트
-        private byte[] _uploadedImageBytes;           // 업로드된 이미지 임시 저장소
-        public byte[] UploadImageBytes => _uploadedImageBytes;
+        public event EventHandler btnCheckDuplicate_Click;
+        public event EventHandler PhoneNumberChanged; // 전화번호 텍스트 변경 감지 이벤트
+
+        #endregion
+
+        // 생성자
+        public User_Res()
+        {
+            InitializeComponent();
+            BindDropDownListGen(); // 성별 콤보박스 초기화
+
+            // UI 컨트롤의 이벤트를 인터페이스의 이벤트에 연결(매핑)합니다.
+            // UI 이벤트가 발생하면 Presenter에게 "이런 일이 발생했어!"라고 알려주는 역할을 합니다.
+            exit_button.Click += (sender, e) => ExitUserRes?.Invoke(sender, e);
+            btnSave.Click += (sender, e) => btnSave_Click?.Invoke(sender, e);
+            cancel_button.Click += (sender, e) => btnCancel_Click?.Invoke(sender, e);
+            pictureBoxUpload.Click += (sender, e) => pictureBoxUpload_Click?.Invoke(sender, e);
+            button1.Click += (sender, e) => btnCheckDuplicate_Click?.Invoke(sender, e);
+
+            // 전화번호 입력창의 텍스트가 변경될 때마다 PhoneNumberChanged 이벤트를 발생시킵니다.
+            txtNum.TextChanged += (sender, e) => PhoneNumberChanged?.Invoke(sender, e);
+        }
+
+        #region Methods (인터페이스 구현)
+
+        /// <summary>
+        /// Presenter로부터 받은 사용자 데이터로 화면 컨트롤을 채웁니다.
+        /// </summary>
         public void SetUserData(UserModel user)
         {
             if (user == null) return;
@@ -50,40 +83,26 @@ namespace library_support_system
                 {
                     pictureBoxUpload.Image = Image.FromStream(ms);
                 }
-                _uploadedImageBytes = user.User_Image;
+                UploadImageBytes = user.User_Image; // byte 데이터도 저장
             }
             else
             {
                 pictureBoxUpload.Image = null;
-                _uploadedImageBytes = null;
+                UploadImageBytes = null;
             }
         }
+
+        /// <summary>
+        /// Presenter로부터 받은 이미지 byte 데이터를 View의 속성에 저장합니다.
+        /// </summary>
         public void SetUploadedImage(byte[] bytes)
         {
-            _uploadedImageBytes = bytes;
-        }
-        public User_Res()
-        {
-            InitializeComponent();
-            BindDropDownListGen();
-
-            exit_button.Click += (sender, e) => ExitUserRes?.Invoke(sender, e);
-            btnSave.Click += (sender, e) => btnSave_Click?.Invoke(sender, e);
-            cancel_button.Click += (sender, e) => btnCancel_Click?.Invoke(sender, e);
-            pictureBoxUpload.Click += (sender, e) => pictureBoxUpload_Click?.Invoke(sender, e);
-            button1.Click += (sender, e) => btnCheckDuplicate_Click?.Invoke(sender, e); // 중복 확인 버튼
-
-            // 입력 필드 유효성 검증 이벤트 추가
-            txtNum.Leave += ValidatePhone;
-            txtName.Leave += ValidateName;
-            txtBthDate.Leave += ValidateBirthdate;
-            txtEmail.Leave += ValidateEmail;
-            
-            // 성별 콤보박스 초기화
-            cmbGen.SelectedIndex = 0; // 빈 항목으로 초기화
+            UploadImageBytes = bytes;
         }
 
-        #region Method
+        /// <summary>
+        /// 성별 콤보박스의 항목을 초기화합니다.
+        /// </summary>
         private void BindDropDownListGen()
         {
             if (cmbGen != null)
@@ -95,7 +114,8 @@ namespace library_support_system
                 cmbGen.SelectedIndex = 0;
             }
         }
-        // 메시지 표시 메서드들
+
+        // 다양한 종류의 메시지 박스를 띄웁니다.
         public void ShowMessage(string message)
         {
             MessageBox.Show(message, "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -111,135 +131,68 @@ namespace library_support_system
             MessageBox.Show(message, "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // 입력 유효성 검증 메서드들
-        private void ValidatePhone(object sender, EventArgs e)
+        /// <summary>
+        /// 전화번호 형식의 유효성만 검사합니다. (Presenter 호출용)
+        /// </summary>
+        public bool IsValidPhoneFormat()
         {
-            string phone = txtNum.Text.Trim();
-            if (string.IsNullOrEmpty(phone)) return;
-
-            // 전화번호 형식 검증 (숫자만, 11자리 010으로 시작)
-            if (!Regex.IsMatch(phone, @"^010\d{8}$"))
-            {
-                ShowErrorMessage("올바른 전화번호 형식이 아닙니다.\n예: 01012345678 (11자리 숫자)");
-                txtNum.Focus();
-            }
+            return Regex.IsMatch(UserPhone, @"^010\d{8}$");
         }
 
-        private void ValidateName(object sender, EventArgs e)
+        /// <summary>
+        /// 전화번호 입력창으로 포커스를 이동시킵니다. (Presenter 호출용)
+        /// </summary>
+        public void FocusPhoneInput()
         {
-            string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) return;
+            txtNum.Focus();
+        }
 
-            // 이름 길이 검증 (2-10자)
-            if (name.Length < 2 || name.Length > 10)
+        /// <summary>
+        /// '저장' 버튼 클릭 시 모든 입력 항목의 유효성을 순차적으로 검사합니다.
+        /// </summary>
+        public bool ValidateAllInputs()
+        {
+            if (string.IsNullOrWhiteSpace(UserPhone) || !IsValidPhoneFormat())
+            {
+                ShowErrorMessage("올바른 전화번호를 입력해주세요.\n예: 01012345678");
+                txtNum.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(UserName) || UserName.Length < 2 || UserName.Length > 10)
             {
                 ShowErrorMessage("이름은 2자 이상 10자 이하로 입력해주세요.");
                 txtName.Focus();
-            }
-        }
-
-        private void ValidateBirthdate(object sender, EventArgs e)
-        {
-            string birthdate = txtBthDate.Text.Trim();
-            if (string.IsNullOrEmpty(birthdate)) return;
-
-            DateTime parsedDate;
-            bool isValid = false;
-
-            // 생년월일 형식 검증 (YYYYMMDD 8자리 숫자)
-            if (Regex.IsMatch(birthdate, @"^\d{8}$"))
-            {
-                if (DateTime.TryParseExact(birthdate, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
-                {
-                    // 유효한 날짜 범위 확인 (1900년 이후, 현재 날짜 이전)
-                    if (parsedDate.Year >= 1900 && parsedDate <= DateTime.Now)
-                    {
-                        isValid = true;
-                        // YYYYMMDD 형식 유지
-                        txtBthDate.Text = parsedDate.ToString("yyyyMMdd");
-                    }
-                }
-            }
-
-            if (!isValid)
-            {
-                ShowErrorMessage("올바른 생년월일 형식이 아닙니다.\n예: 19900101 (8자리 숫자)");
-                txtBthDate.Focus();
-            }
-        }
-
-        private void ValidateEmail(object sender, EventArgs e)
-        {
-            string email = txtEmail.Text.Trim();
-            if (string.IsNullOrEmpty(email)) return;
-
-            // 이메일 형식 검증
-            if (!Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
-            {
-                ShowErrorMessage("올바른 이메일 형식이 아닙니다.\n예: user@example.com");
-                txtEmail.Focus();
-            }
-        }
-
-        // 전체 입력 유효성 검증
-        public bool ValidateAllInputs()
-        {
-            // 필수 입력 필드 확인
-            if (string.IsNullOrWhiteSpace(UserPhone))
-            {
-                ShowErrorMessage("전화번호를 입력해주세요.");
-                txtNum.Focus();
                 return false;
             }
-
-            if (string.IsNullOrWhiteSpace(UserName))
+            if (string.IsNullOrWhiteSpace(UserBirthdate) || !Regex.IsMatch(UserBirthdate, @"^\d{8}$"))
             {
-                ShowErrorMessage("이름을 입력해주세요.");
-                txtName.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(UserBirthdate))
-            {
-                ShowErrorMessage("생년월일을 입력해주세요.");
+                ShowErrorMessage("올바른 생년월일을 입력해주세요.\n예: 19900101");
                 txtBthDate.Focus();
                 return false;
             }
-
             if (UserGender == 0)
             {
                 ShowErrorMessage("성별을 선택해주세요.");
                 cmbGen.Focus();
                 return false;
             }
-
-            if (string.IsNullOrWhiteSpace(UserMail))
+            if (string.IsNullOrWhiteSpace(UserMail) || !Regex.IsMatch(UserMail, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
             {
-                ShowErrorMessage("이메일을 입력해주세요.");
+                ShowErrorMessage("올바른 이메일 형식을 입력해주세요.");
                 txtEmail.Focus();
                 return false;
             }
-
-            // 각 필드별 형식 검증
-            ValidatePhone(txtNum, EventArgs.Empty);
-            ValidateName(txtName, EventArgs.Empty);
-            ValidateBirthdate(txtBthDate, EventArgs.Empty);
-            ValidateEmail(txtEmail, EventArgs.Empty);
-
-            return true;
+            return true; // 모든 검사를 통과하면 true 반환
         }
 
-        #endregion
-
-        #region Event
+        /// <summary>
+        /// 현재 창을 닫습니다. (Presenter 호출용)
+        /// </summary>
         public void CloseView()
         {
-            this.Close();  
+            this.Close();
         }
-        #endregion
 
-        #region GridEvent   
         #endregion
-
     }
 }

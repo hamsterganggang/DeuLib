@@ -36,9 +36,6 @@
             this.ddlSearch = new System.Windows.Forms.ComboBox();
             this.chkRetireUser = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnChange = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.txtPicture = new System.Windows.Forms.DataGridViewImageColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBth = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +43,9 @@
             this.txtPhonenum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtWithDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BackColor = System.Drawing.Color.White;
-            this.txtSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(161, 13);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
@@ -65,11 +65,11 @@
             this.ddlSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ddlSearch.BackColor = System.Drawing.Color.White;
             this.ddlSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ddlSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ddlSearch.FormattingEnabled = true;
             this.ddlSearch.Location = new System.Drawing.Point(12, 13);
             this.ddlSearch.Name = "ddlSearch";
-            this.ddlSearch.Size = new System.Drawing.Size(153, 27);
+            this.ddlSearch.Size = new System.Drawing.Size(143, 37);
             this.ddlSearch.TabIndex = 19;
             // 
             // chkRetireUser
@@ -78,7 +78,7 @@
             this.chkRetireUser.Location = new System.Drawing.Point(261, 74);
             this.chkRetireUser.Margin = new System.Windows.Forms.Padding(2);
             this.chkRetireUser.Name = "chkRetireUser";
-            this.chkRetireUser.Size = new System.Drawing.Size(141, 24);
+            this.chkRetireUser.Size = new System.Drawing.Size(200, 34);
             this.chkRetireUser.TabIndex = 20;
             this.chkRetireUser.Text = "탈퇴된 회원 조회";
             this.chkRetireUser.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -108,7 +108,7 @@
             this.txtWithDR});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Window;
@@ -130,35 +130,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1275, 436);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 21;
-            // 
-            // btnChange
-            // 
-            this.btnChange.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnChange.Location = new System.Drawing.Point(12, 64);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(121, 42);
-            this.btnChange.TabIndex = 25;
-            this.btnChange.Text = "회원수정";
-            // 
-            // btnDel
-            // 
-            this.btnDel.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnDel.Location = new System.Drawing.Point(139, 64);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(117, 42);
-            this.btnDel.TabIndex = 26;
-            this.btnDel.Text = "회원탈퇴";
-            this.btnDel.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSearch.Location = new System.Drawing.Point(459, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(72, 28);
-            this.btnSearch.TabIndex = 27;
-            this.btnSearch.Text = "조회";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // txtPicture
             // 
@@ -230,6 +201,35 @@
             this.txtWithDR.Name = "txtWithDR";
             this.txtWithDR.ReadOnly = true;
             // 
+            // btnChange
+            // 
+            this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnChange.Location = new System.Drawing.Point(12, 64);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(121, 42);
+            this.btnChange.TabIndex = 25;
+            this.btnChange.Text = "회원수정";
+            // 
+            // btnDel
+            // 
+            this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDel.Location = new System.Drawing.Point(139, 64);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(117, 42);
+            this.btnDel.TabIndex = 26;
+            this.btnDel.Text = "회원탈퇴";
+            this.btnDel.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSearch.Location = new System.Drawing.Point(459, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(72, 28);
+            this.btnSearch.TabIndex = 27;
+            this.btnSearch.Text = "조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // User_View
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -242,7 +242,7 @@
             this.Controls.Add(this.chkRetireUser);
             this.Controls.Add(this.ddlSearch);
             this.Controls.Add(this.txtSearch);
-            this.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "User_View";
             this.Text = "user_View";

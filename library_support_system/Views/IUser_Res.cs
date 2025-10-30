@@ -1,9 +1,5 @@
 ﻿using library_support_system.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace library_support_system.Views
@@ -16,9 +12,12 @@ namespace library_support_system.Views
         string UserBirthdate { get; }
         int UserGender { get; }
         string UserMail { get; }
-        string UserImage { get; }
         byte[] UploadImageBytes { get; }
         PictureBox pictureBoxUpload { get; }
+
+        // [추가] Presenter가 View의 UI 텍스트를 제어하기 위한 속성
+        string FormText { get; set; }
+        string SaveButtonText { get; set; }
         #endregion
 
         #region Events
@@ -26,13 +25,24 @@ namespace library_support_system.Views
         event EventHandler btnSave_Click;
         event EventHandler btnCancel_Click;
         event EventHandler pictureBoxUpload_Click;
-        event EventHandler btnCheckDuplicate_Click; // 중복 확인 버튼 이벤트 추가
+        event EventHandler btnCheckDuplicate_Click;
 
-        void SetUserData(UserModel user); // ← 반드시 추가!
+        // [추가] 전화번호가 수정될 때마다 Presenter에게 알리기 위한 이벤트
+        event EventHandler PhoneNumberChanged;
+        #endregion
+
+        #region Methods
+        void SetUserData(UserModel user);
+        void SetUploadedImage(byte[] bytes); // [개선] 이미지 설정 메서드 추가
+        void ShowMessage(string message);
+        void ShowErrorMessage(string message);
+        void ShowSuccessMessage(string message);
+
+        // [추가] Presenter가 View의 기능을 직접 호출하기 위한 메서드들
+        bool ValidateAllInputs();
+        bool IsValidPhoneFormat(); // 전화번호 형식만 검사
+        void FocusPhoneInput();    // 전화번호 입력창에 포커스
         void CloseView();
-        void ShowMessage(string message);           // 메시지 표시 메서드 추가
-        void ShowErrorMessage(string message);     // 에러 메시지 표시 메서드 추가
-        void ShowSuccessMessage(string message);   // 성공 메시지 표시 메서드 추가
         #endregion
     }
 }
