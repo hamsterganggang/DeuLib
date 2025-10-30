@@ -36,8 +36,8 @@ namespace library_support_system
             this.Load += User_View_Load;
             btnChange.Click += (sender, e) => ChangeUserEvent?.Invoke(sender, e);
             btnDel.Click += (sender, e) => DeleteUserEvent?.Invoke(sender, e);
-            btnSearch.Click += (sender, e) => SearchEvent?.Invoke(this, EventArgs.Empty); // 검색 버튼 클릭 시
             this.chkRetireUser.CheckedChanged += (sender, e) => RetireFilterChanged?.Invoke(this, EventArgs.Empty);
+            btnSearch.Click += (sender, e) => SearchEvent?.Invoke(this, EventArgs.Empty); // 검색 버튼 클릭 시
             // 엔터키로 검색 실행
             txtSearch.KeyDown += (s, e) => {
                 if (e.KeyCode == Keys.Enter) SearchEvent?.Invoke(this, EventArgs.Empty);
