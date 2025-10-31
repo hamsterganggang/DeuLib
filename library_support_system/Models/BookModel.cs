@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace library_support_system.Models
         public string Book_Link { get; set; }
         public byte[] Book_Img { get; set; }
         public string Book_Exp { get; set; }
+        public int Book_YN { get; set; }
         #endregion
     }
 }
