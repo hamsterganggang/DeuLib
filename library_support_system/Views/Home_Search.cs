@@ -101,7 +101,7 @@ namespace library_support_system.Views
             if (search_option_combobox != null)
             {
                 search_option_combobox.Items.Clear();
-                search_option_combobox.Items.Add("책이름");
+                search_option_combobox.Items.Add("도서 제목");
                 search_option_combobox.Items.Add("ISBN");
                 search_option_combobox.SelectedIndex = 0; // 기본값: 책이름
                 
@@ -178,6 +178,11 @@ namespace library_support_system.Views
         #endregion
 
         private void main_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void search_option_combobox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
         }

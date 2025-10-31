@@ -61,10 +61,10 @@
             this.search_option_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.search_option_combobox.Font = new System.Drawing.Font("페이퍼로지 4 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.search_option_combobox.FormattingEnabled = true;
-            this.search_option_combobox.Location = new System.Drawing.Point(322, 329);
+            this.search_option_combobox.Location = new System.Drawing.Point(300, 329);
             this.search_option_combobox.Margin = new System.Windows.Forms.Padding(4);
             this.search_option_combobox.Name = "search_option_combobox";
-            this.search_option_combobox.Size = new System.Drawing.Size(73, 27);
+            this.search_option_combobox.Size = new System.Drawing.Size(86, 36);
             this.search_option_combobox.TabIndex = 12;
             // 
             // search_button
