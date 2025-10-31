@@ -25,12 +25,20 @@ namespace library_support_system.Repositories
             {
                 using (var cmd = _conn.CreateCommand())
                 {
+                    // --- ★★★ (수정) 1. INSERT 컬럼 목록에 "Book_YN" 추가 ★★★ ---
                     cmd.CommandText = @"
                         INSERT INTO Books
-                        (Book_ISBN, Book_Title, Book_Author, Book_Pbl, Book_Price, Book_Link, Book_Img, Book_Exp)
+                        (   Book_ISBN, Book_Title, Book_Author, Book_Pbl, 
+                            Book_Price, Book_Link, Book_Img, Book_Exp,
+                            Book_YN 
+                        )
                         VALUES
-                        (:Book_ISBN, :Book_Title, :Book_Author, :Book_Pbl, :Book_Price, :Book_Link, :Book_Img, :Book_Exp)";
-                    
+                        (   :Book_ISBN, :Book_Title, :Book_Author, :Book_Pbl, 
+                            :Book_Price, :Book_Link, :Book_Img, :Book_Exp,
+                            0
+                        )";
+                    // --- ★★★ (수정) 2. VALUES 목록에 기본값 "0" 추가 ★★★ ---
+
                     // 파라미터 추가 시 NULL 체크와 OracleDbType 명시
                     cmd.Parameters.Add(new OracleParameter("Book_ISBN", OracleDbType.Varchar2) { Value = book.Book_ISBN ?? (object)DBNull.Value });
                     cmd.Parameters.Add(new OracleParameter("Book_Title", OracleDbType.Varchar2) { Value = book.Book_Title ?? (object)DBNull.Value });
@@ -47,7 +55,9 @@ namespace library_support_system.Repositories
                     var explainParam = new OracleParameter("Book_Exp", OracleDbType.Clob);
                     explainParam.Value = string.IsNullOrEmpty(book.Book_Exp) ? (object)DBNull.Value : book.Book_Exp;
                     cmd.Parameters.Add(explainParam);
-                    
+
+                    // ★★★ (수정) Book_YN에 대한 파라미터는 필요 없음 (SQL에 0으로 하드코딩) ★★★
+
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
