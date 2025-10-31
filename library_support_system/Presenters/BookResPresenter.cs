@@ -17,6 +17,8 @@ namespace library_support_system.Presenters
         private readonly bool isEditMode;
         private readonly BookModel editingBook;
         private bool isIsbnValidated = false;
+        private bool isRecoveryMode = false;
+        private int recoveredBookSeq = 0;
         #endregion
 
         public BookResPresenter(IBook_Res view, BookModel book = null)
@@ -24,99 +26,116 @@ namespace library_support_system.Presenters
             this.view = view;
             this.bookRepository = new BookRepository();
 
-            // 이벤트 연결 (UserResPresenter와 동일한 패턴)
-            this.view.ExitBookRes += exit_button_Click; // 우측 위 종료 버튼
-            this.view.btnSave_Click += btnSave_Click; // 등록버튼
-            this.view.btnCancel_Click += cancel_button_Click; // 취소 버튼
-            this.view.btnDuplicateCheck_Click += btnDuplicateCheck_Click; // 중복확인 버튼
-            this.view.pictureBoxUpload_Click += pictureBoxUpload_Click; // 사진 업로드
-            this.view.IsbnTextChanged += OnIsbnTextChanged; // ★★★ 2. 텍스트 변경 이벤트 구독 ★★★
+            this.view.ExitBookRes += exit_button_Click;
+            this.view.btnSave_Click += btnSave_Click;
+            this.view.btnCancel_Click += cancel_button_Click;
+            this.view.btnDuplicateCheck_Click += btnDuplicateCheck_Click;
+            this.view.pictureBoxUpload_Click += pictureBoxUpload_Click;
+            this.view.IsbnTextChanged += OnIsbnTextChanged;
 
-            if (book != null) // --- ★★★ 3. "수정" 모드일 때 ★★★ ---
+            if (book != null) // "수정" 모드
             {
                 isEditMode = true;
                 editingBook = book;
                 view.SetBookData(book);
-                (view as Form).Text = "도서정보 수정";
 
-                // (Designer.cs에 btnSave가 있다고 가정)
                 var btnSave = (view as Form).Controls.Find("btnSave", true).FirstOrDefault() as Button;
                 if (btnSave != null) btnSave.Text = "수정";
 
-                // --- (수정 모드 로직 추가) ---
-                isIsbnValidated = true;             // (수정 모드) 이미 검증된 ISBN으로 간주
-                view.IsSaveButtonEnabled = true;    // (수정 모드) "수정" 버튼 활성화
-                view.IsIsbnTextBoxReadOnly = true;  // (수정 모드) ISBN(PK) 변경 불가
+                isIsbnValidated = true;
+                view.IsSaveButtonEnabled = true;
+                view.IsIsbnTextBoxReadOnly = true;
                 view.IsDuplicateCheckButtonEnabled = false;
             }
-            else // --- ★★★ 4. "신규 등록" 모드일 때 ★★★ ---
+            else // "신규 등록" 모드
             {
                 isEditMode = false;
-                (view as Form).Text = "도서 신규등록";
 
                 var btnSave = (view as Form).Controls.Find("btnSave", true).FirstOrDefault() as Button;
                 if (btnSave != null) btnSave.Text = "등록";
 
-                // --- (신규 등록 로직 추가) ---
-                isIsbnValidated = false;             // (신규 모드) 아직 미검증
-                view.IsSaveButtonEnabled = false;   // (신규 모드) "등록" 버튼 비활성화
-                view.IsIsbnTextBoxReadOnly = false; // (신규 모드) ISBN 입력 가능
+                isIsbnValidated = false;
+                view.IsSaveButtonEnabled = false;
+                view.IsIsbnTextBoxReadOnly = false;
                 view.IsDuplicateCheckButtonEnabled = true;
+
+                // ★★★ (추가) 신규 모드일 땐 복구 모드가 아님
+                isRecoveryMode = false;
+                recoveredBookSeq = 0;
             }
         }
 
         #region Method
         private void OnIsbnTextChanged(object sender, EventArgs e)
         {
-            // "수정" 모드일 때는 이 로직을 무시 (ISBN이 ReadOnly이므로)
-            if (isEditMode) return;
+            if (isEditMode) return; // 수정 모드에선 무시
 
-            // "신규" 모드에서 사용자가 ISBN을 수정하면,
-            // "중복 확인" 상태를 리셋하고 "등록" 버튼을 다시 비활성화
+            // ISBN이 변경되면, "확인" 상태 및 "복구" 상태를 모두 리셋
             if (isIsbnValidated)
             {
                 isIsbnValidated = false;
                 view.IsSaveButtonEnabled = false;
+            }
+            if (isRecoveryMode)
+            {
+                isRecoveryMode = false;
+                recoveredBookSeq = 0;
+                // (선택) view.ClearForm(); // 폼을 다시 비울 수도 있음
             }
         }
         private void btnDuplicateCheck_Click(object sender, EventArgs e)
         {
             string isbn = view.BookISBN.Trim();
 
-            // --- ★★★ 5. 유효성 검사 1: 빈 값 확인 ★★★ ---
-            if (string.IsNullOrEmpty(isbn))
+            if (string.IsNullOrEmpty(isbn) || isbn.Length != 13)
             {
-                view.ShowMessage("ISBN을 입력해주세요.", "알림", MessageBoxIcon.Warning);
-                return;
-            }
-
-            // --- ★★★ 6. 유효성 검사 2: 글자 수 (13자리) 확인 ★★★ ---
-            if (isbn.Length != 13)
-            {
-                view.ShowMessage("ISBN은 13자리여야 합니다.", "알림", MessageBoxIcon.Warning);
+                view.ShowMessage("ISBN 13자리를 올바르게 입력해주세요.", "알림", MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                var existingBook = bookRepository.Read(isbn);
-                if (existingBook != null)
+                // YN 상태와 관계없이 ISBN으로 도서 조회 (Repository에 ReadByIsbnRegardlessOfStatus 필요)
+                var existingBook = bookRepository.ReadByIsbnRegardlessOfStatus(isbn);
+
+                if (existingBook == null)
                 {
+                    // --- (경우 1) 완전 신규 ISBN ---
+                    view.ShowMessage("사용 가능한 ISBN입니다.", "중복 확인", MessageBoxIcon.Information);
+                    isIsbnValidated = true;
+                    isRecoveryMode = false; // ★ 신규 모드
+                    recoveredBookSeq = 0;
+                    view.IsSaveButtonEnabled = true; // "등록" 버튼 활성화
+                }
+                else if (existingBook.Book_YN == 0)
+                {
+                    // --- (경우 2) 이미 등록된 활성 도서 (YN = 0) ---
                     view.ShowMessage("이미 등록된 ISBN입니다.", "중복 확인", MessageBoxIcon.Warning);
                     isIsbnValidated = false;
-                    view.IsSaveButtonEnabled = false; // "등록" 버튼 비활성화
+                    isRecoveryMode = false;
+                    view.IsSaveButtonEnabled = false;
                 }
-                else
+                else // (existingBook.Book_YN == 1)
                 {
-                    view.ShowMessage("사용 가능한 ISBN입니다.", "중복 확인", MessageBoxIcon.Information);
-                    isIsbnValidated = true;            // ★★★ 검증 성공 ★★★
-                    view.IsSaveButtonEnabled = true;   // ★★★ "등록" 버튼 활성화 ★★★
+                    // --- (경우 3) 삭제된 도서 (YN = 1) -> "등록(처럼)" 모드 돌입 ★★★
+
+                    // ★ (수정) "복구" 메시지 대신 "사용 가능" 메시지
+                    view.ShowMessage("사용 가능한 ISBN입니다. (삭제된 정보 덮어쓰기)", "중복 확인", MessageBoxIcon.Information);
+
+                    isIsbnValidated = true;        // 유효성 통과
+                    isRecoveryMode = true;         // ★ "복구(업데이트)" 모드임을 기억
+                    recoveredBookSeq = existingBook.Book_Seq; // ★ 업데이트할 대상(Seq)을 기억
+                    view.IsSaveButtonEnabled = true; // "등록" 버튼 활성화
+
+                    // (선택사항) 삭제된 도서의 기존 정보를 폼에 불러와서 수정할 수 있게 함
+                    view.SetBookData(existingBook);
                 }
             }
             catch (Exception ex)
             {
                 view.ShowMessage($"중복 확인 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxIcon.Error);
                 isIsbnValidated = false;
+                isRecoveryMode = false;
                 view.IsSaveButtonEnabled = false;
             }
         }
@@ -134,7 +153,6 @@ namespace library_support_system.Presenters
             }
             // 아니요: 아무 동작 없음 (그냥 복귀)
         }
-
         private void cancel_button_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
@@ -148,7 +166,6 @@ namespace library_support_system.Presenters
                 view.CloseView();
             }
         }
-
         private void pictureBoxUpload_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog
@@ -174,70 +191,103 @@ namespace library_support_system.Presenters
                 }
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!isIsbnValidated)
+            try // ★ 전체 로직을 try-catch로 감쌈
             {
-                view.ShowMessage("ISBN 중복 확인을 먼저 수행해야 합니다.", "알림", MessageBoxIcon.Warning);
-                return;
-            }
-            BookModel model = new BookModel
-            {
+                // 1. ISBN 중복 확인 여부 (Presenter 상태 변수)
+                if (!isIsbnValidated)
+                {
+                    // ★ (수정) MessageBox -> view.ShowMessage
+                    view.ShowMessage("ISBN 중복 확인을 먼저 수행해야 합니다.", "알림", MessageBoxIcon.Warning);
+                    return;
+                }
 
-                Book_Seq = isEditMode ? editingBook.Book_Seq : 0,  // 이 부분 추가
-                Book_ISBN = view.BookISBN.Trim(),
-                Book_Title = view.BookTitle.Trim(),
-                Book_Author = view.BookAuthor.Trim(),
-                Book_Pbl = view.BookPublisher.Trim(),
-                Book_Price = view.BookPrice,
-                Book_Link = view.BookLink.Trim(),
-                Book_Img = (view as Book_Res)?.UploadImageBytes,
-                Book_Exp = view.BookExplain.Trim()
-            };
+                // 2. View에 구현된 전체 입력 유효성 검사 호출
+                // (이 방식은 View가 너무 많은 로직을 갖게 되므로,
+                //  Presenter에서 직접 값을 가져와 검사하는 것이 더 좋습니다.)
+                // if (!view.ValidateAllInputs()) return; // <-- User_Res.cs에 구현된 방식
 
-            // 유효성 검사
-            if (string.IsNullOrWhiteSpace(model.Book_ISBN))
-            {
-                MessageBox.Show("ISBN을 입력해주세요.", "유효성 검사", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(model.Book_Title))
-            {
-                MessageBox.Show("도서 제목을 입력해주세요.", "유효성 검사", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(model.Book_Author))
-            {
-                MessageBox.Show("저자를 입력해주세요.", "유효성 검사", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(model.Book_Pbl))
-            {
-                MessageBox.Show("출판사를 입력해주세요.", "유효성 검사", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (model.Book_Price <= 0)
-            {
-                MessageBox.Show("유효한 가격을 입력해주세요.", "유효성 검사", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                // --- (권장) Presenter에서 직접 유효성 검사 ---
+                BookModel model = new BookModel
+                {
+                    Book_Seq = isEditMode ? editingBook.Book_Seq : 0,
+                    Book_ISBN = view.BookISBN.Trim(),
+                    Book_Title = view.BookTitle.Trim(),
+                    Book_Author = view.BookAuthor.Trim(),
+                    Book_Pbl = view.BookPublisher.Trim(),
+                    Book_Price = view.BookPrice,
+                    Book_Link = view.BookLink.Trim(),
+                    Book_Img = (view as Book_Res)?.UploadImageBytes, // 형변환 대신 인터페이스 속성 사용 권장
+                    Book_Exp = view.BookExplain.Trim(),
+                    Book_YN = 0 // ★ 어쨌든 활성 상태(0)로 저장
+                };
 
-            bool result = isEditMode
-                ? bookRepository.Update(model)
-                : bookRepository.Create(model);
+                // ★ (수정) 유효성 검사 (MessageBox -> view.ShowMessage)
+                if (string.IsNullOrWhiteSpace(model.Book_ISBN) || model.Book_ISBN.Length != 13)
+                {
+                    view.ShowMessage("ISBN 13자리를 올바르게 입력해주세요.", "유효성 검사", MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(model.Book_Title))
+                {
+                    view.ShowMessage("도서 제목을 입력해주세요.", "유효성 검사", MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(model.Book_Author))
+                {
+                    view.ShowMessage("저자를 입력해주세요.", "유효성 검사", MessageBoxIcon.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(model.Book_Pbl))
+                {
+                    view.ShowMessage("출판사를 입력해주세요.", "유효성 검사", MessageBoxIcon.Warning);
+                    return;
+                }
+                if (model.Book_Price <= 0)
+                {
+                    view.ShowMessage("유효한 가격을 입력해주세요.", "유효성 검사", MessageBoxIcon.Warning);
+                    return;
+                }
+                // --- 유효성 검사 끝 ---
 
-            if (result)
-            {
-                MessageBox.Show(isEditMode ? "도서 정보 수정 완료" : "도서 등록 완료");
+                // 3. DB 작업 수행
+                bool result = false;
+                string successMessage = "";
 
-                // DialogResult 설정 후 폼 닫기 (중요)
-                ((Form)view).DialogResult = DialogResult.OK;
-                view.CloseView();
+                if (isEditMode) // --- (경우 1) "수정" 모드 ---
+                {
+                    model.Book_Seq = editingBook.Book_Seq; // 원본 Seq 사용
+                    result = bookRepository.Update(model);
+                    successMessage = "도서 정보 수정 완료";
+                }
+                else if (isRecoveryMode) // --- ★ (경우 2) "복구" 모드 ★ ---
+                {
+                    model.Book_Seq = recoveredBookSeq; // "중복 확인" 때 저장해둔 Seq 사용
+                    result = bookRepository.Update(model); // ★ INSERT가 아닌 UPDATE 호출!
+                    successMessage = "도서 정보가 (복구) 등록되었습니다.";
+                }
+                else // --- (경우 3) "신규 등록" 모드 ---
+                {
+                    result = bookRepository.Create(model);
+                    successMessage = "도서 등록 완료";
+                }
+
+                // 4. 결과 처리
+                if (result)
+                {
+                    view.ShowMessage(successMessage, "성공", MessageBoxIcon.Information);
+                    ((Form)view).DialogResult = DialogResult.OK;
+                    view.CloseView();
+                }
+                else
+                {
+                    view.ShowMessage(isEditMode ? "도서 정보 수정 실패" : "도서 등록/복구 실패", "실패", MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex) // ★ Repository에서 발생한 예외 처리
             {
-                MessageBox.Show(isEditMode ? "도서 정보 수정 실패" : "도서 등록 실패");
+                view.ShowMessage($"저장 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxIcon.Error);
             }
         }
         #endregion

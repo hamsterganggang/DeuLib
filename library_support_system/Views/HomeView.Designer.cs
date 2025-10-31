@@ -322,7 +322,7 @@ namespace library_support_system.Views
             this.exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit_button.ForeColor = System.Drawing.Color.Red;
             this.exit_button.Image = global::library_support_system.Properties.Resources.exit_logo1;
-            this.exit_button.Location = new System.Drawing.Point(1213, 1);
+            this.exit_button.Location = new System.Drawing.Point(1212, 1);
             this.exit_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(62, 61);

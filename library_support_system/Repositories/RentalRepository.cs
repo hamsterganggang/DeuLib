@@ -66,6 +66,7 @@ namespace library_support_system.Repositories
                                            AND r.Rental_Status = 1
                                           LEFT JOIN USERS u 
                                              ON r.User_Phone = u.User_Phone
+                                         WHERE Book_YN = 0
                                       ORDER BY b.Book_Title";
             using (var cmd = _conn.CreateCommand())
             {

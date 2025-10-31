@@ -75,16 +75,19 @@ namespace library_support_system.Repositories
             {
                 using (var cmd = _conn.CreateCommand())
                 {
+                    // --- ★★★ (수정) SET 절에 "Book_YN = 0" 추가 ★★★ ---
                     cmd.CommandText = @"
-                UPDATE Books SET
-                    Book_Title = :Book_Title,
-                    Book_Author = :Book_Author,
-                    Book_Pbl = :Book_Pbl,
-                    Book_Price = :Book_Price,
-                    Book_Link = :Book_Link,
-                    Book_Img = :Book_Img,
-                    Book_Exp = :Book_Exp
-                WHERE Book_Seq = :Book_Seq";
+                        UPDATE Books SET
+                           Book_Title = :Book_Title,
+                           Book_Author = :Book_Author,
+                           Book_Pbl = :Book_Pbl,
+                           Book_Price = :Book_Price,
+                           Book_Link = :Book_Link,
+                           Book_Img = :Book_Img,
+                           Book_Exp = :Book_Exp,
+                           Book_YN = 0 
+                        WHERE Book_Seq = :Book_Seq";
+                    // --- ★★★ (수정 완료) ★★★
 
                     cmd.Parameters.Add(new OracleParameter("Book_Title", OracleDbType.Varchar2) { Value = book.Book_Title ?? (object)DBNull.Value });
                     cmd.Parameters.Add(new OracleParameter("Book_Author", OracleDbType.Varchar2) { Value = book.Book_Author ?? (object)DBNull.Value });
@@ -105,9 +108,9 @@ namespace library_support_system.Repositories
             }
             catch (Exception ex)
             {
-
                 System.Diagnostics.Debug.WriteLine($"BookRepository Update Error: {ex.Message}");
-                throw;
+                // 예외를 다시 던져 Presenter가 처리하도록 함
+                throw new Exception("도서 수정(복구) 중 DB 오류가 발생했습니다.", ex);
             }
         }
         public bool Delete(int bookSeq)
@@ -116,20 +119,29 @@ namespace library_support_system.Repositories
             {
                 using (var cmd = _conn.CreateCommand())
                 {
+                    // ★★★ (수정) DELETE -> UPDATE SET Book_YN = 1 ★★★
                     cmd.CommandText = @"
-                        DELETE FROM Books b
+                        UPDATE Books b
+                        SET b.Book_YN = 1
                         WHERE b.Book_Seq = :Book_Seq
                           AND NOT EXISTS (SELECT 1
                                           FROM BOOK_RNT r
                                           WHERE r.Book_ISBN = b.Book_ISBN
                                             AND r.Rental_Status = 1)";
+                    // ★★★ (수정 완료) ★★★
+
                     cmd.Parameters.Add(new OracleParameter("Book_Seq", bookSeq));
+
+                    // cmd.ExecuteNonQuery()는
+                    // 1. 업데이트에 성공하면 1을 반환합니다. -> true 반환
+                    // 2. "대여중"이라서 조건(NOT EXISTS)에 맞지 않아 업데이트되지 않으면 0을 반환합니다. -> false 반환
+                    // 3. bookSeq가 존재하지 않아도 0을 반환합니다. -> false 반환
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"BookRepository Delete Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"BookRepository Delete (Soft Update) Error: {ex.Message}");
                 throw;
             }
         }
@@ -166,7 +178,7 @@ namespace library_support_system.Repositories
             var list = new List<BookModel>();
             using (var cmd = _conn.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Books";
+                cmd.CommandText = "SELECT * FROM Books where Book_YN = 0";
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -188,14 +200,14 @@ namespace library_support_system.Repositories
             }
             return list;
         }
-        public BookModel Read(string bookSeq)
+        public BookModel Read(string bookIsbn)
         {
             try
             {
                 using (var cmd = _conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN";
-                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", bookSeq));
+                    cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN AND Book_YN = 0";
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", bookIsbn));
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -262,7 +274,7 @@ namespace library_support_system.Repositories
                         return ReadAll();
                     }
 
-                    cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_Title) LIKE UPPER(:searchTitle)";
+                    cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_Title) LIKE UPPER(:searchTitle) and Book_YN = 0";
                     cmd.Parameters.Add(new OracleParameter("searchTitle", "%" + searchTitle + "%"));
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -291,8 +303,6 @@ namespace library_support_system.Repositories
                 throw;
             }
         }
-
-        // ISBN으로 검색하는 메서드 추가
         public List<BookModel> SearchByISBN(string searchISBN)
         {
             try
@@ -306,7 +316,7 @@ namespace library_support_system.Repositories
                         return ReadAll();
                     }
 
-                    cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_ISBN) LIKE UPPER(:searchISBN)";
+                    cmd.CommandText = "SELECT * FROM Books WHERE UPPER(Book_ISBN) LIKE UPPER(:searchISBN) and Book_YN = 0";
                     cmd.Parameters.Add(new OracleParameter("searchISBN", "%" + searchISBN + "%"));
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -335,12 +345,70 @@ namespace library_support_system.Repositories
                 throw;
             }
         }
-
         public void Dispose()
         {
             if (_conn != null && _conn.State != ConnectionState.Closed)
                 _conn.Close();
             _conn.Dispose();
+        }
+        public BookModel ReadByIsbnRegardlessOfStatus(string bookIsbn)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Books WHERE Book_ISBN = :Book_ISBN";
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", bookIsbn));
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new BookModel
+                            {
+                                Book_Seq = Convert.ToInt32(reader["Book_Seq"]),
+                                Book_ISBN = reader["Book_ISBN"]?.ToString() ?? "",
+                                Book_Title = reader["Book_Title"]?.ToString() ?? "",
+                                Book_Author = reader["Book_Author"]?.ToString() ?? "",
+                                Book_Pbl = reader["Book_Pbl"]?.ToString() ?? "",
+                                Book_Price = Convert.ToInt32(reader["Book_Price"] ?? 0),
+                                Book_Link = reader["Book_Link"]?.ToString() ?? "",
+                                Book_Img = reader["Book_Img"] == DBNull.Value ? null : (byte[])reader["Book_Img"],
+                                Book_Exp = reader["Book_Exp"]?.ToString() ?? "",
+                                Book_YN = Convert.ToInt32(reader["Book_YN"] ?? 0)
+                            };
+                        }
+                        return null; // 조회 결과 없음
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository ReadByIsbnRegardlessOfStatus Error: {ex.Message}");
+                // 예외를 다시 던져 Presenter가 처리하도록 함
+                throw new Exception("ISBN 조회 중 DB 오류가 발생했습니다.", ex);
+            }
+        }
+        public bool RestoreBook(string bookIsbn)
+        {
+            try
+            {
+                using (var cmd = _conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Books SET Book_YN = 0
+                        WHERE Book_ISBN = :Book_ISBN
+                          AND Book_YN = 1";
+
+                    cmd.Parameters.Add(new OracleParameter("Book_ISBN", bookIsbn));
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BookRepository RestoreBook Error: {ex.Message}");
+                // 예외를 다시 던져 Presenter가 처리하도록 함
+                throw new Exception("도서 복구 중 DB 오류가 발생했습니다.", ex);
+            }
         }
     }
 }

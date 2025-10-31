@@ -14,19 +14,21 @@ namespace library_support_system.Views
 
         // 생성자 오버로드: 검색 결과와 함께 생성하는 경우
         private List<BookModel> _initialBooks;
-        
+
         // 초기 데이터가 설정되었는지 확인하는 속성 추가
         public bool HasInitialData => _initialBooks != null;
-        
+
         public Book_View()
         {
             InitializeComponent();
             InitializeEvents();
             InitializeDataGrid();
             InitializeSearchOptions();
-            
+
             // 즉시 ViewLoaded 이벤트 발생
             ViewLoaded?.Invoke(this, EventArgs.Empty);
+
+            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
         }
 
         // 검색 결과를 받는 생성자 (Home_Search에서 사용)
@@ -37,7 +39,7 @@ namespace library_support_system.Views
             InitializeDataGrid();
             InitializeSearchOptions();
             _initialBooks = searchResults;
-            
+
             // 검색 결과가 있는 경우 바로 표시
             if (_initialBooks != null)
             {
@@ -54,7 +56,7 @@ namespace library_support_system.Views
             btnChange.Click += (s, e) => ChangeBookEvent?.Invoke(s, e);
             btnDel.Click += (s, e) => DeleteBookEvent?.Invoke(s, e);
             search_button.Click += (s, e) => SearchButtonClick?.Invoke(s, e);
-            
+
             // 엔터키로 검색 실행
             search_textbox.KeyDown += (s, e) => {
                 if (e.KeyCode == Keys.Enter)
@@ -93,6 +95,34 @@ namespace library_support_system.Views
         public string SearchOption => search_option_combobox?.SelectedItem?.ToString() ?? "책이름";
         #endregion
 
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "Book_Link")
+            {
+                string url = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(url))
+                {
+                    try
+                    {
+                        // 1. URL 앞에 프로토콜이 없는 경우 'http://'를 추가
+                        if (!url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                            !url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                        {
+                            url = "http://" + url;
+                        }
+
+                        // 2. 기본 웹 브라우저로 URL을 염
+                        System.Diagnostics.Process.Start(url);
+                    }
+                    catch (Exception ex)
+                    {
+                        // URL 실행 중 오류 발생 시 메시지를 표시
+                        MessageBox.Show($"웹사이트를 여는 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 
 }
